@@ -95,6 +95,9 @@ nav .icon {
     display: flex;
     padding: 50px 50px;
 }
+.list-item {
+    padding: 0 2px;
+}
 .list-item a h5 {
     padding-top: 20px;
     padding-bottom: 20px;
