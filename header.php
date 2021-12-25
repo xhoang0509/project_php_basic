@@ -1,3 +1,4 @@
+  <?php session_start() ?>
   <header class="header">
     <div class="logo">
         <a href="index.php">
@@ -28,7 +29,12 @@
         <a href=""
             ><img src="./image/add_shopping_cart.png" alt=""
         /></a> -->
-        <a class="icon-link" href="login.php">Đăng nhập</a>
-        <a class="icon-link" href="register.php">Đăng kí</a>
+        <?php if(isset($_SESSION['id'])) {?>
+            <a style="color: #548CFF" class="icon-link" href="profile.php">Chào, <?php echo $_SESSION['name'] ?></a>
+            <a class="icon-link" href="logout.php">Đăng xuất</a>    
+        <?php } else { ?>
+            <a class="icon-link" href="login.php">Đăng nhập</a>
+            <a class="icon-link" href="register.php">Đăng kí</a>
+        <?php } ?>
     </div>
 </header>

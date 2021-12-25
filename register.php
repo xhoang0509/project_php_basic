@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION['id'])) {
+    header("location:index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,13 +12,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Đăng kí tài khoản</title>
         <link rel="stylesheet" href="css/register.css" />
+        <link rel="stylesheet" href="css/base.css" />
     </head>
     <body>
         <div class="app">
             <div class="container">
                 <h4 style="text-align: left;"><a href="index.php">Quay lại trang chủ</a></h4>
                 <h1 class="mt-5">Đăng kí tài khoản mới</h1>
-                <form class="form" action="">
+                <h3 style="color: red">
+                    <?php 
+                        if(!empty($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        } 
+                    ?>
+                </h3>
+                <form class="form" action="process_register.php" method="POST">
                     <label class="d-block mt-5" for="">Tên</label>
                     <input class="d-block mt-5" type="text" name="name" />
                     <label class="d-block mt-5" for="">Email</label>
