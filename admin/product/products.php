@@ -1,10 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Quản lý nhân viên</title>
+        <title>Trang chủ admin</title>
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +25,7 @@
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/base.css" />
-        <link rel="stylesheet" href="admin-style.css" />
+        <link rel="stylesheet" href="../admin-style.css" />
     </head>
     <body>
         <header id="header">
@@ -56,50 +58,50 @@
                 </li>
             </ul>
             <div class="show">
-                <h1>Tất cả nhân viên</h1>
-                <a class="add-manufacturer" href="./add-staff.html"
-                    >Thêm nhân viên mới</a
+                <h1>Tất cả sản phẩm</h1>
+                <a class="add-manufacturer" href="add_product.php"
+                    >Thêm nhà sản phẩm mới</a
                 >
                 <div class="products">
                     <div class="product">
-                        <h3 class="product-title">Nguyễn Văn A</h3>
+                        <h3 class="product-title">Iphone 13 pro max</h3>
                         <img
-                            src="../image/profile-1.jpg"
+                            src="../image/iphone-13-promax.png"
                             alt=""
                             class="product-image"
                         />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
+                        <p class="mt-5">Số lượng đã bán: 100</p>
+                        <p class="mt-5">Số lượng còn: 10</p>
                     </div>
                     <div class="product">
-                        <h3 class="product-title">Nguyễn Văn B</h3>
+                        <h3 class="product-title">Samsung Galaxy A52s 5G</h3>
                         <img
-                            src="../image/profile-2.jpg"
+                            src="../image/samsung-galaxy-a52s-5g-mint-gc-org.jpg"
                             alt=""
                             class="product-image"
                         />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
+                        <p class="mt-5">Số lượng đã bán: 100</p>
+                        <p class="mt-5">Số lượng còn: 10</p>
                     </div>
                     <div class="product">
-                        <h3 class="product-title">Nguyễn Văn C</h3>
+                        <h3 class="product-title">Sam sung galaxy s21 ultra</h3>
                         <img
-                            src="../image/profile-3.jpg"
+                            src="../image/samsung-galaxy-s21-ultra-bac-1-org.jpg"
                             alt=""
                             class="product-image"
                         />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
+                        <p class="mt-5">Số lượng đã bán: 100</p>
+                        <p class="mt-5">Số lượng còn: 10</p>
                     </div>
                     <div class="product">
-                        <h3 class="product-title">Nguyễn Văn D</h3>
+                        <h3 class="product-title">Iphone 11 pro max</h3>
                         <img
-                            src="../image/profile-4.jpg"
+                            src="../image/iphone-13-promax.png"
                             alt=""
                             class="product-image"
                         />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
+                        <p class="mt-5">Số lượng đã bán: 100</p>
+                        <p class="mt-5">Số lượng còn: 10</p>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Thêm nhân viên mới</title>
+        <title>Thêm nhà sản phẩm mới</title>
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,9 +37,7 @@
                     <a href="./index.html" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.html" class="link"
-                        >Quản lý nhà sản xuất</a
-                    >
+                    <a href="./manufacturers.html" class="link">Quản lý nhà sản xuất</a>
                 </li>
                 <li class="link-item">
                     <a href="./products.html" class="link">Quản lý sản phẩm</a>
@@ -55,45 +53,37 @@
                 </li>
             </ul>
             <div class="show">
-                <h1>Thêm nhân viên mới</h1>
-                <a class="add-manufacturer" href="./staffs.html">Quay lại</a>
-                <form
-                    action=""
+                <h1>Thêm nhà sản phẩm mới</h1>
+                <a class="add-manufacturer" href="products.php">Quay lại</a>
+                <form method="post"
+                    action="insert.php"
                     enctype="multipart/form-data"
                     class="form-input"
                 >
-                    <label for="">Tên nhân viên</label>
+                    <label for="">Tên sản phẩm</label>
                     <br />
-
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="name"/>
                     <br />
                     <label for="">Ảnh</label>
-                    <input class="input" type="file" />
+                    <input class="input" type="text" name="photo"/>
                     <br />
-                    <label for="">Số điện thoại</label>
+                    <label for="">Giá</label>
+                    <br>
+                    <input class="input" type="text" name="price"/>
                     <br />
-                    <input class="input" type="text" />
+                    <label for="">Mô tả sản phẩm</label>
+                    <br>
+                    <textarea name="description"></textarea>
+                    <br>
+                    <br>
+                    <label for="">Nhà sản xuất</label>
+                    <br>
+                    <select name="" id="">
+                        <option value="">Apple</option>
+                        <option value="">Sam sung</option>
+                        <option value="">Xiao mi</option>
+                    </select>
                     <br />
-                    <label for="">Địa chỉ</label>
-                    <br />
-                    <input class="input" type="text" />
-                    <br />
-                    <label for="">Giới tính: </label>
-                    <input type="radio" name="gender" id="male" />
-                    <label for="male">nam</label>
-                    <input type="radio" name="gender" id="female" />
-                    <label for="female">nữ</label>
-                    <input type="radio" name="gender" id="orther" />
-                    <label for="orther">khác</label>
-                    <br />
-                    <br />
-                    <label for="">Email</label>
-                    <br />
-                    <input class="input" type="text" />
-                    <br />
-                    <label for="">Mật khẩu</label>
-                    <br />
-                    <input class="input" type="text" />
                     <br />
                     <button class="btn">Thêm</button>
                 </form>
