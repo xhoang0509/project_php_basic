@@ -23,52 +23,6 @@
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/base.css" />
-        <link rel="stylesheet" href="admin_style.css" />
-    </head>
-    <body>
-        <header id="header">
-            <a href="index.php" class="header-logo">
-                <img src="../image/logo.jpg" alt="" class="logo-admin" />
-                <h1>ABC Shop</h1>
-            </a>
-        </header>
-        <div id="container" class="container-admin">
-            <ul class="container-links">
-                <li class="link-item">
-                    <a href="index.php" class="link">Dashboard</a>
-                </li>
-                <li class="link-item">
-                    <a href="manufacturer/manufacturers.php" class="link"
-                        >Quản lý nhà sản xuất</a
-                    >
-                </li>
-                <li class="link-item">
-                    <a href="product/products.php" class="link">Quản lý sản phẩm</a>
-                </li>
-                <li class="link-item">
-                    <a href="staff/staffs.php" class="link">Quản lý nhân viên</a>
-                </li>
-                <li class="link-item">
-                    <a href="order/orders.php" class="link">Quản lý đơn hàng</a>
-                </li>
-                <li class="link-item">
-                    <a href="" class="link">Đăng xuất</a>
-                </li>
-            </ul>
-            <div class="show">
-                <h1>Tổng quan</h1>
-                <div class="dashboard-list">
-                    <h3 class="dashboard-item">
-                        <a href="manufacturer/manufacturers.php">Tổng nhà sản xuất: 10</a>
-                    </h3>
-                    <h3 class="dashboard-item">
-                        <a href="product/products.php">Tổng nhà sản phẩm: 10</a>
-                    </h3>
-                    <h3 class="dashboard-item">
-                        <a href="staff/staffs.php">Tổng nhân viên: 10</a>
-                    </h3>
-                    <h3 class="dashboard-item">
-                        <a href="order/orders.php">Tổng đơn hàng: 10</a>
                     </h3>
                 </div>
                 <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>
