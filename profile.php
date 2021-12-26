@@ -35,7 +35,7 @@ $each = mysqli_fetch_array($result);
 				</h3>
 					<textarea 
 						name="address" 
-						class="address" ="" cols="30" rows="10">
+						class="address mt-5" ="" cols="30" rows="10">
 						<?php echo $each['address'] ?>						
 					</textarea><br>
 				<h3 class="mt-10">
