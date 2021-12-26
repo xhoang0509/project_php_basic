@@ -54,26 +54,26 @@
             </ul>
             <div class="show">
                 <h1>Thêm nhà sản phẩm mới</h1>
-                <a class="add-manufacturer" href="./products.html">Quay lại</a>
-                <form
-                    action=""
+                <a class="add-manufacturer" href="products.php">Quay lại</a>
+                <form method="post"
+                    action="insert.php"
                     enctype="multipart/form-data"
                     class="form-input"
                 >
                     <label for="">Tên sản phẩm</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="name"/>
                     <br />
                     <label for="">Ảnh</label>
-                    <input class="input" type="file" />
+                    <input class="input" type="text" name="photo"/>
                     <br />
                     <label for="">Giá</label>
                     <br>
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="price"/>
                     <br />
                     <label for="">Mô tả sản phẩm</label>
                     <br>
-                    <textarea name="" id="" cols="30" rows="10" style="margin: 0px; width: 400px; height: 150px;"></textarea>
+                    <textarea name="description"></textarea>
                     <br>
                     <br>
                     <label for="">Nhà sản xuất</label>

@@ -23,84 +23,81 @@
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/base.css" />
-        <link rel="stylesheet" href="admin-style.css" />
+        <link rel="stylesheet" href="admin_style.css" />
     </head>
     <body>
         <header id="header">
-            <a href="index.html" class="header-logo">
-                <img src="../image/logo.png" alt="" class="logo" />
+            <a href="index.php" class="header-logo">
+                <img src="../image/logo.jpg" alt="" class="logo-admin" />
                 <h1>ABC Shop</h1>
             </a>
         </header>
         <div id="container" class="container-admin">
             <ul class="container-links">
                 <li class="link-item">
-                    <a href="./index.html" class="link">Dashboard</a>
+                    <a href="index.php" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.html" class="link"
+                    <a href="manufacturer/manufacturers.php" class="link"
                         >Quản lý nhà sản xuất</a
                     >
                 </li>
                 <li class="link-item">
-                    <a href="./products.html" class="link">Quản lý sản phẩm</a>
+                    <a href="product/products.php" class="link">Quản lý sản phẩm</a>
                 </li>
                 <li class="link-item">
-                    <a href="./staffs.html" class="link">Quản lý nhân viên</a>
+                    <a href="staff/staffs.php" class="link">Quản lý nhân viên</a>
                 </li>
                 <li class="link-item">
-                    <a href="./others.html" class="link">Quản lý đơn hàng</a>
+                    <a href="order/orders.php" class="link">Quản lý đơn hàng</a>
                 </li>
                 <li class="link-item">
                     <a href="" class="link">Đăng xuất</a>
                 </li>
             </ul>
             <div class="show">
-                <h1>Tất cả sản phẩm</h1>
-                <a class="add-manufacturer" href="./add-product.html"
-                    >Thêm nhà sản phẩm mới</a
-                >
-                <div class="products">
-                    <div class="product">
-                        <h3 class="product-title">Iphone 13 pro max</h3>
+                <h1>Tổng quan</h1>
+                <div class="dashboard-list">
+                    <h3 class="dashboard-item">
+                        <a href="manufacturer/manufacturers.php">Tổng nhà sản xuất: 10</a>
+                    </h3>
+                    <h3 class="dashboard-item">
+                        <a href="product/products.php">Tổng nhà sản phẩm: 10</a>
+                    </h3>
+                    <h3 class="dashboard-item">
+                        <a href="staff/staffs.php">Tổng nhân viên: 10</a>
+                    </h3>
+                    <h3 class="dashboard-item">
+                        <a href="order/orders.php">Tổng đơn hàng: 10</a>
+                    </h3>
+                </div>
+                <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>
+                <hr />
+                <div class="best-seller">
+                    <a class="best-seller-title" href="">
+                        <h3>Iphone 13 promax</h3>
                         <img
+                            class="best-seller-img"
                             src="../image/iphone-13-promax.png"
                             alt=""
-                            class="product-image"
                         />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Samsung Galaxy A52s 5G</h3>
+                    </a>
+
+                    <p>Số lượng 100 chiếc</p>
+                </div>
+                <h1 class="mt-10">Nhân viên suất sắc nhất tháng 11</h1>
+                <hr />
+                <div class="best-seller">
+                    <a class="best-seller-title" href="">
+                        <h3>Nguyễn Văn A</h3>
                         <img
-                            src="../image/samsung-galaxy-a52s-5g-mint-gc-org.jpg"
+                            class="best-seller-img"
+                            src="../image/profile-1.jpg"
                             alt=""
-                            class="product-image"
                         />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Sam sung galaxy s21 ultra</h3>
-                        <img
-                            src="../image/samsung-galaxy-s21-ultra-bac-1-org.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Iphone 11 pro max</h3>
-                        <img
-                            src="../image/iphone-13-promax.png"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
+                    </a>
+
+                    <p>Số lượng đã bán 100 chiếc</p>
                 </div>
             </div>
         </div>

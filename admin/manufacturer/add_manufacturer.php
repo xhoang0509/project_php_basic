@@ -22,7 +22,7 @@
         />
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="admin-style.css" />
+        <link rel="stylesheet" href="../admin_style.css" />
     </head>
     <body>
         <header id="header">
@@ -34,19 +34,19 @@
         <div id="container" class="container-admin">
             <ul class="container-links">
                 <li class="link-item">
-                    <a href="./index.html" class="link">Dashboard</a>
+                    <a href="./index.php" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.html" class="link">Quản lý nhà sản xuất</a>
+                    <a href="./manufacturers.php" class="link">Quản lý nhà sản xuất</a>
                 </li>
                 <li class="link-item">
                     <a href="./products.html" class="link">Quản lý sản phẩm</a>
                 </li>
                 <li class="link-item">
-                    <a href="./staffs.html" class="link">Quản lý nhân viên</a>
+                    <a href="./staffs.php" class="link">Quản lý nhân viên</a>
                 </li>
                 <li class="link-item">
-                    <a href="./others.html" class="link">Quản lý đơn hàng</a>
+                    <a href="./others.php" class="link">Quản lý đơn hàng</a>
                 </li>
                 <li class="link-item">
                     <a href="" class="link">Đăng xuất</a>
@@ -54,27 +54,27 @@
             </ul>
             <div class="show">
                 <h1>Thêm nhà sản xuất mới</h1>
-                <a class="add-manufacturer" href="./manufacturers.html">Quay lại</a>
-                <form
-                    action=""
+                <a class="add-manufacturer" href="./manufacturers.php">Quay lại</a>
+                <form method ="post"
+                    action="insert.php"
                     enctype="multipart/form-data"
                     class="form-input"
                 >
                     <label for="">Tên nhà sản xuất</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="name"/>
                     <br />
                     <label for="">Địa chỉ</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="address"/>
                     <br />
                     <label for="">Điện thoại liên hệ</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="phone"/>
                     <br />
                     <label for="">Ảnh</label>
                     <br />
-                    <input class="input" type="file" />
+                    <input class="input" type="text" name="photo"/>
                     <br />
                     <button class="btn">Thêm</button>
                 </form>
