@@ -37,7 +37,7 @@
                     <a href="../" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="../menufacturers" class="link">Quản lý nhà sản xuất</a>
+                    <a href="../manufacturers" class="link">Quản lý nhà sản xuất</a>
                 </li>
                 <li class="link-item">
                     <a href="../products/" class="link">Quản lý sản phẩm</a>

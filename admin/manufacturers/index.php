@@ -1,3 +1,9 @@
+<?php 
+session_start();
+require "../connect.php";
+$sql = "select * from manufacturers";
+$result = mysqli_query($connect, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,6 +28,7 @@
         />
         <!-- Css -->
         <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/base.css" />
         <link rel="stylesheet" href="../../css/admin.css" />
     </head>
     <body>
@@ -49,70 +56,60 @@
             </ul>
             <div class="show">
                 <h1>Tất cả nhà sản xuất</h1>
+                <h2 class="text-success">
+                    <?php if(!empty($_SESSION['success'])) {
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    }
+                    ?>    
+                </h2>
+                <h2 class="text-danger">
+                    <?php if(!empty($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>    
+                </h2>
+                <h2 class="text-success">
+                    <?php if(!empty($_SESSION['manufacturer_name'])) {
+                        echo $_SESSION['manufacturer_name'];
+                        unset($_SESSION['manufacturer_name']);
+                    }
+                    ?>    
+                </h2>
                 <a class="add-manufacturer" href="add_manufacturer.php"
                     >Thêm nhà sản xuất mới</a
                 >
                 <div class="row">
                     <div class="show-item">
-                        <h3>1</h3>
-                        <img
-                            class="show-image"
-                            src="../../image/apple.png"
-                            alt=""
-                        />
-                        <h3 class="show-heading">Apple</h3>
-                        <p class="address">Địa chỉ: mỹ new</p>
-                        <p class="phone">
-                            Số điện thoại: <a href="tel:++86xxxx">86xxxx</a>
-                        </p>
-                        <a href="">Sửa</a>
-                        <a href="">Xóa</a>
-                    </div>
-                    <div class="show-item">
-                        <h3>2</h3>
-                        <img
-                            class="show-image"
-                            src="../../image/sam sung.png"
-                            alt=""
-                        />
-                        <h3 class="show-heading">Sam sung</h3>
-                        <p class="address">Địa chỉ: mỹ new</p>
-                        <p class="phone">
-                            Số điện thoại: <a href="tel:++86xxxx">86xxxx</a>
-                        </p>
-                        <a href="">Sửa</a>
-                        <a href="">Xóa</a>
-                    </div>
-                    <div class="show-item">
-                        <h3>3</h3>
-                        <img
-                            class="show-image"
-                            src="../../image/apple.png"
-                            alt=""
-                        />
-                        <h3 class="show-heading">Apple</h3>
-                        <p class="address">Địa chỉ: mỹ new</p>
-                        <p class="phone">
-                            Số điện thoại: <a href="tel:++86xxxx">86xxxx</a>
-                        </p>
-                        <a href="">Sửa</a>
-                        <a href="">Xóa</a>
-                    </div>
-                    <div class="show-item">
-                        <h3>4</h3>
-                        <img
-                            class="show-image"
-                            src="../../image/xiaomi.png"
-                            alt=""
-                        />
-                        <h3 class="show-heading">Xiao Mi</h3>
-                        <p class="address">Địa chỉ: mỹ new</p>
-                        <p class="phone">
-                            Số điện thoại: <a href="tel:++86xxxx">86xxxx</a>
-                        </p>
-                        <a href="">Sửa</a>
-                        <a href="">Xóa</a>
-                    </div>
+                            <h3>STT</h3>
+                            <h3>Ảnh</h3>
+                            <h3 class="show-heading">Tên</h3>
+                            <p class="address">Địa chỉ</p>
+                            <p class="phone">
+                                Số điện thoại:
+                            </p>
+                            <p>Hành động</p>
+                        </div>
+                    <?php foreach ($result as $index => $each): ?>
+                        <div class="show-item">
+                            <h3><?php echo $index + 1 ?></h3>
+                            <img
+                                class="show-image"
+                                src="../../image/<?php echo $each['photo'] ?>"
+                                alt=""
+                            />
+                            <h3 class="show-heading"><?php echo $each['name'] ?></h3>
+                            <p class="address"><?php echo $each['address'] ?></p>
+                            <p class="phone">
+                                <a href="tel:++86xxxx"><?php echo $each['phone'] ?></a>
+                            </p>
+                            <a class="text-warning" href="update_manufacturer.php?id=<?php echo $each['id'] ?>">Sửa</a>
+                            <a class="text-danger" href="delete_manufacturer.php?id=<?php echo $each['id'] ?>">Xóa</a>
+                        </div>
+                    <?php endforeach ?>
+                    
+                   
                 </div>
             </div>
         </div>

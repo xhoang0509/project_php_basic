@@ -2,6 +2,26 @@
     color: red;
 }
 
+.color-green {
+    color: green;
+}
+
+.color-yellow {
+    color: yellow;
+}
+
+.text-warning {
+    color: #ffc107!important;
+}
+
+.text-danger {
+    color: #dc3545!important;
+}
+
+.text-success {
+    color: #28a745!important;
+}
+
 .mt-5 {
     margin-top: 5px;
 }

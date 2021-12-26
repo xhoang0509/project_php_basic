@@ -1,5 +1,6 @@
 <?php
 session_start();
+$id = $_POST['id'];
 $name = $_POST['name'];
 $address = $_POST['address'];
 $phone = $_POST['phone'];
@@ -7,7 +8,7 @@ $photo = $_FILES['photo'];
 
 if(empty($name) || empty($address) || empty($phone) || empty($photo) ) {
     $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
-    header('location:add_manufacturer.php');
+    header('location:update_manufacturer.php');
     exit();
 }
 
@@ -18,9 +19,15 @@ $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
 require '../connect.php';
-$sql = "insert into manufacturers(name, photo, address, phone)
-values('$name', '$file_name', '$address', '$phone')";
+$sql = "update manufacturers
+set
+name = '$name' ,
+photo = '$file_name' ,
+address = '$address' ,
+phone = '$phone'
+where id = '$id'";
+;
 mysqli_query($connect, $sql);
 require '../close_connect.php';
-$_SESSION['manufacturer_name'] = "Thêm thành công nhà sản xuất: ".$name." !";
+$_SESSION['manufacturer_name'] = "Sửa thành công nhà sản xuất: ".$name." !";
 header('location:index.php');

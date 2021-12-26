@@ -1,3 +1,23 @@
+<?php
+session_start();
+if(empty($_GET['id'])) {
+    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa !";
+    header('location:index.php');
+    exit();
+}
+$id = $_GET['id'];
+
+require '../connect.php';
+$sql = "select * from manufacturers where id = '$id'";
+$result = mysqli_query($connect, $sql);
+$number_rows = mysqli_num_rows($result);
+if($number_rows === 0) {
+    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa !";
+    header('location:index.php');
+    exit();
+}
+$each = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,8 +41,8 @@
             referrerpolicy="no-referrer"
         />
         <!-- Css -->
-        <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="../admin_style.css" />
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/admin.css" />
     </head>
     <body>
         <header id="header">
@@ -34,49 +54,58 @@
         <div id="container" class="container-admin">
             <ul class="container-links">
                 <li class="link-item">
-                    <a href="./index.php" class="link">Dashboard</a>
+                    <a href="../" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.php" class="link">Quản lý nhà sản xuất</a>
+                    <a href="#" class="link active">Quản lý nhà sản xuất</a>
                 </li>
                 <li class="link-item">
-                    <a href="./products.html" class="link">Quản lý sản phẩm</a>
+                    <a href="../products/" class="link">Quản lý sản phẩm</a>
                 </li>
                 <li class="link-item">
-                    <a href="./staffs.php" class="link">Quản lý nhân viên</a>
+                    <a href="../staffs/" class="link">Quản lý nhân viên</a>
                 </li>
                 <li class="link-item">
-                    <a href="./others.php" class="link">Quản lý đơn hàng</a>
+                    <a href="../orders/" class="link">Quản lý đơn hàng</a>
                 </li>
                 <li class="link-item">
                     <a href="" class="link">Đăng xuất</a>
                 </li>
             </ul>
             <div class="show">
-                <h1>Thêm nhà sản xuất mới</h1>
-                <a class="add-manufacturer" href="./manufacturers.php">Quay lại</a>
-                <form method ="post"
-                    action="insert.php"
-                    enctype="multipart/form-data"
-                    class="form-input"
-                >
+                <h1>Sửa nhà sản xuất: </h1>
+                <h3 style="color: red;">
+                    <?php 
+                        if(!empty($_SESSION['error'])) { 
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        } 
+                    ?>
+                </h3>
+                <a class="add-manufacturer" href="index.php">Quay lại</a>
+                <form 
+                    action="process_update_manufacturer.php?id=<?php echo $id ?>" 
+                    method="POST" enctype="multipart/form-data" class="form-input" >
+                    <input type="hidden" name="id" value="<?php echo $id ?>">
                     <label for="">Tên nhà sản xuất</label>
                     <br />
-                    <input class="input" type="text" name="name"/>
+                    <input class="input" type="text" name="name" value="<?php echo $each['name'] ?>" />
                     <br />
                     <label for="">Địa chỉ</label>
                     <br />
-                    <input class="input" type="text" name="address"/>
+                    <input class="input" type="text" name="address" value="<?php echo $each['address'] ?>" />
                     <br />
                     <label for="">Điện thoại liên hệ</label>
                     <br />
-                    <input class="input" type="text" name="phone"/>
+                    <input class="input" type="text" name="phone" value="<?php echo $each['phone'] ?>" />
                     <br />
-                    <label for="">Ảnh</label>
+                    <label for="">Giữ nguyên ảnh</label>
                     <br />
-                    <input class="input" type="text" name="photo"/>
+                    <img width="200px" src="../../image/<?php echo $each['photo'] ?>" alt=""> 
+                    <br>hoặc đổi tại đây
+                    <input class="input" type="file" name="photo"/>
                     <br />
-                    <button class="btn">Thêm</button>
+                    <button class="btn">Sửa</button>
                 </form>
             </div>
         </div>

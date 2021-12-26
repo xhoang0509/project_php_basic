@@ -1,3 +1,9 @@
+<?php
+session_start();
+require '../connect.php';
+$sql = "select * from manufacturers";
+$result = mysqli_query($connect, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,7 +43,7 @@
                     <a href="../" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="manufacturers" class="link">Quản lý nhà sản xuất</a>
+                    <a href="../manufacturers" class="link">Quản lý nhà sản xuất</a>
                 </li>
                 <li class="link-item">
                     <a href="#" class="link active">Quản lý sản phẩm</a>
@@ -55,34 +61,38 @@
             <div class="show">
                 <h1>Thêm nhà sản phẩm mới</h1>
                 <a class="add-manufacturer" href="index.php">Quay lại</a>
-                <form
-                    action=""
-                    enctype="multipart/form-data"
-                    class="form-input"
-                >
-                    <label for="">Tên sản phẩm</label>
+                <form action="process_add_product.php" method="POST" enctype="multipart/form-data" class="form-input">
+                    <label for="name">Tên sản phẩm</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input id="name" class="input" type="text" name="name" />
                     <br />
                     <label for="">Ảnh</label>
-                    <input class="input" type="file" />
+                    <input class="input" type="file" name="photo" />
                     <br />
-                    <label for="">Giá</label>
+                    <label for="price">Giá (vnd)</label>
                     <br>
-                    <input class="input" type="text" />
+                    <input class="input" type="text" id="price" name="price" />
                     <br />
-                    <label for="">Mô tả sản phẩm</label>
+                    <label for="quantity">Số lượng</label>
                     <br>
-                    <textarea name="" id="" cols="30" rows="10" style="margin: 0px; width: 400px; height: 150px;"></textarea>
+                    <input class="input" type="text" id="quantity" name="quantity" />
+                    <br />
+                    <label for="description">Mô tả sản phẩm</label>
+                    <br>
+                    <textarea name="description" id="description" cols="30" rows="10" style="margin: 0px; width: 400px; height: 150px;"></textarea>
                     <br>
                     <br>
-                    <label for="">Nhà sản xuất</label>
+                    <label for="manufacturer_id">Nhà sản xuất</label>
                     <br>
-                    <select name="" id="">
-                        <option value="">Apple</option>
-                        <option value="">Sam sung</option>
-                        <option value="">Xiao mi</option>
+                    <select class="input" name="manufacturer_id" id="manufacturer_id">
+                        <?php foreach ($result as $each): ?>
+                            <option value="<?php echo $each['id'] ?>"><?php echo $each['name'] ?></option>                        
+                        <?php endforeach ?>
                     </select>
+                    <br>
+                    <label for="type">Loại</label>
+                    <br>
+                    <input class="input" type="text" id="type" name="type" />
                     <br />
                     <br />
                     <button class="btn">Thêm</button>

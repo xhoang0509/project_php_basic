@@ -1,3 +1,9 @@
+<?php
+session_start();
+require '../connect.php';
+$sql = "select * from products";
+$result = mysqli_query($connect, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,50 +56,42 @@
             </ul>
             <div class="show">
                 <h1>Tất cả sản phẩm</h1>
+                <h2 class="text-success">
+                    <?php if(!empty($_SESSION['success'])) {
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    }
+                    ?>    
+                </h2>
+                <h2 class="text-danger">
+                    <?php if(!empty($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>    
+                </h2>
+                <h2 class="text-success">
+                    <?php if(!empty($_SESSION['manufacturer_name'])) {
+                        echo $_SESSION['manufacturer_name'];
+                        unset($_SESSION['manufacturer_name']);
+                    }
+                    ?>    
+                </h2>
                 <a class="add-manufacturer" href="add_product.php"
                     >Thêm nhà sản phẩm mới</a
                 >
                 <div class="products">
-                    <div class="product">
-                        <h3 class="product-title">Iphone 13 pro max</h3>
-                        <img
-                            src="../../image/iphone-13-promax.png"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Samsung Galaxy A52s 5G</h3>
-                        <img
-                            src="../../image/samsung-galaxy-a52s-5g-mint-gc-org.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Sam sung galaxy s21 ultra</h3>
-                        <img
-                            src="../../image/samsung-galaxy-s21-ultra-bac-1-org.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Iphone 11 pro max</h3>
-                        <img
-                            src="../../image/iphone-13-promax.png"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">Số lượng đã bán: 100</p>
-                        <p class="mt-5">Số lượng còn: 10</p>
-                    </div>
+                    <?php foreach ($result as $each): ?>
+                        <div class="product">
+                            <h3 class="product-title"><?php echo $each['name'] ?></h3>
+                            <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="product-image" />
+                            <p class="mt-5">Giá: <?php echo $each['price'] ?> vnd</p>
+                            <p class="mt-5">Số lượng: <?php echo $each['quantity'] ?></p>
+                            <p><a class="text-warning" href="">Sửa</a></p>
+                            <p><a class="text-danger" href="">Xóa</a></p>
+                        </div>
+                    <?php endforeach ?>
+                    
                 </div>
             </div>
         </div>

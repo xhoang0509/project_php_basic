@@ -23,6 +23,30 @@
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/base.css" />
+        <link rel="stylesheet" href="../css/admin.css" />
+    </head>
+    <body>
+        <header id="header">
+            <a href="index.html" class="header-logo">
+                <h1>ABC Shop</h1>
+            </a>
+        </header>
+        <div id="container" class="container-admin">
+            <?php include 'menu.php'?>
+            <div class="show">
+                <h1>Tổng quan</h1>
+                <div class="dashboard-list">
+                    <h3 class="dashboard-item">
+                        <a href="./manufacturers.html">Tổng nhà sản xuất: 10</a>
+                    </h3>
+                    <h3 class="dashboard-item">
+                        <a href="./products.html">Tổng nhà sản phẩm: 10</a>
+                    </h3>
+                    <h3 class="dashboard-item">
+                        <a href="./staffs.html">Tổng nhân viên: 10</a>
+                    </h3>
+                    <h3 class="dashboard-item">
+                        <a href="./others.html">Tổng đơn hàng: 10</a>
                     </h3>
                 </div>
                 <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>
