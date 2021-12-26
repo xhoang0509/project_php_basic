@@ -22,11 +22,11 @@
         />
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="admin-style.css" />
+        <link rel="stylesheet" href="../admin_style.css" />
     </head>
     <body>
         <header id="header">
-            <a href="index.html" class="header-logo">
+            <a href="index.php" class="header-logo">
                 <img src="../image/logo.png" alt="" class="logo" />
                 <h1>ABC Shop</h1>
             </a>
@@ -34,21 +34,21 @@
         <div id="container" class="container-admin">
             <ul class="container-links">
                 <li class="link-item">
-                    <a href="./index.html" class="link">Dashboard</a>
+                    <a href="./index.php" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.html" class="link"
+                    <a href="./manufacturers.php" class="link"
                         >Quản lý nhà sản xuất</a
                     >
                 </li>
                 <li class="link-item">
-                    <a href="./products.html" class="link">Quản lý sản phẩm</a>
+                    <a href="../product/products.php" class="link">Quản lý sản phẩm</a>
                 </li>
                 <li class="link-item">
-                    <a href="./staffs.html" class="link">Quản lý nhân viên</a>
+                    <a href="../staff/staffs.php" class="link">Quản lý nhân viên</a>
                 </li>
                 <li class="link-item">
-                    <a href="./others.html" class="link">Quản lý đơn hàng</a>
+                    <a href="../order/orders.php" class="link">Quản lý đơn hàng</a>
                 </li>
                 <li class="link-item">
                     <a href="" class="link">Đăng xuất</a>
@@ -56,44 +56,53 @@
             </ul>
             <div class="show">
                 <h1>Thêm nhân viên mới</h1>
-                <a class="add-manufacturer" href="./staffs.html">Quay lại</a>
-                <form
-                    action=""
+                <a class="add-manufacturer" href="staffs.php">Quay lại</a>
+                <form method="post"
+                    action="insert.php"
                     enctype="multipart/form-data"
                     class="form-input"
                 >
                     <label for="">Tên nhân viên</label>
                     <br />
 
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="name"/>
                     <br />
                     <label for="">Ảnh</label>
-                    <input class="input" type="file" />
+                    <input class="input" type="text" name="photo"/>
                     <br />
                     <label for="">Số điện thoại</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="phone"/>
                     <br />
                     <label for="">Địa chỉ</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="address"/>
                     <br />
                     <label for="">Giới tính: </label>
-                    <input type="radio" name="gender" id="male" />
+                    <input type="radio" name="gender" id="male" name="gender" value="1"/>
                     <label for="male">nam</label>
-                    <input type="radio" name="gender" id="female" />
+                    <input type="radio" name="gender" id="female" name="gender" value="2"/>
                     <label for="female">nữ</label>
-                    <input type="radio" name="gender" id="orther" />
+                    <input type="radio" name="gender" id="orther" name="gender" value="3"/>
                     <label for="orther">khác</label>
+                    <br />
+                    <br />
+                    <label for="">chức vị </label>
+                    <input type="radio" name="gender" id="male" name="gender" value="1"/>
+                    <label for="male">nhân viên</label>
+                    <input type="radio" name="gender" id="female" name="gender" value="2"/>
+                    <label for="female">quản lí cấp 1</label>
+                    <input type="radio" name="gender" id="orther" name="gender" value="3"/>
+                    <label for="orther">quản lí cấp 2</label>
                     <br />
                     <br />
                     <label for="">Email</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="email"/>
                     <br />
                     <label for="">Mật khẩu</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="password"/>
                     <br />
                     <button class="btn">Thêm</button>
                 </form>

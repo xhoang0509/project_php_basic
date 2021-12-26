@@ -22,33 +22,33 @@
         />
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="admin-style.css" />
+        <link rel="stylesheet" href="../admin_style.css" />
     </head>
     <body>
         <header id="header">
-            <a href="index.html" class="header-logo">
+            <a href="index.php" class="header-logo">
                 <img src="../image/logo.png" alt="" class="logo" />
                 <h1>ABC Shop</h1>
             </a>
         </header>
         <div id="container" class="container-admin">
-            <ul class="container-links">
+        <ul class="container-links">
                 <li class="link-item">
-                    <a href="./index.html" class="link">Dashboard</a>
+                    <a href="../index.php" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.html" class="link"
+                    <a href="./manufacturers.php" class="link"
                         >Quản lý nhà sản xuất</a
                     >
                 </li>
                 <li class="link-item">
-                    <a href="./products.html" class="link">Quản lý sản phẩm</a>
+                    <a href="product/products.php" class="link">Quản lý sản phẩm</a>
                 </li>
                 <li class="link-item">
-                    <a href="./staffs.html" class="link">Quản lý nhân viên</a>
+                    <a href="staffs.php" class="link">Quản lý nhân viên</a>
                 </li>
                 <li class="link-item">
-                    <a href="./others.html" class="link">Quản lý đơn hàng</a>
+                    <a href="orders.php" class="link">Quản lý đơn hàng</a>
                 </li>
                 <li class="link-item">
                     <a href="" class="link">Đăng xuất</a>
@@ -56,7 +56,7 @@
             </ul>
             <div class="show">
                 <h1>Tất cả nhà sản xuất</h1>
-                <a class="add-manufacturer" href="./add-manufacturer.html"
+                <a class="add-manufacturer" href="add_manufacturer.php"
                     >Thêm nhà sản xuất mới</a
                 >
                 <div class="row">
