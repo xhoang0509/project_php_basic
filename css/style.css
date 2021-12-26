@@ -50,7 +50,7 @@ body {
 .menu {
     display: inline-block;
     position: relative;
-    left: 42%;
+    left: 30%;
     transform: translateX(-50%);
     bottom: 55px;
 }

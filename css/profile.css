@@ -1,0 +1,33 @@
+.container {
+    padding: 0 5% 3%;
+}
+.profile {
+	display: flex;
+}
+.avatar {
+	margin: 50px;
+	display: flex;
+	flex-direction: column;	
+}
+.default-image-user {
+	width: 200px;
+}
+
+input[type="file"] {
+	width: 200px;
+	padding: 10px;
+}
+
+input[type="text"] {
+
+}
+
+.address {
+	margin: 0px;
+    width: 360px;
+    height: 50px;
+}
+
+.info {
+	padding-left: 50px;
+}

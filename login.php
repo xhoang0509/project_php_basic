@@ -1,5 +1,17 @@
 <?php 
 session_start();
+if(isset($_COOKIE['remmember'])) {
+    $token =  $_COOKIE['remmember'];
+    require './admin/connect.php';
+    $sql = "select * from customers where token = '$token' limit 1";
+    $result = mysqli_query($connect, $sql);
+    $number_rows = mysqli_num_rows($result);
+    if($number_rows == 1) {
+        $each = mysqli_fetch_array($result);
+        $_SESSION['id'] = $each['id'];
+        $_SESSION['name'] = $each['name'];      
+    }
+}
 if(isset($_SESSION['id'])) {
     header("location:index.php");
     exit();
@@ -44,6 +56,11 @@ if(isset($_SESSION['id'])) {
                     <input class="d-block mt-5" type="text" name="password" 
                         value="<?php if(isset($_SESSION['password'])) {$_SESSION['password'];} ?>"
                         />
+                    <div class="d-flex align-content-center mt-5">
+                        <input style="text-align: left; width: 20px" type="checkbox" name="remmember_login" id="remmember_login">
+                        <label for="remmember_login">Ghi nhớ đăng nhập</label>
+                        <br>                  
+                    </div>
                     <button class="btn btn-primary mt-10">Đăng nhập</button>
                 </form>
                 <p class="mt-5">Nếu chưa có tài khoản. Hãy đăng kí <a href="register.php">tại đây</a></p>
