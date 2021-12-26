@@ -26,35 +26,9 @@
         <link rel="stylesheet" href="admin-style.css" />
     </head>
     <body>
-        <header id="header">
-            <a href="index.html" class="header-logo">
-                <img src="../image/logo.jpg" alt="" class="logo-admin" />
-                <h1>ABC Shop</h1>
-            </a>
-        </header>
+        <?php include 'header_admin.php' ?>
         <div id="container" class="container-admin">
-            <ul class="container-links">
-                <li class="link-item">
-                    <a href="./index.html" class="link">Dashboard</a>
-                </li>
-                <li class="link-item">
-                    <a href="./manufacturers.html" class="link"
-                        >Quản lý nhà sản xuất</a
-                    >
-                </li>
-                <li class="link-item">
-                    <a href="./products.html" class="link">Quản lý sản phẩm</a>
-                </li>
-                <li class="link-item">
-                    <a href="./staffs.html" class="link">Quản lý nhân viên</a>
-                </li>
-                <li class="link-item">
-                    <a href="./others.html" class="link">Quản lý đơn hàng</a>
-                </li>
-                <li class="link-item">
-                    <a href="" class="link">Đăng xuất</a>
-                </li>
-            </ul>
+            <?php include 'menu.php' ?>
             <div class="show">
                 <h1>Tổng quan</h1>
                 <div class="dashboard-list">
