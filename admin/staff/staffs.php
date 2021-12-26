@@ -23,7 +23,7 @@
         <!-- Css -->
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/base.css" />
-        <link rel="stylesheet" href="admin_style.css" />
+        <link rel="stylesheet" href="../admin_style.css" />
     </head>
     <body>
         <header id="header">
@@ -38,18 +38,18 @@
                     <a href="../index.php" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
-                    <a href="./manufacturers.php" class="link"
+                    <a href="../manufacturer/manufacturers.php" class="link"
                         >Quản lý nhà sản xuất</a
                     >
                 </li>
                 <li class="link-item">
-                    <a href="product/products.php" class="link">Quản lý sản phẩm</a>
+                    <a href="../product/products.php" class="link">Quản lý sản phẩm</a>
                 </li>
                 <li class="link-item">
-                    <a href="staffs.php" class="link">Quản lý nhân viên</a>
+                    <a href="../staff/staffs.php" class="link">Quản lý nhân viên</a>
                 </li>
                 <li class="link-item">
-                    <a href="orders.php" class="link">Quản lý đơn hàng</a>
+                    <a href="../order/orders.php" class="link">Quản lý đơn hàng</a>
                 </li>
                 <li class="link-item">
                     <a href="" class="link">Đăng xuất</a>
@@ -57,7 +57,7 @@
             </ul>
             <div class="show">
                 <h1>Tất cả nhân viên</h1>
-                <a class="add-manufacturer" href="./add_staff.php"
+                <a class="add-manufacturer" href="add_staff.php"
                     >Thêm nhân viên mới</a
                 >
                 <div class="products">
