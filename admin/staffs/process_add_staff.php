@@ -14,11 +14,11 @@ $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
 require '../connect.php';
-$sql = "INSERT INTO admin(name, photo, address, gender, email, password) 
+$sql = "insert into admin(name, photo, address, gender, email, password) 
 VALUES ('$name', '$file_name', '$address', '$gender', '$email', '$password')";
-
 mysqli_query($connect, $sql);
-$_SESSION['manufacturer_name'] = "Thêm thành công nhân viên: ".$name;
+
+$_SESSION['staff_name'] = "Thêm thành công nhân viên: ".$name;
 
 header('location:index.php');
 require '../close_connect.php';

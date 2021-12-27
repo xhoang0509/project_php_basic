@@ -1,14 +1,15 @@
 <?php
 session_start();
-$id = $_POST['id'];
 $name = $_POST['name'];
-$address = $_POST['address'];
-$phone = $_POST['phone'];
 $photo = $_FILES['photo'];
+$address = $_POST['address'];
+$gender = $_POST['gender'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-if(empty($name) || empty($address) || empty($phone) || empty($photo) ) {
+if(empty($name) || empty($photo) || empty($address) || empty($gender) || empty($email) || empty($password)) {
     $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
-    header('location:update_manufacturer.php');
+    header('location:update_staff.php');
     exit();
 }
 
@@ -19,15 +20,18 @@ $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
 require '../connect.php';
-$sql = "update manufacturers
+$sql = "update staffs
 set
 name = '$name' ,
 photo = '$file_name' ,
 address = '$address' ,
-phone = '$phone'
+phone = '$phone',
+email = '$email',
+password='$password'
 where id = '$id'";
+;
+mysqli_query($connect, $sql); 
 
-mysqli_query($connect, $sql);
 require '../close_connect.php';
-$_SESSION['manufacturer_name'] = "Sửa thành công nhà sản xuất: ".$name." !";
+$_SESSION['staff_name'] = "Cập nhật thành công nhân viên: ".$name." !";
 header('location:index.php');

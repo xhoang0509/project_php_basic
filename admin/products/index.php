@@ -71,9 +71,9 @@ $result = mysqli_query($connect, $sql);
                     ?>    
                 </h2>
                 <h2 class="text-success">
-                    <?php if(!empty($_SESSION['manufacturer_name'])) {
-                        echo $_SESSION['manufacturer_name'];
-                        unset($_SESSION['manufacturer_name']);
+                    <?php if(!empty($_SESSION['product_name'])) {
+                        echo $_SESSION['product_name'];
+                        unset($_SESSION['product_name']);
                     }
                     ?>    
                 </h2>

@@ -1,3 +1,9 @@
+<?php
+session_start();
+require '../connect.php';
+$sql = "select * from admin";
+$result = mysqli_query($connect, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,50 +60,40 @@
             </ul>
             <div class="show">
                 <h1>Tất cả nhân viên</h1>
-                <a class="add-manufacturer" href="./add_staff.php"
-                    >Thêm nhân viên mới</a
-                >
-                <div class="products">
-                    <div class="product">
-                        <h3 class="product-title">Nguyễn Văn A</h3>
-                        <img
-                            src="../../image/profile-1.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Nguyễn Văn B</h3>
-                        <img
-                            src="../../image/profile-2.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Nguyễn Văn C</h3>
-                        <img
-                            src="../../image/profile-3.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
-                    </div>
-                    <div class="product">
-                        <h3 class="product-title">Nguyễn Văn D</h3>
-                        <img
-                            src="../../image/profile-4.jpg"
-                            alt=""
-                            class="product-image"
-                        />
-                        <p class="mt-5">SĐT: 0912.345.678</p>
-                        <p class="mt-5">Địa chỉ: New York State</p>
-                    </div>
+                <h2 class="text-success">
+                    <?php if(!empty($_SESSION['success'])) {
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    }
+                    ?>    
+                </h2>
+
+                <h2 class="text-success">
+                    <?php if(!empty($_SESSION['staff_name'])) {
+                        echo $_SESSION['staff_name'];
+                        unset($_SESSION['staff_name']);
+                    }
+                    ?>    
+                </h2>
+                <a class="add-staff" href="./add_staff.php"
+                    >Thêm nhân viên mới</a>
+                <div class="staffs">
+                    <?php foreach ($result as $each): ?>
+                        <div class="staff">
+                            <h3 class="staff-title"><?php echo $each['name'] ?></h3>
+                            <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="staff-image" />
+                            <p class="mt-5">Địa chỉ: <?php echo $each['address'] ?> vnd</p>
+                            <p class="mt-5">email: <?php echo $each['email'] ?></p>
+                            <p>
+                                <a class="text-warning" href="delete_staff.php?id=<?php echo $each['id'] ?>">Xóa</a>
+                            </p>
+                    </br>
+                            <p>
+                                <a class="text-danger" href="update_staff.php?id=<?php echo $each['id'] ?>">Sửa</a>
+                            </p>
+                        </div>
+                    <?php endforeach ?>
+                    
                 </div>
             </div>
         </div>

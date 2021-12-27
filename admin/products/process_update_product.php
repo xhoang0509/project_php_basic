@@ -28,11 +28,11 @@ photo = '$file_name' ,
 price = '$price' ,
 description = '$description'
 quantity = '$quantity'
-$manufacturer_id = '$manufacturer_id'
+manufacturer_id = '$manufacturer_id'
 type = '$type'
 where id = '$id'";
-;
+
 mysqli_query($connect, $sql);
 require '../close_connect.php';
-$_SESSION['manufacturer_name'] = "Sửa thành công nhà sản xuất: ".$name." !";
+$_SESSION['product_name'] = "Sửa thành công sản phẩm: ".$name." !";
 header('location:index.php');
