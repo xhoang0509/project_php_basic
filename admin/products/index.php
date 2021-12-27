@@ -87,8 +87,13 @@ $result = mysqli_query($connect, $sql);
                             <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="product-image" />
                             <p class="mt-5">Giá: <?php echo $each['price'] ?> vnd</p>
                             <p class="mt-5">Số lượng: <?php echo $each['quantity'] ?></p>
-                            <p><a class="text-warning" href="">Sửa</a></p>
-                            <p><a class="text-danger" href="">Xóa</a></p>
+                            <p>
+                                <a class="text-warning" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
+                            </p>
+                    </br>
+                            <p>
+                                <a class="text-danger" href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a>
+                            </p>
                         </div>
                     <?php endforeach ?>
                     

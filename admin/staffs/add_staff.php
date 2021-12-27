@@ -55,43 +55,39 @@
             <div class="show">
                 <h1>Thêm nhân viên mới</h1>
                 <a class="add-manufacturer" href="index.php">Quay lại</a>
-                <form
-                    action=""
+                <form method="post"
+                    action="process_add_staff.php"
                     enctype="multipart/form-data"
                     class="form-input"
                 >
                     <label for="">Tên nhân viên</label>
                     <br />
 
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="name"/>
                     <br />
                     <label for="">Ảnh</label>
-                    <input class="input" type="file" />
-                    <br />
-                    <label for="">Số điện thoại</label>
-                    <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="file" name="photo"/>
                     <br />
                     <label for="">Địa chỉ</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="address"/>
                     <br />
                     <label for="">Giới tính: </label>
-                    <input type="radio" name="gender" id="male" />
+                    <input type="radio" name="gender" id="male" value="1"/>
                     <label for="male">nam</label>
-                    <input type="radio" name="gender" id="female" />
+                    <input type="radio" name="gender" id="female" value="2"/>
                     <label for="female">nữ</label>
-                    <input type="radio" name="gender" id="orther" />
+                    <input type="radio" name="gender" id="orther" value="3"/>
                     <label for="orther">khác</label>
                     <br />
                     <br />
                     <label for="">Email</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="text" name="email"/>
                     <br />
                     <label for="">Mật khẩu</label>
                     <br />
-                    <input class="input" type="text" />
+                    <input class="input" type="password" name="password"/>
                     <br />
                     <button class="btn">Thêm</button>
                 </form>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../connect.php';
-$sql = "select * from manufacturers";
+$sql = "select * from products";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -58,6 +58,11 @@ $result = mysqli_query($connect, $sql);
                     <a href="" class="link">Đăng xuất</a>
                 </li>
             </ul>
+        <?php 
+            
+            $sql="select * from manufacturers";
+            $manufacturer = mysqli_query($connect,$sql);
+        ?> 
             <div class="show">
                 <h1>Thêm nhà sản phẩm mới</h1>
                 <a class="add-manufacturer" href="index.php">Quay lại</a>
@@ -66,8 +71,8 @@ $result = mysqli_query($connect, $sql);
                     <br />
                     <input id="name" class="input" type="text" name="name" />
                     <br />
-                    <label for="">Ảnh</label>
-                    <input class="input" type="file" name="photo" />
+                    <label for="photo">Ảnh</label>
+                    <input class="input" id="photo" type="file" name="photo" />
                     <br />
                     <label for="price">Giá (vnd)</label>
                     <br>
@@ -82,10 +87,10 @@ $result = mysqli_query($connect, $sql);
                     <textarea name="description" id="description" cols="30" rows="10" style="margin: 0px; width: 400px; height: 150px;"></textarea>
                     <br>
                     <br>
-                    <label for="manufacturer_id">Nhà sản xuất</label>
+                    <label for="product_id">Nhà sản xuất</label>
                     <br>
-                    <select class="input" name="manufacturer_id" id="manufacturer_id">
-                        <?php foreach ($result as $each): ?>
+                    <select class="input" name="manufacturer_id" id="product_id">
+                        <?php foreach ($manufacturer as $each): ?>
                             <option value="<?php echo $each['id'] ?>"><?php echo $each['name'] ?></option>                        
                         <?php endforeach ?>
                     </select>
