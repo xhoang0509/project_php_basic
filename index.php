@@ -1,3 +1,9 @@
+<?php 
+require 'admin/connect.php';
+$sql = "select * from products";
+$result = mysqli_query($connect, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +17,7 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
         <title>ABC Shop</title>
         <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/base.css" />
     </head>
     <body>
         <div class="wrapper">
@@ -18,262 +25,34 @@
             <div class="banner">
                 <a href=""><img src="./image/banner.png" alt="" /></a>
             </div>
-            <h1>Sản Phẩm Bán Chạy</h1>
+            <h1>Tất cả sản phẩm</h1>
             <section>
                 <div class="list">
-                    <div class="list-item">
-                        <a href="detail.php"
-                            ><img src="./image/laptop1.jpg" alt=""
-                        /></a>
-                        <a href="detail.php"
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                       
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href=""><ion-icon class="cart" name="cart-outline"></ion-icon></a>
-                   
-                    </div>
-                    <div class="list-item">
-                        <a href="detail.php"><img src="./image/laptop2.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href="detail.php"><img src="./image/laptop3.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href="detail.php"><img src="./image/laptop4.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div class="list">
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop2.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop3.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop4.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop5.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                </div>
-            </section>
-
-            <h2 class="new-product">Sản Phẩm Mới</h2>
-
-            <section>
-                <div class="list">
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop6.png" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop2.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop3.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                    <div class="list-item">
-                        <a href=""><img src="./image/laptop4.jpg" alt="" /></a>
-                        <a href=""
-                            ><h5>
-                                Laptop Acer Gaming Predator Helios 300
-                                PH315-54-75YD (NH.QC2SV.002) (i7 11800H/16GB
-                                Ram/512GB SSD/RTX3060 6G/15.6 inch QHD 165Hz/Win
-                                10/Đen) (2021)
-                            </h5></a
-                        >
-                        <span class="mprice">39.989.000₫</span>
-                        <span class="discount">(Tiết kiệm: 2% )</span>
-                        <span class="price">39.299.000₫ </span>
-                        <a href="">
-                            <ion-icon
-                                class="cart"
-                                name="cart-outline"
-                            ></ion-icon
-                        ></a>
-                    </div>
-                </div>
-            </section>
-            <?php include 'footer.php' ?>
+                    <?php foreach ($result as $each): ?>
+                        <div class="list-item">
+                            <a class="product-name" href="detail.php?id=<?php echo $each['id'] ?>"><?php echo $each['name'] ?></a>
+                            <a class="image-link" href="detail.php?id=<?php echo $each['id'] ?>">
+                                <img class="list-item-image" src="image/<?php echo $each['photo'] ?>" alt="" />
+                            </a>
+                            <span class="price">Giá bán: <?php echo $each['price'] ?>vnd</span> <br>
+                            <span class="manufacturer">Nhà sản xuất: 
+                                <?php 
+                                $manufacturer_id = $each['manufacturer_id'];
+                                $sql = "select * from manufacturers where id = '$manufacturer_id'";
+                                $result = mysqli_query($connect, $sql);
+                                $manufacturer = mysqli_fetch_array($result);
+                                echo $manufacturer['name'];
+                                ?>                                
+                            </span>
+                            <a class="btn-add-to-cart btn btn-primary" 
+                                href="add_to_cart.php?id=<?php echo $each['id'] ?>">
+                                Thêm vào giỏ hàng
+                            </a>                   
+                        </div>  
+                    <?php endforeach ?>               
+            </section>           
         </div>
+        <?php include 'footer.php' ?>
     </body>
+    <script src="js/index.js"></script>
 </html>

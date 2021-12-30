@@ -1,3 +1,10 @@
+<?php
+$id = $_GET['id'];
+require 'admin/connect.php';
+$sql = "select * from products where id = '$id'";
+$result = mysqli_query($connect, $sql);
+$each = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,10 +27,10 @@
            <div class="container" style="padding: 0 5% 3%">
               <div class="d-flex">
                    <div>
-                        <img class="detail-image" src="./image/laptop1.jpg" alt="">                   
+                        <img class="detail-image" src="image/<?php echo $each['photo'] ?>" alt="">                   
                    </div>
                    <div class="detail-info">
-                       <h3 class="detail-price">Giá bán: 30.000.000 vnđ</h3>
+                       <h3 class="detail-price">Giá bán: <?php echo $each['price'] ?> vnđ</h3>
                        <h3 class="mt-5">Thông số kỹ thuật: </h3>
                        <ul class="detail-list-info mt-5">
                            <li>CPU: Intel Core i7 11800H</li>
@@ -39,7 +46,7 @@
                    </div>
               </div>
            </div>
-           <?php include 'footer.php' ?>
         </div>
+        <?php include 'footer.php' ?>
     </body>
 </html>

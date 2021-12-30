@@ -103,7 +103,7 @@ $each = mysqli_fetch_array($result);
                     <br />
                     <img width="200px" src="../../image/<?php echo $each['photo'] ?>" alt=""> 
                     <br>hoặc đổi tại đây
-                    <input class="input" type="file" name="photo"/>
+                    <input class="input" type="file" name="photo" value="<?php echo $each['photo'] ?>" />
                     <br />
                     <button class="btn">Sửa</button>
                 </form>

@@ -28,8 +28,8 @@ $result = mysqli_query($connect, $sql);
         />
         <!-- Css -->
         <link rel="stylesheet" href="../../css/style.css" />
-        <link rel="stylesheet" href="../../css/base.css" />
         <link rel="stylesheet" href="../../css/admin.css" />
+        <link rel="stylesheet" href="../../css/base.css" />
     </head>
     <body>
         <?php include '../header_admin.php' ?>
@@ -87,12 +87,10 @@ $result = mysqli_query($connect, $sql);
                             <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="product-image" />
                             <p class="mt-5">Giá: <?php echo $each['price'] ?> vnd</p>
                             <p class="mt-5">Số lượng: <?php echo $each['quantity'] ?></p>
+                            </br>
                             <p>
-                                <a class="text-warning" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
-                            </p>
-                    </br>
-                            <p>
-                                <a class="text-danger" href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a>
+                                <a class="btn btn-warning" href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a>
+                                <a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
                             </p>
                         </div>
                     <?php endforeach ?>
