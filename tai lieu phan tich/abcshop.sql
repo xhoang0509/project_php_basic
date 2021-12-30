@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2021 at 12:10 PM
+-- Generation Time: Dec 30, 2021 at 01:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -60,7 +60,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `photo`, `address`, `phone`, `token`) VALUES
-(1, 'Nguyễn Xuân Hoàng', 'xhoang0509@gmail.com', '1', '1640420489.png', '																		tam tiến - yên thế - bắc giang						\r\n											\r\n											\r\n					', '0857812113', 'user_61c81ed1cfc468.136219201640505041'),
+(1, 'Nguyễn Xuân Hoàng', 'xhoang0509@gmail.com', '1', '1640420489.png', '																		tam tiến - yên thế - bắc giang						\r\n											\r\n											\r\n					', '0857812113', 'user_61cda832b6da55.636328711640867890'),
 (11, 'Nguyễn Xuân Hoàng', 'xhoang05091@gmail.com', '1', '1640404667.png', '', '', ''),
 (14, '', '', '', '', '', '', ''),
 (15, 'Hoang Nguyen Xuan', 'xhoang05092@gmail.com', '1', '', '', '', '');
@@ -84,7 +84,7 @@ CREATE TABLE `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`id`, `name`, `photo`, `address`, `phone`) VALUES
-(5, 'Apple', '1640514185.png', 'USA', '0857812113'),
+(5, 'Apple', '1640517537.png', 'USA new', '0857812113'),
 (10, 'Sam Sung', '1640514208.png', 'Hàn quốc', '0857812113');
 
 -- --------------------------------------------------------
@@ -136,10 +136,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `photo`, `price`, `description`, `quantity`, `manufacturer_id`, `type`) VALUES
-(1, 'Apple', '1640512206.jpg', 100000, 'tao real', 0, 5, 'hoa qua'),
-(2, 'Táo thật', '1640512371.jpg', 100000, 'Táo thật có thể ăn', 10, 5, 'hoa quả'),
 (3, 'iphone 13 pro max', '1640512498.png', 4000000, 'iphone pro max', 40, 5, 'điện thoại'),
-(4, 'sam sung s21 ultra new', '1640512731.jpg', 400000, 'dien thoai', 40, 10, 'dien thoai');
+(4, 'sam sung s21 ultra new', '1640512731.jpg', 400000, 'dien thoai', 40, 10, 'dien thoai'),
+(6, 'Xiao Mi mi11 5G', '1640830102.png', 1000000, 'Hang trung quoc', 40, 5, 'điện thoại'),
+(7, 'Táo thật', '1640830520.jpg', 1000000, '                            \r\n             hoa quả rất ngon       ', 10, 5, 'hoa quả');
 
 --
 -- Indexes for dumped tables
@@ -195,7 +195,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -219,7 +219,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

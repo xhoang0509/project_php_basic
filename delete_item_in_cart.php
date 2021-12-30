@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(empty($_GET['id'])) {
-	$_SESSION['error'] = "Chọn sản phẩm để xóa !";
+	$_SESSION['error_delete_cart'] = "Chọn sản phẩm để xóa !";
 	header('location:cart.php');
 	exit();
 }

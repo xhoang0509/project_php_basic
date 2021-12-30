@@ -1,5 +1,9 @@
 <?php 
 session_start();
+if(empty($_SESSION['id'])) {
+  header('location:login.php');
+  exit();
+}
 $id = $_SESSION['id'];
 require './admin/connect.php';
 $sql = "select * from customers where id = '$id'";

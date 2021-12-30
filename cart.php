@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(empty($_SESSION['id'])) {
+  header('location:index.php');
+  exit();
+}
 $id = $_SESSION['id'];
 
 require 'admin/connect.php';
@@ -41,9 +45,9 @@ require 'help.php';
                     }
                     ?>    </h2>
               <h2 class="text-danger">
-                  <?php if(!empty($_SESSION['error'])) {
-                      echo $_SESSION['error'];
-                      unset($_SESSION['error']);
+                  <?php if(!empty($_SESSION['error_delete_cart'])) {
+                      echo $_SESSION['error_delete_cart'];
+                      unset($_SESSION['error_delete_cart']);
                   }
                   ?>    </h2>                
               <table class="w3-table w3-striped w3-bordered">

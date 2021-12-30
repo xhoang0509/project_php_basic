@@ -1,8 +1,13 @@
 <?php
+session_start();
 $id = $_GET['id'];
 require 'admin/connect.php';
 $sql = "select * from products where id = '$id'";
 $result = mysqli_query($connect, $sql);
+$number_rows = mysqli_num_rows($result);
+if(empty($number_rows)) {
+  header("location:index.php");
+}
 $each = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
@@ -42,7 +47,11 @@ $each = mysqli_fetch_array($result);
                            <li>HĐH: Win 10</li>
                            <li>Màu: Đen</li>
                        </ul>
-                       <a class="btn btn-primary mt-5" href="cart.php">Thêm vào giỏ hàng</a>
+                      <?php if(!empty($_SESSION['id'])) { ?>
+                         <a class="btn btn-primary mt-5" href="cart.php">Thêm vào giỏ hàng</a>
+                      <?php } else { ?>
+                        <a class="btn btn-primary mt-5" href="index.php">Đăng nhập để mua hàng</a>
+                      <?php } ?>
                    </div>
               </div>
            </div>

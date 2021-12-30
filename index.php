@@ -50,10 +50,17 @@ $result = mysqli_query($connect, $sql);
                                 echo $manufacturer['name'];
                                 ?>                                
                             </span>
+                            <?php if(!empty($_SESSION['id'])) {?>
                             <a class="btn-add-to-cart btn btn-primary" 
                                 href="add_to_cart.php?id=<?php echo $each['id'] ?>">
                                 Thêm vào giỏ hàng
-                            </a>   
+                            </a>
+                            <?php } else { ?>
+                                <a class="btn-add-to-cart btn btn-primary" 
+                                href="login.php">
+                                Đăng nhập để mua hàng
+                                </a>
+                            <?php } ?>
                             <span class="view-detail">Xem chi tiết</span>                
                         </div>  
                     <?php endforeach ?>               

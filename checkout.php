@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if(empty($_SESSION['id'])) {
+  header('location:index.php');
+  exit();
+}
 if(!empty($_SESSION['cart'])) {
   $cart = $_SESSION['cart'];  
 }
