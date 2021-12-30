@@ -1,12 +1,12 @@
-const productNames = document.querySelectorAll('.product-name');
+const newPrices = document.querySelectorAll('.new-price');
 setInterval(() => {
-	productNames.forEach(productName => {
-		productName.classList.add('color-red');
+	newPrices.forEach(newPrice => {
+		newPrice.classList.add('color-red');
 	})
-}, 1000);
+}, 500);
 
 setInterval(() => {
-	productNames.forEach(productName => {
-		productName.classList.remove('color-red');
+	newPrices.forEach(newPrice => {
+		newPrice.classList.remove('color-red');
 	})
-}, 2000);
+}, 1000);

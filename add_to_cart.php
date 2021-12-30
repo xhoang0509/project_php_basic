@@ -9,7 +9,6 @@ if(empty($_SESSION['cart'][$id])) {
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);
     $number_rows = mysqli_num_rows($result);
-    die($number_rows);
     if($number_rows == 0) {
     	$_SESSION['error'] = "Không có sản phẩm này !";
     	header('location:index.php');
@@ -23,5 +22,7 @@ if(empty($_SESSION['cart'][$id])) {
     $_SESSION['cart'][$id]['quantity']++;
 }
 
-echo json_encode($_SESSION['cart']);
+$_SESSION['success'] = "Đã thêm thành công ".$_SESSION['cart'][$id]['name']." vào giỏ hàng";
+header('location:index.php');
+
 

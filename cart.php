@@ -1,6 +1,15 @@
 <?php
 session_start();
-$cart = $_SESSION['cart'];
+$id = $_SESSION['id'];
+
+require 'admin/connect.php';
+$sql = "select * from customers where id = '$id'";
+$result = mysqli_query($connect, $sql);
+$customer = mysqli_fetch_array($result);
+if(!empty($_SESSION['cart'])) {
+  $cart = $_SESSION['cart'];  
+}
+require 'help.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +25,13 @@ $cart = $_SESSION['cart'];
         <title>Chi tiết sản phẩm</title>
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/detail.css" />
-        <link rel="stylesheet" href="./css/base.css" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="./css/base.css" />
     </head>
     <body>
         <div class="wrapper">
            <?php include 'header.php' ?>
+           <?php if(!empty($_SESSION['cart'])) { ?>
            <div class="container" style="padding: 0 5% 3%">
               <h1 style="text-align: left; font-weight: bold">Thông tin giỏ hàng</h1>
               <h2 class="text-success">
@@ -29,15 +39,13 @@ $cart = $_SESSION['cart'];
                         echo $_SESSION['name_product'];
                         unset($_SESSION['name_product']);
                     }
-                    ?>    
-                </h2>
-                <h2 class="text-danger">
-                    <?php if(!empty($_SESSION['error'])) {
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']);
-                    }
-                    ?>    
-                </h2>                
+                    ?>    </h2>
+              <h2 class="text-danger">
+                  <?php if(!empty($_SESSION['error'])) {
+                      echo $_SESSION['error'];
+                      unset($_SESSION['error']);
+                  }
+                  ?>    </h2>                
               <table class="w3-table w3-striped w3-bordered">
                   <tr>
                     <th>STT</th>
@@ -47,25 +55,42 @@ $cart = $_SESSION['cart'];
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
                   </tr>
-                  <?php $index = 1; ?>
-                  <?php foreach ($cart as $id => $each): ?>
+                  <?php 
+                    $index = 1;
+                    $total_money = 0;
+                  ?>
+                  <?php foreach ($cart as $id => $each): ?>                    
                       <tr>
                         <td><?php echo $index; $index++; ?></td>
                         <td><?php echo $each['name'] ?></td>
                         <td><img height="100" src="image/<?php echo $each['photo'] ?>" alt=""></td>
-                        <td><?php echo $each['price']?> vnd</td>
+                        <td><?php echo format_number_to_currency($each['price'])?> vnd</td>
                         <td>
-                          <a href="">+</a>
+                          <a class="btn btn-secondary" href="update_quantity.php?id=<?php echo $id ?>&type=incre">+</a>
                           <?php echo $each['quantity']?>
-                          <a href="">-</a>
+                          <a class="btn btn-secondary" href="update_quantity.php?id=<?php echo $id ?>&type=decre">-</a>
                         </td>
-                        <td><?php echo $each['price'] * $each['quantity'] ?> vnd</td>
+                        <td><?php echo format_number_to_currency($each['price'] * $each['quantity'] ) ?> vnd</td>
                         <th><a class="color-red" href="delete_item_in_cart.php?id=<?php echo $id ?>">Xóa</a></th>
                       </tr>
+                      <?php $total_money += $each['price'] * $each['quantity']?>
                   <?php endforeach ?>               
-                </table>
+              </table>
+              
+              <h1 style="text-align: left; font-weight: bold">Thông tin thanh toán</h1>
+              <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
+              <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
+              <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
+              <h2>Tổng tiền: <?php echo format_number_to_currency($total_money)?> vnd </h2>
+              <a class="btn btn-primary" href="checkout.php">Đặt hàng</a>
            </div>
-           <?php include 'footer.php' ?>
+           <?php }else { ?> 
+           <div class="container" style="padding: 0 5% 3%">
+             <h3>Giỏ hàng trống. Hãy quay lại thêm sản phẩm vào <a class="text-underline" href="index.php">tại đây !</a></h3>
+           </div>
+           <?php } ?>
+
         </div>
+       <?php include 'footer.php' ?>
     </body>
 </html>

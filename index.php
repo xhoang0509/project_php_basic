@@ -1,4 +1,5 @@
 <?php 
+require 'help.php';
 require 'admin/connect.php';
 $sql = "select * from products";
 $result = mysqli_query($connect, $sql);
@@ -21,7 +22,11 @@ $result = mysqli_query($connect, $sql);
     </head>
     <body>
         <div class="wrapper">
-            <?php include 'header.php' ?>
+            <?php include 'header.php' ?>            
+            <?php if(!empty($_SESSION['success'])) {?>
+                <script>alert("<?php echo  $_SESSION['success']; unset($_SESSION['success'])?>");</script>
+            <?php } ?>
+            
             <div class="banner">
                 <a href=""><img src="./image/banner.png" alt="" /></a>
             </div>
@@ -34,7 +39,8 @@ $result = mysqli_query($connect, $sql);
                             <a class="image-link" href="detail.php?id=<?php echo $each['id'] ?>">
                                 <img class="list-item-image" src="image/<?php echo $each['photo'] ?>" alt="" />
                             </a>
-                            <span class="price">Giá bán: <?php echo $each['price'] ?>vnd</span> <br>
+                            <span class="old-price">Giá cũ: <del><?php echo format_number_to_currency($each['price'] * 1.8) ?>vnd</del></span>
+                            <span class="new-price">Giá bán: <?php echo format_number_to_currency($each['price']) ?> vnd</span>
                             <span class="manufacturer">Nhà sản xuất: 
                                 <?php 
                                 $manufacturer_id = $each['manufacturer_id'];
@@ -47,7 +53,8 @@ $result = mysqli_query($connect, $sql);
                             <a class="btn-add-to-cart btn btn-primary" 
                                 href="add_to_cart.php?id=<?php echo $each['id'] ?>">
                                 Thêm vào giỏ hàng
-                            </a>                   
+                            </a>   
+                            <span class="view-detail">Xem chi tiết</span>                
                         </div>  
                     <?php endforeach ?>               
             </section>           
