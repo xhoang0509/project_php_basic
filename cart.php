@@ -1,3 +1,7 @@
+<?php
+session_start();
+$cart = $_SESSION['cart'];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,35 +24,45 @@
            <?php include 'header.php' ?>
            <div class="container" style="padding: 0 5% 3%">
               <h1 style="text-align: left; font-weight: bold">Thông tin giỏ hàng</h1>
+              <h2 class="text-success">
+                    <?php if(!empty($_SESSION['name_product'])) {
+                        echo $_SESSION['name_product'];
+                        unset($_SESSION['name_product']);
+                    }
+                    ?>    
+                </h2>
+                <h2 class="text-danger">
+                    <?php if(!empty($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>    
+                </h2>                
               <table class="w3-table w3-striped w3-bordered">
                   <tr>
                     <th>STT</th>
                     <th>Tên</th>
                     <th>Ảnh</th>
+                    <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
                   </tr>
-                  <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                    <td>94</td>
-                    <td>67</td>
-                  </tr>
-                  <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>50</td>
-                    <td>94</td>
-                    <td>67</td>
-                  </tr>
-                  <tr>
-                    <td>Adam</td>
-                    <td>Johnson</td>
-                    <td>50</td>
-                    <td>94</td>
-                    <td>67</td>
-                  </tr>
+                  <?php $index = 1; ?>
+                  <?php foreach ($cart as $id => $each): ?>
+                      <tr>
+                        <td><?php echo $index; $index++; ?></td>
+                        <td><?php echo $each['name'] ?></td>
+                        <td><img height="100" src="image/<?php echo $each['photo'] ?>" alt=""></td>
+                        <td><?php echo $each['price']?> vnd</td>
+                        <td>
+                          <a href="">+</a>
+                          <?php echo $each['quantity']?>
+                          <a href="">-</a>
+                        </td>
+                        <td><?php echo $each['price'] * $each['quantity'] ?> vnd</td>
+                        <th><a class="color-red" href="delete_item_in_cart.php?id=<?php echo $id ?>">Xóa</a></th>
+                      </tr>
+                  <?php endforeach ?>               
                 </table>
            </div>
            <?php include 'footer.php' ?>
