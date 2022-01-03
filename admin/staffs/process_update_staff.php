@@ -29,9 +29,9 @@ phone = '$phone',
 email = '$email',
 password='$password'
 where id = '$id'";
-;
-mysqli_query($connect, $sql); 
 
+mysqli_query($connect, $sql); 
+die($sql);
 require '../close_connect.php';
 $_SESSION['staff_name'] = "Cập nhật thành công nhân viên: ".$name." !";
-header('location:index.php');
+// header('location:index.php');
