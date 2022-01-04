@@ -1,5 +1,6 @@
 <?php
-session_start();
+require '../check_admin_login.php';
+
 $name = $_POST['name'];
 $photo = $_FILES['photo'];
 $address = $_POST['address'];
@@ -29,9 +30,9 @@ phone = '$phone',
 email = '$email',
 password='$password'
 where id = '$id'";
-;
-mysqli_query($connect, $sql); 
 
+mysqli_query($connect, $sql); 
+die($sql);
 require '../close_connect.php';
 $_SESSION['staff_name'] = "Cập nhật thành công nhân viên: ".$name." !";
-header('location:index.php');
+// header('location:index.php');

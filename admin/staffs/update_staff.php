@@ -1,5 +1,6 @@
 <?php
-session_start();
+require '../check_admin_login.php';
+
 if(empty($_GET['id'])) {
     $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa !";
     header('location:index.php');
@@ -84,7 +85,7 @@ $each = mysqli_fetch_array($result);
                 </h3>
                 <a class="add-staff" href="index.php">Quay lại</a>
                 <form method="post"
-                    action="process_add_staff.php"
+                    action="process_update_staff.php"
                     enctype="multipart/form-data"
                     class="form-input"
                 >

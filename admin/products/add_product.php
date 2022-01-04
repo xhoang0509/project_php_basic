@@ -1,5 +1,6 @@
 <?php
-session_start();
+require '../check_admin_login.php';
+
 require '../connect.php';
 $sql = "select * from products";
 $result = mysqli_query($connect, $sql);
