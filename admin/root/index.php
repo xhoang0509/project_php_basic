@@ -41,7 +41,7 @@ require '../check_admin_login.php';
                 <h1>Tổng quan</h1>
                 <div class="dashboard-list">
                     <h3 class="dashboard-item">
-                        <a href="../manufacturer/">Tổng nhà sản xuất: 10</a>
+                        <a href="#">Tổng nhà sản xuất: 10</a>
                     </h3>
                     <h3 class="dashboard-item">
                         <a href="../products/">Tổng nhà sản phẩm: 10</a>

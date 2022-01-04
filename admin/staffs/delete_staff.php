@@ -1,5 +1,6 @@
 <?php
-session_start();
+require '../check_admin_login.php';
+
 if(empty($_GET['id'])) {
 	$_SESSION['error'] = "Yêu cầu chọn nhân viên để xóa !";
 	header('location:index.php');
