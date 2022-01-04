@@ -21,8 +21,8 @@ $result = mysqli_query($connect, $sql);
         <link rel="stylesheet" href="./css/base.css" />
     </head>
     <body>
+        <?php include 'header.php' ?>            
         <div class="wrapper">
-            <?php include 'header.php' ?>            
             <?php if(!empty($_SESSION['success'])) {?>
                 <script>alert("<?php echo  $_SESSION['success']; unset($_SESSION['success'])?>");</script>
             <?php } ?>
