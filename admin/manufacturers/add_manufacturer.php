@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php
+require '../check_super_admin_login.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

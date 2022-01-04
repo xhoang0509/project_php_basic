@@ -1,5 +1,6 @@
 <?php
-session_start();
+require '../check_super_admin_login.php';
+
 $name = $_POST['name'];
 $address = $_POST['address'];
 $phone = $_POST['phone'];

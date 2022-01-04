@@ -1,5 +1,6 @@
-<?php 
-session_start();
+<?php
+require '../check_super_admin_login.php';
+
 require "../connect.php";
 $sql = "select * from manufacturers";
 $result = mysqli_query($connect, $sql);
@@ -36,7 +37,7 @@ $result = mysqli_query($connect, $sql);
         <div id="container" class="container-admin">
             <ul class="container-links">
                 <li class="link-item">
-                    <a href="../" class="link">Dashboard</a>
+                    <a href="../root" class="link">Dashboard</a>
                 </li>
                 <li class="link-item">
                     <a href="#" class="link active">Quản lý nhà sản xuất</a>

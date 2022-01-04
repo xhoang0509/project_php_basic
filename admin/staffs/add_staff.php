@@ -92,6 +92,12 @@ require '../check_admin_login.php';
                     <br />
                     <input class="input" type="password" name="password"/>
                     <br />
+                    <label for="">Chức vụ: </label>
+                    <input type="radio" name="level" id="admin" value="0"/>
+                    <label for="male">Nhân Viên</label>
+                    <input type="radio" name="level" id="sadmin" value="1"/>
+                    <label for="female">Quản lý</label>
+                    <br/>
                     <button class="btn">Thêm</button>
                 </form>
             </div>
