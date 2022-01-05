@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2022 at 10:25 AM
+-- Generation Time: Jan 05, 2022 at 04:22 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -109,12 +109,19 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `name_receiver` varchar(50) NOT NULL,
-  `address_receiver` int(15) NOT NULL,
+  `address_receiver` varchar(255) NOT NULL,
   `phone_receiver` int(11) NOT NULL,
   `status` int(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `total_price` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `address_receiver`, `phone_receiver`, `status`, `created_at`, `total_price`) VALUES
+(1, 1, 'Tài', 'hcm', 123, 1, '2022-01-03 15:06:00', 12345);
 
 -- --------------------------------------------------------
 
@@ -224,7 +231,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
