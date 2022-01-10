@@ -21,10 +21,6 @@ $name = $each['name'];
 $sql = "delete from products where id = '$id'";
 mysqli_query($connect, $sql);
 $error = mysqli_error($connect);
-// if(!empty($error)) {
-// 	$_SESSION['error'] = "Không thể xóa nhà sản xuất ".$name." vì đang chứa sản phẩm !";
-// 	header('location:index.php');
-// 	exit();
-// }
+
 $_SESSION['success'] = "Đã xóa thành công nhà sản xuất: ".$name." !";
 header('location:index.php');

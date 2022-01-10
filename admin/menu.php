@@ -1,9 +1,9 @@
 <ul class="container-links">
     <li class="link-item">
-    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/") {?>
-            <a style="color: blue;" href="./index.html" class="link">Dashboard</a>
+    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/root") {?>
+            <a style="color: blue;" href="root" class="link">Dashboard</a>
         <?php } else {?>
-            <a href="../index.php" class="link">Dashboard</a>
+            <a href="../root" class="link">Dashboard</a>
         <?php } ?>
     </li>
     <li class="link-item">
@@ -35,6 +35,6 @@
         <?php } ?>
     </li>
     <li class="link-item">
-        <a href="" class="link">Đăng xuất</a>
+        <a href="../logout_admin.php" class="link">Đăng xuất</a>
     </li>
 </ul>
