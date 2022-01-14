@@ -42,6 +42,8 @@ body {
     align-items: center;
     height: 120px;
     padding: 0 40px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 .logo-link {
     font-size: 3rem;

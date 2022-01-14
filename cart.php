@@ -27,14 +27,14 @@ require 'help.php';
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
         <title>Chi tiết sản phẩm</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/detail.css" />
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="./css/base.css" />
     </head>
     <body>
+       <?php include 'header.php' ?>
         <div class="wrapper">
-           <?php include 'header.php' ?>
            <?php if(!empty($_SESSION['cart'])) { ?>
            <div class="container" style="padding: 0 5% 3%">
               <h1 style="text-align: left; font-weight: bold">Thông tin giỏ hàng</h1>
@@ -80,20 +80,14 @@ require 'help.php';
                       <?php $total_money += $each['price'] * $each['quantity']?>
                   <?php endforeach ?>               
               </table>
-              
-              <h1 style="text-align: left; font-weight: bold">Thông tin thanh toán</h1>
-              <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
-              <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
-              <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
-              <h2>Tổng tiền: <?php echo format_number_to_currency($total_money)?> vnd </h2>
-              <a class="btn btn-primary" href="checkout.php">Đặt hàng</a>
+              <a style="margin-top: 100px" class="btn btn-primary" href="checkout.php">Tiến hàng đặt hàng</a>
+              <?php $_SESSION['total_moeny'] = $total_money ?>
            </div>
            <?php }else { ?> 
            <div class="container" style="padding: 0 5% 3%">
              <h3>Giỏ hàng trống. Hãy quay lại thêm sản phẩm vào <a class="text-underline" href="index.php">tại đây !</a></h3>
            </div>
            <?php } ?>
-
         </div>
        <?php include 'footer.php' ?>
     </body>

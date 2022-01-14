@@ -4,10 +4,16 @@ if(empty($_SESSION['id'])) {
   header('location:index.php');
   exit();
 }
+$id = $_SESSION['id'];
 if(!empty($_SESSION['cart'])) {
   $cart = $_SESSION['cart'];  
 }
 require 'help.php';
+require 'admin/connect.php';
+$sql = "select * from customers where id = '$id'";
+$result = mysqli_query($connect, $sql);
+$customer = mysqli_fetch_array($result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +27,9 @@ require 'help.php';
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
         <title>Chi tiết sản phẩm</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/detail.css" />
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="./css/base.css" />
     </head>
     <body>
@@ -31,8 +37,11 @@ require 'help.php';
            <?php include 'header.php' ?>
            <?php if(!empty($_SESSION['cart'])) { ?>
             <div class="container" style="padding: 0 5% 3%">
-              <h1 style="text-align: left; font-weight: bold">Thông tin thanh toán</h1>
-              
+              <h1 style="text-align: left; font-weight: bold;">Thông tin thanh toán</h1>
+              <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
+              <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
+              <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
+              <h2>Tổng tiền: <?php echo format_number_to_currency($_SESSION['total_moeny'])?> vnd </h2>
            </div>
            <?php }else { ?> 
            <div class="container" style="padding: 0 5% 3%">

@@ -48,7 +48,7 @@ $each = mysqli_fetch_array($result);
                            <li>Màu: Đen</li>
                        </ul>
                       <?php if(!empty($_SESSION['id'])) { ?>
-                         <a class="btn btn-primary mt-5" href="cart.php">Thêm vào giỏ hàng</a>
+                         <a class="btn btn-primary mt-5" href="add_to_cart.php?id=<?php echo $id ?>">Thêm vào giỏ hàng</a>
                       <?php } else { ?>
                         <a class="btn btn-primary mt-5" href="index.php">Đăng nhập để mua hàng</a>
                       <?php } ?>

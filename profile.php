@@ -44,7 +44,7 @@ $each = mysqli_fetch_array($result);
 					</textarea><br>
 				<h3 class="mt-10">
 					Số điện thoại:
-					<input type="text" name="phone" value="<?php echo $each['phone'] ?>">
+					<input  class="phone" type="text" name="phone" value="<?php echo $each['phone'] ?>">
 				</h3>
 				<button class="mt-10 btn btn-primary">Thay đổi</button>
 			</div>
