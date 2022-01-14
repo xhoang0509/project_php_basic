@@ -80,9 +80,23 @@ require 'help.php';
                       <?php $total_money += $each['price'] * $each['quantity']?>
                   <?php endforeach ?>               
               </table>
-              <a style="margin-top: 100px" class="btn btn-primary" href="checkout.php">Tiến hàng đặt hàng</a>
               <?php $_SESSION['total_moeny'] = $total_money ?>
-           </div>
+              <form action="process_checkout.php" method="POST">
+                <h1 style="text-align: left; font-weight: bold; margin-top: 50px">Thông tin thanh toán</h1>
+                <a style="color: blue; text-decoration: underline;" href="profile.php">Chỉnh sửa thông tin thanh toán</a>
+                <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
+                <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
+                <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
+                <h2>Tổng tiền: <?php echo format_number_to_currency($_SESSION['total_moeny'])?> vnd </h2>
+                <h2>Ghi chú: </h2>
+                <textarea style="width: 564px;height: 91px;" name="notes" id="" cols="30" rows="10"></textarea><br><br>
+                <button class="btn btn-primary">Tiến hàng đặt hàng</button>
+                <input type="hidden" name="name" value="<?php echo $customer['name'] ?>">
+                <input type="hidden" name="address_receiver" value="<?php echo $customer['address'] ?>">
+                <input type="hidden" name="phone" value="<?php echo $customer['phone'] ?>">
+                <input type="hidden" name="total_price" value="<?php echo $_SESSION['total_moeny'] ?>">
+              </form>
+            </div>
            <?php }else { ?> 
            <div class="container" style="padding: 0 5% 3%">
              <h3>Giỏ hàng trống. Hãy quay lại thêm sản phẩm vào <a class="text-underline" href="index.php">tại đây !</a></h3>

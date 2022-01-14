@@ -28,12 +28,14 @@ if(isset($_SESSION['id'])) {
                     ?>
                 </h3>
                 <form class="form" action="process_register.php" method="POST">
-                    <label class="d-block mt-5" for="">Tên</label>
-                    <input class="d-block mt-5" type="text" name="name" />
-                    <label class="d-block mt-5" for="">Email</label>
-                    <input class="d-block mt-5" type="text" name="email" />
-                    <label class="d-block mt-5" for="">Mật khẩu</label>
-                    <input class="d-block mt-5" type="text" name="password" />
+                    <label class="d-block mt-5" for="name">Tên</label>
+                    <input class="d-block mt-5" type="text" name="name" id="name" />
+                    <label class="d-block mt-5" for="phone">Số điện thoại</label>
+                    <input class="d-block mt-5" type="text" name="phone" id="phone" />
+                    <label class="d-block mt-5" for="email">Email</label>
+                    <input class="d-block mt-5" type="text" name="email" id="email" />
+                    <label class="d-block mt-5" for="password">Mật khẩu</label>
+                    <input class="d-block mt-5" type="text" name="password" id="password" />
                     <button class="btn btn-primary mt-10">Đăng kí</button>
                 </form>
                 <p class="mt-5">

@@ -38,6 +38,7 @@ $customer = mysqli_fetch_array($result);
            <?php if(!empty($_SESSION['cart'])) { ?>
             <div class="container" style="padding: 0 5% 3%">
               <h1 style="text-align: left; font-weight: bold;">Thông tin thanh toán</h1>
+              <a style="color: blue; text-decoration: underline;" href="profile.php">Chỉnh sửa thông tin thanh toán</a>
               <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
               <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
               <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>

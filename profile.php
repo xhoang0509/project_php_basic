@@ -26,10 +26,11 @@ $each = mysqli_fetch_array($result);
 	<div class="container">
 		<form class="profile" action="process_profile.php" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="<?php echo $id ?>">
+			<input type="hidden" name="photo" value="<?php echo $each['photo'] ?>">			
 			<div class="avatar">
 				<img class="default-image-user" src="./image/<?php echo $each['photo'] ?>" alt="">
 				<label for="photo" class="btn btn-secondary mt-10">Thay đổi ảnh</label>
-				<input type="file" name="photo" style="visibility:hidden;" id="photo">
+				<input type="file" name="photo_new" style="visibility:hidden;" id="photo">
 			</div>
 			<div class="info">
 				<h3 class="mt-10">Tên: <?php echo $each['name'] ?></h3>
@@ -47,6 +48,9 @@ $each = mysqli_fetch_array($result);
 					<input  class="phone" type="text" name="phone" value="<?php echo $each['phone'] ?>">
 				</h3>
 				<button class="mt-10 btn btn-primary">Thay đổi</button>
+				<br>
+				<br>
+				<a style="color: blue; text-decoration: underline;" href="cart.php">Đi đến thanh toán</a>
 			</div>
 		</form>
 	</div>

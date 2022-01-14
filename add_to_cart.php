@@ -2,9 +2,10 @@
 session_start();
 
 $id = $_GET['id'];
+$customer_id = $_SESSION['id'];
+require 'admin/connect.php';
 
 if(empty($_SESSION['cart'][$id])) {
-    require 'admin/connect.php';
     $sql = "select * from products where id = '$id'";
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);
