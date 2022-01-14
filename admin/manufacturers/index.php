@@ -7,9 +7,7 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-require '../header_admin.php';
-?>   
+<?php require '../header_admin.php';?>   
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show">
@@ -38,36 +36,31 @@ require '../header_admin.php';
                 <a class="add-manufacturer" href="add_manufacturer.php"
                     >Thêm nhà sản xuất mới</a
                 >
-                <div class="row">
-                    <div class="show-item">
-                            <h3>STT</h3>
-                            <h3>Ảnh</h3>
-                            <h3 class="show-heading">Tên</h3>
-                            <p class="address">Địa chỉ</p>
-                            <p class="phone">
-                                Số điện thoại:
-                            </p>
-                            <p>Hành động</p>
-                        </div>
-                    <?php foreach ($result as $index => $each): ?>
-                        <div class="show-item">
-                            <h3><?php echo $index + 1 ?></h3>
-                            <img
-                                class="show-image"
-                                src="../../image/<?php echo $each['photo'] ?>"
-                                alt=""
-                            />
-                            <h3 class="show-heading"><?php echo $each['name'] ?></h3>
-                            <p class="address"><?php echo $each['address'] ?></p>
-                            <p class="phone">
-                                <a href="tel:++86xxxx"><?php echo $each['phone'] ?></a>
-                            </p>
-                            <a class="text-warning" href="update_manufacturer.php?id=<?php echo $each['id'] ?>">Sửa</a>
-                            <a class="text-danger" href="delete_manufacturer.php?id=<?php echo $each['id'] ?>">Xóa</a>
-                        </div>
-                    <?php endforeach ?>
-                    
-                   
+                <div class="row">                    
+                    <table class="w3-table-all">
+                        <thead>
+                          <tr class="w3-light-grey">
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Ảnh</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                          </tr>
+                        </thead>
+                        <?php foreach ($result as $index => $each): ?>
+                            <tr>
+                              <td><?php echo $index + 1 ?></td>
+                              <td><?php echo $each['name'] ?></td>
+                              <td><img class="show-image" src="../../image/<?php echo $each['photo'] ?>" alt=""/></td>
+                              <td><?php echo $each['name'] ?></td>
+                              <td><?php echo $each['address'] ?></td>
+                              <td><a class="btn btn-warning" href="update_manufacturer.php?id=<?php echo $each['id'] ?>">Sửa</a></td>
+                              <td> <a class="btn btn-danger" href="delete_manufacturer.php?id=<?php echo $each['id'] ?>">Xóa</a></td>
+                          </tr>
+                        <?php endforeach ?>
+                    </table>                    
                 </div>
             </div>
         </div>

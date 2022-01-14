@@ -40,15 +40,17 @@ require '../header_admin.php';
                     >Thêm nhà sản phẩm mới</a
                 >
                 <div class="products">
-                    <table class="w3-table w3-striped">                     
-                        <tr>
-                          <th>Tên sản phẩm</th>
-                          <th>Ảnh</th>
-                          <th>Giá</th>
-                          <th>Số lượng</th>
-                          <th>Sửa</th>
-                          <th>Xóa</th>
-                        </tr>
+                    <table class="w3-table-all">                     
+                        <thead>
+                            <tr class="w3-light-grey">
+                            <th>Tên sản phẩm</th>
+                            <th>Ảnh</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                          </tr>
+                        </thead>
                         <?php foreach ($result as $each): ?>
                             <tr>
                               <td><?php echo $each['name'] ?></td>

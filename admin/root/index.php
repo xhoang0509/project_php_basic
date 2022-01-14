@@ -9,6 +9,14 @@ $sql = "select * from manufacturers";
 $result = mysqli_query($connect,$sql);
 $total_manufacturers = mysqli_num_rows($result);
 
+$sql = "select * from admin where level = 0";
+$result = mysqli_query($connect,$sql);
+$total_staffs = mysqli_num_rows($result);
+
+$sql = "select * from orders";
+$result = mysqli_query($connect,$sql);
+$total_orders = mysqli_num_rows($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +36,10 @@ require '../header_admin.php';
                         <a href="../products/">Tổng nhà sản phẩm: <?php echo $total_products ?></a>
                     </h3>
                     <h3 class="dashboard-item">
-                        <a href="../staffs/">Tổng nhân viên: 10</a>
+                        <a href="../staffs/">Tổng nhân viên: <?php echo $total_staffs ?></a>
                     </h3>
                     <h3 class="dashboard-item">
-                        <a href="../others/">Tổng đơn hàng: 10</a>
+                        <a href="../others/">Tổng đơn hàng: <?php echo $total_orders ?></a>
                     </h3>
                 </div>
                 <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>
@@ -41,7 +49,7 @@ require '../header_admin.php';
                         <h3>Iphone 13 promax</h3>
                         <img
                             class="best-seller-img"
-                            src="../image/iphone-13-promax.png"
+                            src="../../image/iphone-13-promax.png"
                             alt=""
                         />
                     </a>
@@ -55,7 +63,7 @@ require '../header_admin.php';
                         <h3>Nguyễn Văn A</h3>
                         <img
                             class="best-seller-img"
-                            src="../image/profile-1.jpg"
+                            src="../../image/profile-1.jpg"
                             alt=""
                         />
                     </a>

@@ -35,14 +35,10 @@ $each = mysqli_fetch_array($result);
 			<div class="info">
 				<h3 class="mt-10">Tên: <?php echo $each['name'] ?></h3>
 				<h3 class="mt-10">Email: <?php  echo $each['email']?></h3>
-				<h3 class="mt-10">
-					Địa chỉ:
-				</h3>
+				<h3 class="mt-10">Địa chỉ:</h3>
 					<textarea 
 						name="address" 
-						class="address mt-5" ="" cols="30" rows="10">
-						<?php echo $each['address'] ?>						
-					</textarea><br>
+						class="address mt-5" ="" cols="30" rows="10"><?php echo $each['address'] ?></textarea><br>
 				<h3 class="mt-10">
 					Số điện thoại:
 					<input  class="phone" type="text" name="phone" value="<?php echo $each['phone'] ?>">

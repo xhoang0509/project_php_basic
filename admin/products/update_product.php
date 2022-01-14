@@ -2,7 +2,7 @@
 require '../check_admin_login.php';
 
 if(empty($_GET['id'])) {
-    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa NHA !";
+    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa!";
     header('location:index.php');
     exit();
 }
@@ -40,44 +40,48 @@ require '../header_admin.php';
             <?php 
             
                 $sql="select * from manufacturers";
-                $manufacturer = mysqli_query($connect,$sql);
+                $manufacturers = mysqli_query($connect,$sql);
             ?>    
 
                 <form 
                     action="process_update_product.php?id=<?php echo $id ?>" 
                     method="POST" enctype="multipart/form-data" class="form-input" >
                     <input type="hidden" name="id" value="<?php echo $id ?>">
-                    <label for="name">Tên sản phẩm</label>
-                    <br />
+                    <label for="name">Tên sản phẩm</label><br>
                     <input class="input" type="text" id="name" name="name" value="<?php echo $each['name'] ?>" />
-                    <br />
-                    <label for="quantity">số lượng</label>
-                    <br />
-                    <input class="input" type="text" id="quantity" name="quantity" value="<?php echo $each['quantity'] ?>" />
-                    <br />
-                    <label for="description">Mô tả sản phẩm</label>
-                    <br />
-                    <input class="input" type="text" id="description" name="description" value="<?php echo $each['description'] ?>" />
-                    <br />
-                    <label for="type">Loại sản phẩn</label>
-                    <br />
-                    <input class="input" type="text" id="type" name="type" value="<?php echo $each['type'] ?>" />
                     <br />
                     <label for="photo">Giữ nguyên ảnh</label>
                     <br />
                     <img width="200px" src="../../image/<?php echo $each['photo'] ?>" alt=""> 
+                    <input type="hidden" name="photo" value="<?php echo $each['photo'] ?>">
                     <br>hoặc đổi tại đây
-                    <input class="input" type="file" id="photo" name="photo"/>
+                    <input class="input" type="file" id="photo" name="photo_new"/><br />
+                    <label for="price">Giá</label><br />
+                    <input class="input" type="text" id="quantity" name="price" value="<?php echo $each['price'] ?>" /><br>
+                    <label for="description">Mô tả sản phẩm</label>
                     <br />
+                    <textarea 
+                        style="width: 396px;height: 168px;" 
+                        name="description" 
+                        id="description" cols="30" rows="10">
+                        <?php echo $each['description'] ?>                        
+                    </textarea>
+                    <br />
+                    <label for="quantity">Số lượng</label>
+                    <br />
+                    <input class="input" type="text" id="quantity" name="quantity" value="<?php echo $each['quantity'] ?>" /><br />
+                    
                     <label for="product_id">Chọn nhà sản xuất</label>
                     <br />
-                    <select class="input" id="product_id" name ="product_id" >
-                    <?php foreach ($manufacturer as $each): ?>
-                        <option value="<?php echo $each['id']?>">
-                            <?php echo $each ['name'] ?>
+                    <select class="input" id="manufacturer_id" name ="manufacturer_id" >
+                    <?php foreach ($manufacturers as $manufacturer): ?>
+                        <option value="<?php echo $manufacturer['id']?>">
+                            <?php echo $manufacturer ['name'] ?>
                         </option>
                     <?php endforeach ?>
-                    </select> 
+                    </select> <br>
+                    <label for="type">Loại sản phẩn</label><br />
+                    <input class="input" type="text" id="type" name="type" value="<?php echo $each['type'] ?>" /><br/>
                     <br />
                     <button class="btn">Sửa</button>
                 </form>
