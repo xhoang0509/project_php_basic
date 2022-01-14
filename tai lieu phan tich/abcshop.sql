@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 04:22 PM
+-- Generation Time: Jan 14, 2022 at 11:26 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -43,11 +43,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `photo`, `address`, `gender`, `email`, `password`, `level`) VALUES
-(4, 'tai dep giai', '1640575569.jpg', 'sdad', 1, 'jyfyj', '3131', 0),
-(7, 'Vùng Vĩnh Lon', '1640575629.jpg', 'sdad', 1, 'vip@gmail.com', '11234', 0),
-(14, 'iphone 15 pro max', '1640593311.jpg', 'Trung Quốc', 2, 'abs@gmail.com', '123', 0),
-(15, 'văn a', '1640593434.jpg', 'xxxx', 3, 'absd@gmail.com', '123', 1),
-(24, 'boss', '1641265009.jpeg', 'hcm', 1, 'admin@gmail.com', '123', 1);
+(2, 'super admin', '', '', 0, 'superadmin@gmail.com', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -71,10 +67,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `photo`, `address`, `phone`, `token`) VALUES
-(1, 'Nguyễn Xuân Hoàng', 'xhoang0509@gmail.com', '1', '1640420489.png', '																		tam tiến - yên thế - bắc giang						\r\n											\r\n											\r\n					', '0857812113', 'user_61c81ed1cfc468.136219201640505041'),
+(1, 'Nguyễn Xuân Hoàng', 'xhoang0509@gmail.com', '1', '1642084851.png', '																																																						tam ***- yên ***- bắc ***\r\n											\r\n											\r\n											\r\n											\r\n											\r\n											\r\n											\r\n											\r\n					', '0857812113', 'user_61e038be47eca2.633353801642084542'),
 (11, 'Nguyễn Xuân Hoàng', 'xhoang05091@gmail.com', '1', '1640404667.png', '', '', ''),
 (14, '', '', '', '', '', '', ''),
-(15, 'Hoang Nguyen Xuan', 'xhoang05092@gmail.com', '1', '', '', '', '');
+(15, 'Hoang Nguyen Xuan', 'xhoang05092@gmail.com', '1', '', '', '', ''),
+(17, 'Tran Huy Tien', 'tien@gmail.com', '1', '1642127195.jpg', 'bac giang								\r\n											\r\n											\r\n						\r\n					', '0123 456 789', 'user_61e0d37d7ccc73.524096891642124157');
 
 -- --------------------------------------------------------
 
@@ -95,9 +92,8 @@ CREATE TABLE `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`id`, `name`, `photo`, `address`, `phone`) VALUES
-(5, 'Apple moi moi', '1640611976.', 'USA', '0857812113'),
-(10, 'Sam Sung', '1640514208.png', 'Hàn quốc', '0857812113'),
-(18, 'oppo', '1640572444.jpg', 'Trung Quốc', '12345');
+(5, 'Apple', '1640517537.png', 'USA new', '0857812113'),
+(10, 'Sam Sung', '1640514208.png', 'Hàn quốc', '0857812113');
 
 -- --------------------------------------------------------
 
@@ -108,20 +104,26 @@ INSERT INTO `manufacturers` (`id`, `name`, `photo`, `address`, `phone`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `name_receiver` varchar(50) NOT NULL,
-  `address_receiver` varchar(255) NOT NULL,
-  `phone_receiver` int(11) NOT NULL,
-  `status` int(1) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `total_price` int(20) NOT NULL
+  `name_receiver` text NOT NULL,
+  `phone_receiver` text NOT NULL,
+  `address_receiver` text NOT NULL,
+  `notes` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `total_price` float NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `address_receiver`, `phone_receiver`, `status`, `created_at`, `total_price`) VALUES
-(1, 1, 'Tài', 'hcm', 123, 1, '2022-01-03 15:06:00', 12345);
+INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `address_receiver`, `notes`, `status`, `total_price`, `created_at`) VALUES
+(3, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 0, 400000, '2022-01-14'),
+(4, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 0, 400000, '2022-01-14'),
+(5, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 0, 400000, '2022-01-14'),
+(6, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 0, 400000, '2022-01-14'),
+(7, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 0, 400000, '2022-01-14'),
+(8, 17, 'Tran Huy Tien', '0123 456 789', 'bac giang									\r\n											\r\n											\r\n											\r\n						\r\n					', '', 0, 5400000, '2022-01-14');
 
 -- --------------------------------------------------------
 
@@ -134,6 +136,18 @@ CREATE TABLE `order_product` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_product`
+--
+
+INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
+(5, 4, 1),
+(6, 4, 1),
+(7, 4, 1),
+(8, 3, 1),
+(8, 4, 1),
+(8, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +173,10 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `photo`, `price`, `description`, `quantity`, `manufacturer_id`, `type`) VALUES
 (3, 'iphone 13 pro max', '1640512498.png', 4000000, 'iphone pro max', 40, 5, 'điện thoại'),
 (4, 'sam sung s21 ultra new', '1640512731.jpg', 400000, 'dien thoai', 40, 10, 'dien thoai'),
-(6, 'tai', '1640574333.jpg', 1233, 'rrw', 401, 5, 'moi');
+(6, 'Xiao Mi mi11 5G', '1640830102.png', 1000000, 'Hang trung quoc', 40, 5, 'điện thoại'),
+(7, 'Táo thật', '1640830520.jpg', 1000000, '                            \r\n             hoa quả rất ngon       ', 10, 5, 'hoa quả'),
+(9, 'Tết 2022', '1642154609.jpg', 40, '                                                                                                                                                                            \r\n       tết sum vầy                                     \r\n                        ', 200, 5, 'Lễ hội'),
+(10, 'iphone sx max', '1642151972.jpg', 24.99, '                            \r\n        iphone my            ', 20, 5, 'điện thoại');
 
 --
 -- Indexes for dumped tables
@@ -213,31 +230,31 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -247,7 +264,6 @@ ALTER TABLE `products`
 -- Constraints for table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
