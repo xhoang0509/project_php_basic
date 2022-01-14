@@ -1,9 +1,16 @@
 <?php
 session_start();
+if(empty($_POST['email']) || empty($_POST['password'])) {
+	$_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
+	header('location:login.php');
+	exit();
+}
+
 if(isset($_SESSION['id'])) {
     header("location:index.php");
     exit();
 }
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 $remmember_login;
@@ -13,11 +20,7 @@ if($_POST['remmember_login']) {
 	$remmember_login = false;
 }
 
-if(empty($email) || empty($password)) {
-	$_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
-	header('location:login.php');
-	exit();
-}
+
 
 require("admin/connect.php");
 $sql = "select * from customers where email = '$email' and password = '$password'";

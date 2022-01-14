@@ -1,9 +1,9 @@
 <ul class="container-links">
     <li class="link-item">
-    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/root") {?>
-            <a style="color: blue;" href="root" class="link">Dashboard</a>
+    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/root/") {?>
+            <a style="color: blue;" href="root" class="link">Tổng quan</a>
         <?php } else {?>
-            <a href="../root" class="link">Dashboard</a>
+            <a href="../root" class="link">Tổng quan</a>
         <?php } ?>
     </li>
     <li class="link-item">

@@ -7,6 +7,7 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <?php 
 require '../header_admin.php';
 ?>   
@@ -39,20 +40,26 @@ require '../header_admin.php';
                     >Thêm nhà sản phẩm mới</a
                 >
                 <div class="products">
-                    <?php foreach ($result as $each): ?>
-                        <div class="product">
-                            <h3 class="product-title"><?php echo $each['name'] ?></h3>
-                            <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="product-image" />
-                            <p class="mt-5">Giá: <?php echo $each['price'] ?> vnd</p>
-                            <p class="mt-5">Số lượng: <?php echo $each['quantity'] ?></p>
-                            </br>
-                            <p>
-                                <a class="btn btn-warning" href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a>
-                                <a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
-                            </p>
-                        </div>
-                    <?php endforeach ?>
-                    
+                    <table class="w3-table w3-striped">                     
+                        <tr>
+                          <th>Tên sản phẩm</th>
+                          <th>Ảnh</th>
+                          <th>Giá</th>
+                          <th>Số lượng</th>
+                          <th>Sửa</th>
+                          <th>Xóa</th>
+                        </tr>
+                        <?php foreach ($result as $each): ?>
+                            <tr>
+                              <td><?php echo $each['name'] ?></td>
+                              <td><img height="100px" src="../../image/<?php echo $each['photo'] ?>" alt=""></td>
+                              <td><?php echo $each['price'] ?></td>
+                              <th><?php echo $each['quantity'] ?></th>
+                              <th><a class="btn btn-warning" href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a></th>
+                              <th><a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a></th>
+                            </tr>
+                        <?php endforeach ?>
+                    </table>
                 </div>
             </div>
         </div>

@@ -1,5 +1,14 @@
 <?php
 require '../check_admin_login.php';
+require '../connect.php';
+$sql = "select * from products";
+$result = mysqli_query($connect,$sql);
+$total_products = mysqli_num_rows($result);
+
+$sql = "select * from manufacturers";
+$result = mysqli_query($connect,$sql);
+$total_manufacturers = mysqli_num_rows($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -13,10 +22,10 @@ require '../header_admin.php';
                 <h1>Tổng quan</h1>
                 <div class="dashboard-list">
                     <h3 class="dashboard-item">
-                        <a href="../manufacturers/">Tổng nhà sản xuất: 10</a>
+                        <a href="../manufacturers/">Tổng nhà sản xuất: <?php echo $total_manufacturers ?></a>
                     </h3>
                     <h3 class="dashboard-item">
-                        <a href="../products/">Tổng nhà sản phẩm: 10</a>
+                        <a href="../products/">Tổng nhà sản phẩm: <?php echo $total_products ?></a>
                     </h3>
                     <h3 class="dashboard-item">
                         <a href="../staffs/">Tổng nhân viên: 10</a>

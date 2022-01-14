@@ -1,19 +1,20 @@
 <?php
 session_start();
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-$remmember_login;
-if($_POST['remmember_login']) {
-	$remmember_login = true;
-} else {
-	$remmember_login = false;
-}
 
-if(empty($email) || empty($password)) {
+if(empty($_POST['email']) || empty($_POST['password'])) {
 	$_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
 	header('location:index.php');
 	exit();
+}
+
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+if(isset($_POST['remmember_login'])) {
+	$remmember_login = true;
+} else {
+	$remmember_login = false;
 }
 
 require 'connect.php';
@@ -21,7 +22,7 @@ $sql = "select * from admin where email = '$email' and password = '$password'";
 $result = mysqli_query($connect, $sql);
 $number_rows = mysqli_num_rows($result);
 if($number_rows == 0) {
-	$_SESSION['error'] = 'Mật khẩu không chính xác';
+	$_SESSION['error'] = 'Mật khẩu hoặc tài khoản không chính xác';
 	header('location:index.php');
 	exit();
 }
