@@ -19,7 +19,7 @@ on customers.id = orders.customer_id";
 $result = mysqli_query($connect,$sql);
 
 ?>           
-            <div class="show">
+            <div class="show-admin">
                 <h1>Tất cả đơn hàng</h1>
                 <a class="add-manufacturer" href="./add_order.php"
                     >Thêm nhà đơn hàng mới</a

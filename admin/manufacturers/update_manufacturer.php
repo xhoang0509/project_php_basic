@@ -26,7 +26,7 @@ require '../header_admin.php';
 ?>   
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
-            <div class="show">
+            <div class="show-admin">
                 <h1>Sửa nhà sản xuất: </h1>
                 <h3 style="color: red;">
                     <?php 

@@ -10,7 +10,7 @@ $result = mysqli_query($connect, $sql);
 <?php require '../header_admin.php';?>   
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
-            <div class="show">
+            <div class="show-admin">
                 <h1>Tất cả nhà sản xuất</h1>
                 <h2 class="text-success">
                     <?php if(!empty($_SESSION['success'])) {

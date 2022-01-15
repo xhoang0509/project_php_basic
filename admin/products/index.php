@@ -8,12 +8,17 @@ $result = mysqli_query($connect, $sql);
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  .modal-open {
+     padding-right: 0 !important;
+  }
+</style>
 <?php 
 require '../header_admin.php';
 ?>   
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
-            <div class="show">
+            <div class="show-admin">
                 <h1>Tất cả sản phẩm</h1>
                 <h2 class="text-success">
                     <?php if(!empty($_SESSION['success'])) {
@@ -56,9 +61,37 @@ require '../header_admin.php';
                               <td><?php echo $each['name'] ?></td>
                               <td><img height="100px" src="../../image/<?php echo $each['photo'] ?>" alt=""></td>
                               <td><?php echo $each['price'] ?></td>
-                              <th><?php echo $each['quantity'] ?></th>
-                              <th><a class="btn btn-warning" href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a></th>
-                              <th><a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a></th>
+                              <td><?php echo $each['quantity'] ?></td>
+                              <td>
+                                <a class="btn btn-warning"  href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a>
+                            </td>
+                              <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-<?php echo $each['id'] ?>">
+                                  Xóa
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal-<?php echo $each['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        Hành động này không thể không phục, bạn có chắc chắn xóa ?
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                        <a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </td>
                             </tr>
                         <?php endforeach ?>
                     </table>
@@ -66,5 +99,6 @@ require '../header_admin.php';
             </div>
         </div>
         <?php require'../footer.php'?>
+
     </body>
 </html>

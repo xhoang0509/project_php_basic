@@ -1,6 +1,7 @@
 <?php
 require '../check_admin_login.php';
 require '../connect.php';
+
 $sql = "select * from products";
 $result = mysqli_query($connect,$sql);
 $total_products = mysqli_num_rows($result);
@@ -26,7 +27,7 @@ require '../header_admin.php';
 ?>   
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
-            <div class="show">
+            <div class="show-admin">
                 <h1>Tổng quan</h1>
                 <div class="dashboard-list">
                     <h3 class="dashboard-item">
