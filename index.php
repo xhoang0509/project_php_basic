@@ -30,7 +30,7 @@ $result = mysqli_query($connect, $sql);
             <div class="banner">
                 <a href=""><img src="./image/banner.png" alt="" /></a>
             </div>
-            <h1>Tất cả sản phẩm</h1>
+            <h1 class="mt-10">Tất cả sản phẩm</h1>
             <section>
                 <div class="list">
                     <?php foreach ($result as $each): ?>

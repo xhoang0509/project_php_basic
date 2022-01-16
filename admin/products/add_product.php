@@ -42,7 +42,7 @@ require '../header_admin.php';
                     <br />
                     <label for="quantity">Số lượng</label>
                     <br>
-                    <input class="input" type="text" id="quantity" name="quantity" />
+                    <input class="input" type="number" id="quantity" name="quantity" />
                     <br />
                     <label for="description">Mô tả sản phẩm</label>
                     <br>
@@ -69,6 +69,7 @@ require '../header_admin.php';
                 </form>
             </div>
         </div>
-        <?php require'../footer.php'?>
+        <?php require'../footer.php'?>        
+        </script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <ul class="container-links">
     <li class="link-item">
-    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/root/") {?>
+    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/root/" || $_SERVER['REQUEST_URI'] === "/abcshop/admin/root/index.php") {?>
             <a style="color: blue;" href="root" class="link">Tổng quan</a>
         <?php } else {?>
             <a href="../root" class="link">Tổng quan</a>

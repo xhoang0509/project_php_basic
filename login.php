@@ -57,8 +57,8 @@ if(isset($_SESSION['id'])) {
                         value="<?php if(isset($_SESSION['password'])) {$_SESSION['password'];} ?>"
                         />
                     <div class="d-flex align-content-center mt-5">
-                        <input style="text-align: left; width: 20px" type="checkbox" name="remmember_login" id="remmember_login">
-                        <label for="remmember_login">Ghi nhớ đăng nhập</label>
+                        <input style="text-align: left; width: 20px" type="checkbox" name="remember_login" id="remember_login">
+                        <label for="remember_login">Ghi nhớ đăng nhập</label>
                         <br>                  
                     </div>
                     <button class="btn btn-primary mt-10">Đăng nhập</button>
