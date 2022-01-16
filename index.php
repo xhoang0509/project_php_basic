@@ -23,10 +23,6 @@ $result = mysqli_query($connect, $sql);
     <body>
         <?php include 'header.php' ?>            
         <div class="wrapper">
-            <?php if(!empty($_SESSION['success'])) {?>
-                <script>alert("<?php echo  $_SESSION['success']; unset($_SESSION['success'])?>");</script>
-            <?php } ?>
-            
             <div class="banner">
                 <a href=""><img src="./image/banner.png" alt="" /></a>
             </div>
@@ -51,10 +47,12 @@ $result = mysqli_query($connect, $sql);
                                 ?>                                
                             </span>
                             <?php if(!empty($_SESSION['id'])) {?>
-                            <a class="btn-add-to-cart btn btn-primary" 
-                                href="add_to_cart.php?id=<?php echo $each['id'] ?>">
+                            <button 
+                                class="btn-add-to-cart btn btn-primary" 
+                                data-id="<?php echo $each['id'] ?>"
+                            >
                                 Thêm vào giỏ hàng
-                            </a>
+                            </button>
                             <?php } else { ?>
                                 <a class="btn-add-to-cart btn btn-primary" 
                                 href="login.php">
@@ -67,6 +65,27 @@ $result = mysqli_query($connect, $sql);
             </section>           
         </div>
         <?php include 'footer.php' ?>
-    </body>
     <script src="js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".btn-add-to-cart").click(function() {
+                let id = $(this).data('id');
+                $.ajax({
+                    url: 'add_to_cart.php',
+                    type: 'GET',
+                    // dataType: '',
+                    data: {id},
+                })
+                .done(function(response) {
+                    if(response == 1) {
+                        alert(response);
+                    } else {
+                        alert(response);
+                    }
+                })                
+            });
+        });
+    </script>
+    </body>
 </html>
