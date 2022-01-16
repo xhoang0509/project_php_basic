@@ -12,4 +12,4 @@ if ($type === "incre") {
 		unset($_SESSION['cart'][$id]);
 	}
 }
-header('location:cart.php');
+// header('location:cart.php');
