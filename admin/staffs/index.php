@@ -36,7 +36,7 @@ require '../header_admin.php';
                         <div class="staff">
                             <h3 class="staff-title"><?php echo $each['name'] ?></h3>
                             <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="staff-image" />
-                            <p class="mt-5">Địa chỉ: <?php echo $each['address'] ?> vnd</p>
+                            <p class="mt-5">Địa chỉ: <?php echo $each['address'] ?></p>
                             <p class="mt-5">email: <?php echo $each['email'] ?></p>
                             <p>
                                 <a class="text-warning" href="delete_staff.php?id=<?php echo $each['id'] ?>">Xóa</a>
