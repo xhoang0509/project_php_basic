@@ -1,21 +1,19 @@
 <?php
-require 'admin/connect.php';
-require 'help.php';
-$total = 0;
 session_start();
-
 if(empty($_SESSION['id'])) {
   header('location:index.php');
   exit();
 }
 $id = $_SESSION['id'];
 
+require 'admin/connect.php';
 $sql = "select * from customers where id = '$id'";
 $result = mysqli_query($connect, $sql);
 $customer = mysqli_fetch_array($result);
 if(!empty($_SESSION['cart'])) {
   $cart = $_SESSION['cart'];  
 }
+require 'help.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,18 +50,15 @@ if(!empty($_SESSION['cart'])) {
                       unset($_SESSION['error_delete_cart']);
                   }
                   ?>    </h2>                
-              <table class="w3-table-all">
-                  <thead>
-                    <tr class="w3-light-grey">
-                      <th>STT</th>
-                      <th>Tên</th>
-                      <th>Ảnh</th>
-                      <th>Giá</th>
-                      <th>Số lượng</th>
-                      <th>Thành tiền</th>
-                      <th>Xóa</th>
-                    </tr>
-                  </thead>
+              <table class="w3-table w3-striped w3-bordered">
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Ảnh</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                  </tr>
                   <?php 
                     $index = 1;
                     $total_money = 0;
@@ -73,24 +68,16 @@ if(!empty($_SESSION['cart'])) {
                         <td><?php echo $index; $index++; ?></td>
                         <td><?php echo $each['name'] ?></td>
                         <td><img height="100" src="image/<?php echo $each['photo'] ?>" alt=""></td>
+                        <td><?php echo format_number_to_currency($each['price'])?> vnd</td>
                         <td>
-                          <div class="span-price"><?php echo format_number_to_currency($each['price'])?> vnd</div>
-                        </td>
-                        <td>                          
+                          <a class="btn btn-secondary" href="update_quantity.php?id=<?php echo $id ?>&type=incre">+</a>
+                          <?php echo $each['quantity']?>
                           <a class="btn btn-secondary" href="update_quantity.php?id=<?php echo $id ?>&type=decre">-</a>
-                          <span class="span-quantity"><?php echo $each['quantity']?></span>
-                          <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="incre">+</button>
                         </td>
-                        <td>
-                          <span class="span-sum">
-                            <?php 
-                              echo format_number_to_currency($each['price'] * $each['quantity']);
-                              $total += $each['price'] * $each['quantity'];
-                            ?> vnd
-                          </span>
-                        </td>
-                        <td><a class="color-red" href="delete_item_in_cart.php?id=<?php echo $id ?>">Xóa</a></td>
+                        <td><?php echo format_number_to_currency($each['price'] * $each['quantity'] ) ?> vnd</td>
+                        <th><a class="color-red" href="delete_item_in_cart.php?id=<?php echo $id ?>">Xóa</a></th>
                       </tr>
+                      <?php $total_money += $each['price'] * $each['quantity']?>
                   <?php endforeach ?>               
               </table>
               <?php $_SESSION['total_moeny'] = $total_money ?>
@@ -117,33 +104,5 @@ if(!empty($_SESSION['cart'])) {
            <?php } ?>
         </div>
        <?php include 'footer.php' ?>
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-       <script>
-         $(document).ready(function() {
-           $(".btn-update-quantity").click(function() {
-            const btn = $(this);
-             let id = $(this).data('id');
-             let type = $(this).data('type');
-             $.ajax({
-               url: 'update_quantity.php',
-               type: 'GET',
-               data: {id, type},
-             })
-             .done(async function() {
-               let parent_tr = btn.parents('tr');
-               let price = parent_tr.find(".span-price").text();
-               let quantity = parent_tr.find(".span-quantity").text();
-               quantity++;
-               await parent_tr.find(".span-quantity").text(quantity);
-               let sum = price * quantity;
-               parent_tr.find('.span-sum').text(sum);
-               let total = 0;
-               $(".span-sum").each(function(index, el) {
-                 total += $(this).text();                 
-               });
-             })
-           });
-         });
-       </script>
     </body>
 </html>
