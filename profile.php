@@ -36,20 +36,13 @@ $each = mysqli_fetch_array($result);
 			<div class="info">
 				<h3 class="mt-10">Tên: <?php echo $each['name'] ?></h3>
 				<h3 class="mt-10">Email: 
-					<?php  echo $each['email']?> <button>Thay đổi</button>
+					<?php echo $each['email'] ?>
 				</h3>
 				<h3 class="mt-10">
 					Địa chỉ: 
-					<?php 
-						if(empty($each['address'])) {
-							echo "trống";
-						} else {
-							echo $each['address'];
-						}
-					?> 
-					<button>Thay đổi</button>
+					<input id="address" type="text" value="<?php echo $each['address'] ?>">
 				</h3>
-				<h3 class="mt-10">Số điện thoại: <?php if(empty($each['phone'])) {echo "trống";} ?> <button>Thay đổi</button></h3>
+				<h3 class="mt-10">Số điện thoại: <input type="text" value="<?php echo $each['phone'] ?>"></h3>
 				<button class="mt-10 btn btn-primary">Thay đổi</button>
 				<br>
 				<br>
@@ -57,13 +50,6 @@ $each = mysqli_fetch_array($result);
 			</div>
 		</form>
 	</div>
-	<?php include './footer.php' ?>
-	<script>
-		$(document).ready(function(){
-			$(".profile").submit(function(event) {
-				event.preventDefault();
-			});
-		});
-	</script>
+	<?php include './footer.php' ?>		
 </body>
 </html>
