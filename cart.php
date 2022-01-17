@@ -74,7 +74,7 @@ if(!empty($_SESSION['cart'])) {
                         <td><?php echo $each['name'] ?></td>
                         <td><img height="100" src="image/<?php echo $each['photo'] ?>" alt=""></td>
                         <td>
-                          <div class="span-price"><?php echo format_number_to_currency($each['price'])?> vnd</div>
+                          <span class="span-price"><?php echo format_number_to_currency($each['price'])?> </span>vnd
                         </td>
                         <td>                          
                           <a class="btn btn-secondary" href="update_quantity.php?id=<?php echo $id ?>&type=decre">-</a>
@@ -86,8 +86,8 @@ if(!empty($_SESSION['cart'])) {
                             <?php 
                               echo format_number_to_currency($each['price'] * $each['quantity']);
                               $total += $each['price'] * $each['quantity'];
-                            ?> vnd
-                          </span>
+                            ?> 
+                          </span> vnd
                         </td>
                         <td><a class="color-red" href="delete_item_in_cart.php?id=<?php echo $id ?>">Xóa</a></td>
                       </tr>
@@ -124,7 +124,7 @@ if(!empty($_SESSION['cart'])) {
             const btn = $(this);
              let id = $(this).data('id');
              let type = $(this).data('type');
-             $.ajax({
+            async$.ajax({
                url: 'update_quantity.php',
                type: 'GET',
                data: {id, type},
