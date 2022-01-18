@@ -35,7 +35,7 @@ move_uploaded_file($photo["tmp_name"], $path_file);
 require '../connect.php';
 $sql = "INSERT INTO products(name,photo, price,description, quantity, manufacturer_id, type) 
 VALUES ('$name', '$file_name', '$price', '$description', '$quantity', '$manufacturer_id', '$type')";
-
+$sql = mysql_real_escape_string($name);
 mysqli_query($connect, $sql);
 $_SESSION['product_name'] = "Thêm thành công sản phẩm: ".$name;
 

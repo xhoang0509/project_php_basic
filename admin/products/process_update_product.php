@@ -1,6 +1,6 @@
 <?php
 require '../check_admin_login.php';
-
+require '../connect.php';
 if(empty($_GET['id'])) {
 
 }
@@ -13,13 +13,13 @@ if(empty($_POST['name']) || empty($_POST['price']) || empty($_POST['description'
 }
 
 $id = $_GET['id'];
-$name = $_POST['name'];
+$name = mysqli_real_escape_string($connect,$_POST['name']);
 $photo = $_FILES['photo_new'];
-$price = $_POST['price'];
-$description = $_POST['description'];
-$quantity = $_POST['quantity'];
-$manufacturer_id = $_POST['manufacturer_id'];
-$type = $_POST['type'];
+$price = mysqli_real_escape_string($connect,$_POST['price']);
+$description = mysqli_real_escape_string($connect,$_POST['description']);
+$quantity = mysqli_real_escape_string($connect,$_POST['quantity']);
+$manufacturer_id = mysqli_real_escape_string($connect,$_POST['manufacturer_id']);
+$type = mysqli_real_escape_string($connect,$_POST['type']);
 
 
 $folder = '../../image/';
@@ -28,7 +28,7 @@ $file_name = time() . '.' . $file_extension;
 $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
-require '../connect.php';
+
 
 if(isset($_POST['photo']) && $photo['size'] == 0) {
 	$sql = "update products
@@ -57,5 +57,5 @@ if(isset($_POST['photo']) && $photo['size'] == 0) {
 
 mysqli_query($connect, $sql);
 require '../close_connect.php';
-$_SESSION['product_name'] = "Sửa thành công sản phẩm: ".$name." !";
+$_SESSION['product_name'] = "Sửa thành công sản phẩm !!!";
 header('location:index.php');
