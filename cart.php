@@ -2,6 +2,7 @@
 require 'admin/connect.php';
 require 'help.php';
 $total = 0;
+$sum = 0;
 session_start();
 
 if(empty($_SESSION['id'])) {
@@ -77,22 +78,26 @@ if(!empty($_SESSION['cart'])) {
                           <span class="span-price"><?php echo format_number_to_currency($each['price'])?> </span>vnd
                         </td>
                         <td>                          
-                          <a class="btn btn-secondary" href="update_quantity.php?id=<?php echo $id ?>&type=decre">-</a>
+                          <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="0">-</button>                          
                           <span class="span-quantity"><?php echo $each['quantity']?></span>
-                          <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="incre">+</button>
+                          <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="1">+</button>
                         </td>
                         <td>
                           <span class="span-sum">
                             <?php 
-                              echo format_number_to_currency($each['price'] * $each['quantity']);
-                              $total += $each['price'] * $each['quantity'];
+                              $sum =  $each['price'] * $each['quantity'];
+                              echo format_number_to_currency($sum);
+                              $total += $sum;
                             ?> 
                           </span> vnd
                         </td>
-                        <td><a class="color-red" href="delete_item_in_cart.php?id=<?php echo $id ?>">Xóa</a></td>
+                        <td>
+                            <button class="btn btn-danger btn-delete" data-id="<?php echo $id ?>">Xóa</button>
+                        </td>
                       </tr>
-                  <?php endforeach ?>               
+                  <?php endforeach ?>                                 
               </table>
+              <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>
               <?php $_SESSION['total_moeny'] = $total_money ?>
               <form action="process_checkout.php" method="POST">
                 <h1 style="text-align: left; font-weight: bold; margin-top: 50px">Thông tin thanh toán</h1>
@@ -100,7 +105,6 @@ if(!empty($_SESSION['cart'])) {
                 <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
                 <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
                 <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
-                <h2>Tổng tiền: <?php echo format_number_to_currency($_SESSION['total_moeny'])?> vnd </h2>
                 <h2>Ghi chú: </h2>
                 <textarea style="width: 564px;height: 91px;" name="notes" id="" cols="30" rows="10"></textarea><br><br>
                 <button class="btn btn-primary">Tiến hàng đặt hàng</button>
@@ -118,32 +122,65 @@ if(!empty($_SESSION['cart'])) {
         </div>
        <?php include 'footer.php' ?>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-       <script>
-         $(document).ready(function() {
-           $(".btn-update-quantity").click(function() {
-            const btn = $(this);
-             let id = $(this).data('id');
-             let type = $(this).data('type');
-            async$.ajax({
-               url: 'update_quantity.php',
-               type: 'GET',
-               data: {id, type},
-             })
-             .done(async function() {
-               let parent_tr = btn.parents('tr');
-               let price = parent_tr.find(".span-price").text();
-               let quantity = parent_tr.find(".span-quantity").text();
-               quantity++;
-               await parent_tr.find(".span-quantity").text(quantity);
-               let sum = price * quantity;
-               parent_tr.find('.span-sum').text(sum);
-               let total = 0;
-               $(".span-sum").each(function(index, el) {
-                 total += $(this).text();                 
-               });
-             })
-           });
-         });
-       </script>
+        <script>
+        // Create our number formatter.
+        Number.prototype.format = function(n, x) {
+        var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+        return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+        };
+
+        $(document).ready(function() {
+            function getTotal() {
+                let total = 0;
+                $(".span-sum").each(function(index, el) {
+                    total += parseInt($(this).text().replace(/,/g, ''));                 
+                });
+                $(".span-total").text(total.format())
+            }
+            $(".btn-update-quantity").click(function() {
+                const btn = $(this);
+                let id = $(this).data('id');
+                let type = $(this).data('type');
+                $.ajax({
+                    url: 'update_quantity.php',
+                    type: 'GET',
+                    data: {id, type},
+                })
+                .done(async function() {
+                    let parent_tr = btn.parents('tr');
+                    let price = parseInt(parent_tr.find(".span-price").text().replace(/,/g, ''));
+                    let quantity = parent_tr.find(".span-quantity").text();
+
+                    if(type === 1) {
+                        quantity++;
+                    } else {
+                        quantity--;
+                    }
+                    if(quantity === 0) {
+                        parent_tr.remove()
+                    } else {
+                        parent_tr.find(".span-quantity").text(quantity);
+                        let sum = price * quantity;
+                        parent_tr.find('.span-sum').text(sum.format());
+                    }
+                    getTotal()
+                })
+            });
+            $(".btn-delete").click(function() {
+                const btn = $(this);
+                let id = $(this).data('id');
+                $.ajax({
+                    url: 'delete_item_in_cart.php',
+                    type: 'GET',
+                    data: {id},
+                })
+                .done(async function() {
+                    btn.parents("tr").remove();
+                    getTotal()
+                })
+            });
+        });
+
+        </script>
     </body>
 </html>
