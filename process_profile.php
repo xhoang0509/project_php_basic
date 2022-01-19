@@ -24,7 +24,6 @@ if(isset($_POST['photo']) && $photo['size'] == 0) {
 	where id = '$id'";
 }
 
-
 mysqli_query($connect, $sql);
 require 'admin/close_connect.php';
 header("location:profile.php");
