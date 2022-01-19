@@ -1,10 +1,11 @@
 <?php
 require '../check_super_admin_login.php';
+require '../connect.php';
 
 $id = $_POST['id'];
-$name = $_POST['name'];
-$address = $_POST['address'];
-$phone = $_POST['phone'];
+$name = mysqli_real_escape_string($connect,$_POST['name']);
+$address = mysqli_real_escape_string($connect,$_POST['address']);
+$phone = mysqli_real_escape_string($connect,$_POST['phone']);
 $photo = $_FILES['photo'];
 
 if(empty($name) || empty($address) || empty($phone) || empty($photo) ) {
@@ -19,7 +20,7 @@ $file_name = time() . '.' . $file_extension;
 $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
-require '../connect.php';
+
 $sql = "update manufacturers
 set
 name = '$name' ,

@@ -1,12 +1,13 @@
 <?php
 require '../check_admin_login.php';
+require '../connect.php';
 
-$name = $_POST['name'];
+$name = mysqli_real_escape_string($connect,$_POST['name']);
 $photo = $_FILES['photo'];
-$address = $_POST['address'];
+$address = mysqli_real_escape_string($connect,$_POST['address']);
 $gender = $_POST['gender'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = mysqli_real_escape_string($connect,$_POST['email']);
+$password = mysqli_real_escape_string($connect,$_POST['password']);
 
 if(empty($name) || empty($photo) || empty($address) || empty($gender) || empty($email) || empty($password)) {
     $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
@@ -20,7 +21,7 @@ $file_name = time() . '.' . $file_extension;
 $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
-require '../connect.php';
+
 $sql = "update staffs
 set
 name = '$name' ,
