@@ -1,11 +1,13 @@
 <?php 
 session_start();
+require './admin/connect.php';
+
 if(empty($_SESSION['id'])) {
   header('location:login.php');
   exit();
 }
+
 $id = $_SESSION['id'];
-require './admin/connect.php';
 $sql = "select * from customers where id = '$id'";
 $result = mysqli_query($connect, $sql);
 $each = mysqli_fetch_array($result);
@@ -40,10 +42,10 @@ $each = mysqli_fetch_array($result);
 				</h3>
 				<h3 class="mt-10">
 					Địa chỉ: 
-					<input id="address" type="text" value="<?php echo $each['address'] ?>">
+					<input name="address" type="text" value="<?php echo $each['address'] ?>">
 				</h3>
-				<h3 class="mt-10">Số điện thoại: <input type="text" value="<?php echo $each['phone'] ?>"></h3>
-				<button class="mt-10 btn btn-primary">Thay đổi</button>
+				<h3 class="mt-10">Số điện thoại: <input name="phone" type="text" value="<?php echo $each['phone'] ?>"></h3>
+				<button class="mt-10 btn btn-primary btn-submit">Thay đổi</button>
 				<br>
 				<br>
 				<a style="color: blue; text-decoration: underline;" href="cart.php">Đi đến thanh toán</a>

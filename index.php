@@ -1,6 +1,10 @@
 <?php 
+session_start();
+
 require 'help.php';
 require 'admin/connect.php';
+require 'check_admin_client.php';
+
 $sql = "select * from products";
 $result = mysqli_query($connect, $sql);
 
@@ -22,10 +26,10 @@ $result = mysqli_query($connect, $sql);
     </head>
     <body>
         <?php include 'header.php' ?>            
+        <div class="banner">
+            <a href=""><img src="./image/banner.png" alt="" /></a>
+        </div>
         <div class="wrapper">
-            <div class="banner">
-                <a href=""><img src="./image/banner.png" alt="" /></a>
-            </div>
             <h1 class="mt-10">Tất cả sản phẩm</h1>
             <section>
                 <div class="list">
