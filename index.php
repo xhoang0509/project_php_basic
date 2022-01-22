@@ -24,7 +24,7 @@ $result = mysqli_query($connect, $sql);
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/base.css" />
     </head>
-    <body>
+    <body>        
         <?php include 'header.php' ?>            
         <div class="banner">
             <a href=""><img src="./image/banner.png" alt="" /></a>
@@ -90,5 +90,6 @@ $result = mysqli_query($connect, $sql);
             });
         });
     </script>
+
     </body>
 </html>

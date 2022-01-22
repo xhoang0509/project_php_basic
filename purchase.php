@@ -29,6 +29,10 @@ $result = mysqli_query($connect, $sql);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+	<?php if(isset($_SESSION['checkouted'])) {?>
+            <script>alert("Đơn hàng đã được khởi tạo !")</script>
+            <?php unset($_SESSION['checkouted']) ?>
+        <?php } ?>
 	<?php include './header.php' ?>
 	<div class="container">
 		<h1 style="font-weight: bold">Đơn hàng đã đặt: </h1>
@@ -53,7 +57,7 @@ $result = mysqli_query($connect, $sql);
 					<td>
 						
 					</td>
-					<td>
+					<td class="status-<?php echo $each['id'] ?>">
 						<?php 
 							switch ($each['status']) {
 								case '-1':
@@ -62,7 +66,7 @@ $result = mysqli_query($connect, $sql);
 								case '0':
 									echo '<div class="td-status bg-warning text-white">Đợi duyệt</div>';
 									break;
-								case '-1':
+								case '1':
 									echo '<div class="td-status bg-success text-white">Đã duyệt</div>';
 									break;						
 							}
@@ -72,7 +76,7 @@ $result = mysqli_query($connect, $sql);
 					<td><?php echo format_number_to_currency($each['total_price'])." vnd" ?></td>
 					<td><?php echo $each['created_at'] ?></td>				
 					<td>
-						<?php if($each['status'] != -1) {?>
+						<?php if($each['status'] == 0) {?>
 							<button class="btn btn-danger btn-delete-order" data-id=<?php echo $each['id'] ?>>Hủy đơn</button>
 						<?php } ?>
 					</td>	
@@ -94,6 +98,10 @@ $result = mysqli_query($connect, $sql);
 				.done(function(data) {
 					if(data == 1) {
 						btn.remove()
+						let btnStatus = $(`.status-${id}`).children('div');
+						btnStatus.removeClass("bg-warning")
+						btnStatus.addClass('bg-danger')
+						btnStatus.text("Đã hủy")
 					}
 				})	
 			});

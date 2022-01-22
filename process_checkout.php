@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'admin/connect.php';
 
 if(empty($_SESSION['id_customer'])) {
 	header("location:index.php");
@@ -21,7 +22,7 @@ $customer_id = $_SESSION['id_customer'];
 
 $cart = $_SESSION['cart'];
 
-require 'admin/connect.php';
+
 $status = 0; // moi dat
 $sql = "INSERT INTO orders(customer_id, name_receiver, phone_receiver, address_receiver, notes, status, total_price)
 VALUES ('$customer_id', '$name_receiver', '$phone_receiver', '$address_receiver', '$notes', '$status', '$total_price')";
@@ -42,5 +43,6 @@ foreach ($cart as $product_id => $each) {
 
 require 'admin/close_connect.php';
 unset($_SESSION['cart']);
-header('location:index.php');
+$_SESSION['checkouted'] = true;
+header('location:purchase.php');
 

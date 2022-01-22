@@ -50,26 +50,42 @@
                                         <?php echo $each['phone'] ?><br>
                                         <?php echo $each['address'] ?><br>
                                     </td>
-                                    <td>
-                                        <?php
-                                        switch ($each['status']) {
-                                            case '-1':
-                                                echo "Đã hủy";
-                                                break;
-                                            case '0':
-                                                echo "Mới đặt";
-                                                break;
-                                            case '1':
-                                                echo "Đã duyệt";
-                                                break;
-                                        }
+                                    <td class="status-<?php echo $each['id'] ?>">
+                                        <?php 
+                                            switch ($each['status']) {
+                                                case '-1':
+                                                echo '<div class="td-status bg-danger text-white">Đã hủy</div>';
+                                                    break;
+                                                case '0':
+                                                    echo '<div class="td-status bg-warning text-white">Đợi duyệt</div>';
+                                                    break;
+                                                case '1':
+                                                    echo '<div class="td-status bg-success text-white">Đã duyệt</div>';
+                                                    break;                      
+                                            }
                                         ?>
                                     </td>
                                     <td>
                                         <?php echo $each['total_price'] ?>
                                     </td>
-                                    <td><button class="btn btn-primary btn-accept-order" data-id="<?php echo $each['id'] ?>">Duyệt</button></td>
-                                    <td><button class="btn btn-danger btn-accept-order" data-id="<?php echo $each['id'] ?>">Hủy</button></td>
+                                    <td>
+                                        <?php if($each['status'] == 1) {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã duyệt</button>
+                                        <?php } else if($each['status'] == 0) { ?>
+                                            <button class="btn btn-primary btn-accept-order" data-id="<?php echo $each['id'] ?>" data-type="accept">Duyệt</button>
+                                        <?php } else {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                         <?php if($each['status'] == 1) {?>
+                                            <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
+                                        <?php } else if($each['status'] == 0) { ?>
+                                            <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
+                                        <?php } else {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
+                                        <?php } ?>                                        
+                                    </td>
                                 </tr>                           
                         <?php endforeach ?>
                     </table>
@@ -82,13 +98,41 @@
                 $(".btn-accept-order").click(function() {
                     let btn = $(this);
                     let id_order = btn.data("id");
+                    let type = btn.data("type");
                     $.ajax({
-                        url: 'accept_order.php',
+                        url: 'update_order.php',
                         type: 'POST',
-                        data: {id_order},
+                        data: {id_order, type},
                     })
                     .done(function(data) {
+                        btn.removeClass("btn-primary")
+                        btn.addClass('btn-secondary')
+                        btn.attr('disabled');
                         btn.text("Đã duyệt")
+                        let btnStatus = $(`.status-${id_order}`).children('div');
+                        btnStatus.removeClass("bg-warning")
+                        btnStatus.addClass('bg-success')
+                        btnStatus.text("Đã duyệt")
+                    })                    
+                });
+                 $(".btn-cancel-order").click(function() {
+                    let btn = $(this);
+                    let id_order = btn.data("id");
+                    let type = btn.data("type");
+                    $.ajax({
+                        url: 'update_order.php',
+                        type: 'POST',
+                        data: {id_order, type},
+                    })
+                    .done(function(data) {
+                        btn.removeClass('btn btn-danger')
+                        btn.addClass('btn btn-secondary')
+                        btn.attr("disabled")
+                        btn.text("Đã hủy")
+                        let btnStatus = $(`.status-${id_order}`).children('div');
+                        btnStatus.removeClass("bg-success")
+                        btnStatus.addClass('bg-danger')
+                        btnStatus.text("Đã hủy")
                     })                    
                 });
             });
