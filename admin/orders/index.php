@@ -1,24 +1,24 @@
 <?php require '../check_admin_login.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-require '../header_admin.php';
-?>   
+    <?php 
+    require '../header_admin.php';
+    ?>   
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
-<?php
-require '../connect.php';
-$sql=" select 
-orders.*,
-customers.name,
-customers.phone,
-customers.address
-from orders
-join customers 
-on customers.id = orders.customer_id";
-$result = mysqli_query($connect,$sql);
+        <?php
+        require '../connect.php';
+        $sql=" select 
+        orders.*,
+        customers.name,
+        customers.phone,
+        customers.address
+        from orders
+        join customers 
+        on customers.id = orders.customer_id";
+        $result = mysqli_query($connect,$sql);
 
-?>           
+        ?>           
             <div class="show-admin">
                 <h1>Tất cả đơn hàng</h1>
                 <a class="add-manufacturer" href="./add_order.php"
@@ -33,6 +33,8 @@ $result = mysqli_query($connect,$sql);
                             <th>Thông tin người đặt</th>
                             <th>Trạng thái</th>
                             <th>Tổng tiền</th>
+                            <th>Duyệt đơn</th>
+                            <th>Hủy đơn</th>
                         </tr>
                         <?php foreach ($result as $each): ?>
                                 <tr>
@@ -51,14 +53,14 @@ $result = mysqli_query($connect,$sql);
                                     <td>
                                         <?php
                                         switch ($each['status']) {
+                                            case '-1':
+                                                echo "Đã hủy";
+                                                break;
                                             case '0':
                                                 echo "Mới đặt";
                                                 break;
                                             case '1':
                                                 echo "Đã duyệt";
-                                                break;
-                                            case '2':
-                                                echo "Dã hủy";
                                                 break;
                                         }
                                         ?>
@@ -66,14 +68,30 @@ $result = mysqli_query($connect,$sql);
                                     <td>
                                         <?php echo $each['total_price'] ?>
                                     </td>
-                                </tr>                               
-
+                                    <td><button class="btn btn-primary btn-accept-order" data-id="<?php echo $each['id'] ?>">Duyệt</button></td>
+                                    <td><button class="btn btn-danger btn-accept-order" data-id="<?php echo $each['id'] ?>">Hủy</button></td>
+                                </tr>                           
                         <?php endforeach ?>
-                        
                     </table>
                 </div>
             </div>
         </div>
         <?php require'../footer.php'?>
+        <script>
+            $(document).ready(function() {
+                $(".btn-accept-order").click(function() {
+                    let btn = $(this);
+                    let id_order = btn.data("id");
+                    $.ajax({
+                        url: 'accept_order.php',
+                        type: 'POST',
+                        data: {id_order},
+                    })
+                    .done(function(data) {
+                        btn.text("Đã duyệt")
+                    })                    
+                });
+            });
+        </script>
     </body>
 </html>

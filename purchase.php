@@ -20,10 +20,12 @@ $result = mysqli_query($connect, $sql);
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Thông tin cá nhân</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="./css/style.css" />
 	<link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/purchase.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -36,9 +38,11 @@ $result = mysqli_query($connect, $sql);
 		        <th>Tên người nhận</th>
 		        <th>Số điện thoại</th>
 		        <th>Địa chỉ</th>
+		        <th>Sản phẩm</th>
 		        <th>Trang thái</th>
 		        <th>Tổng tiền</th>
 		        <th>Ngày đặt</th>
+		        <th>Hủy</th>
 		      </tr>
 		    </thead>
 		    <?php foreach ($result as $each): ?>
@@ -47,23 +51,53 @@ $result = mysqli_query($connect, $sql);
 					<td><?php echo $each['phone_receiver'] ?></td>
 					<td><?php echo $each['address_receiver'] ?></td>
 					<td>
+						
+					</td>
+					<td>
 						<?php 
-							if($each['status'] == 0) {
-								echo "Mới đặt đơn";
-							} else if($each['status'] == 1) {
-								echo "Đã duyệt";
-							} else if($each['status'] == 2)  {
-								echo "Đang vận chuyển";
+							switch ($each['status']) {
+								case '-1':
+								echo '<div class="td-status bg-danger text-white">Đã hủy</div>';
+									break;
+								case '0':
+									echo '<div class="td-status bg-warning text-white">Đợi duyệt</div>';
+									break;
+								case '-1':
+									echo '<div class="td-status bg-success text-white">Đã duyệt</div>';
+									break;						
 							}
 						?>
 							
 					</td>
 					<td><?php echo format_number_to_currency($each['total_price'])." vnd" ?></td>
-					<td><?php echo $each['created_at'] ?></td>					
+					<td><?php echo $each['created_at'] ?></td>				
+					<td>
+						<?php if($each['status'] != -1) {?>
+							<button class="btn btn-danger btn-delete-order" data-id=<?php echo $each['id'] ?>>Hủy đơn</button>
+						<?php } ?>
+					</td>	
 				</tr>	
     	   <?php endforeach ?>	   
 		  </table>
 	</div>
 	<?php include './footer.php' ?>		
+	<script>
+		$(document).ready(function() {
+			$(".btn-delete-order").click(function() {
+				let btn = $(this);
+				let id = $(this).data('id');
+				$.ajax({
+					url: 'delete_order.php',
+					type: 'POST',					
+					data: {id},
+				})
+				.done(function(data) {
+					if(data == 1) {
+						btn.remove()
+					}
+				})	
+			});
+		});
+	</script>
 </body>
 </html>

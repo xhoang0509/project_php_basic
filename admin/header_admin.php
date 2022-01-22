@@ -28,7 +28,8 @@
         <link rel="stylesheet" href="../../css/style.css" />
         <link rel="stylesheet" href="../../css/admin.css" />
         <link rel="stylesheet" href="../../css/base.css" />
-
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>      
     </head>
     <body>
         <header id="header">
