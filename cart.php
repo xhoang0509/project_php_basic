@@ -5,11 +5,11 @@ $total = 0;
 $sum = 0;
 session_start();
 
-if(empty($_SESSION['id'])) {
+if(empty($_SESSION['id_customer'])) {
   header('location:index.php');
   exit();
 }
-$id = $_SESSION['id'];
+$id = $_SESSION['id_customer'];
 
 $sql = "select * from customers where id = '$id'";
 $result = mysqli_query($connect, $sql);
@@ -66,8 +66,7 @@ if(!empty($_SESSION['cart'])) {
                     </tr>
                   </thead>
                   <?php 
-                    $index = 1;
-                    $total_money = 0;
+                    $index = 1;                    
                   ?>
                   <?php foreach ($cart as $id => $each): ?>                    
                       <tr>
@@ -97,8 +96,7 @@ if(!empty($_SESSION['cart'])) {
                       </tr>
                   <?php endforeach ?>                                 
               </table>
-              <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>
-              <?php $_SESSION['total_moeny'] = $total_money ?>
+              <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>              
               <form action="process_checkout.php" method="POST">
                 <h1 style="text-align: left; font-weight: bold; margin-top: 50px">Thông tin thanh toán</h1>
                 <a style="color: blue; text-decoration: underline;" href="profile.php">Chỉnh sửa thông tin thanh toán</a>
@@ -111,7 +109,7 @@ if(!empty($_SESSION['cart'])) {
                 <input type="hidden" name="name" value="<?php echo $customer['name'] ?>">
                 <input type="hidden" name="address_receiver" value="<?php echo $customer['address'] ?>">
                 <input type="hidden" name="phone" value="<?php echo $customer['phone'] ?>">
-                <input type="hidden" name="total_price" value="<?php echo $_SESSION['total_moeny'] ?>">
+                <input type="hidden" name="total_price" value="<?php echo $total?>">
               </form>
             </div>
            <?php }else { ?> 
@@ -146,7 +144,7 @@ if(!empty($_SESSION['cart'])) {
                     type: 'GET',
                     data: {id, type},
                 })
-                .done(async function() {
+                .done(function() {
                     let parent_tr = btn.parents('tr');
                     let price = parseInt(parent_tr.find(".span-price").text().replace(/,/g, ''));
                     let quantity = parent_tr.find(".span-quantity").text();

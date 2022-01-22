@@ -8,11 +8,11 @@ if(isset($_COOKIE['remmember'])) {
     $number_rows = mysqli_num_rows($result);
     if($number_rows == 1) {
         $each = mysqli_fetch_array($result);
-        $_SESSION['id'] = $each['id'];
-        $_SESSION['name'] = $each['name'];      
+        $_SESSION['id_customer'] = $each['id'];
+        $_SESSION['name_customer'] = $each['name'];      
     }
 }
-if(isset($_SESSION['id'])) {
+if(isset($_SESSION['id_customer'])) {
     header("location:index.php");
     exit();
 }

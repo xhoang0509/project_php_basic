@@ -8,7 +8,7 @@ if(empty($_POST['email']) || empty($_POST['password'])) {
 	header('location:login.php');
 	exit();
 }
-if(isset($_SESSION['id'])) {
+if(isset($_SESSION['id_customer'])) {
     header("location:index.php");
     exit();
 }
@@ -16,7 +16,7 @@ if(isset($_SESSION['id'])) {
 $email = $_POST['email'];
 $password = $_POST['password'];
 $remember_login;
-if($_POST['remember_login']) {
+if(isset($_POST['remember_login'])) {
 	$remember_login = true;
 } else {
 	$remember_login = false;
@@ -33,8 +33,10 @@ if($number_rows == 0) {
 
 $each = mysqli_fetch_array($result);
 $id = $each['id'];
-$_SESSION['id'] = $each['id'];
-$_SESSION['name'] = $each['name'];
+$_SESSION['id_customer'] = $each['id'];
+$_SESSION['name_customer'] = $each['name'];
+echo $_SESSION['id_customer'];
+
 if($remember_login) {
 	$token = uniqid("user_", true).(string)time();
 	$sql = "update customers set

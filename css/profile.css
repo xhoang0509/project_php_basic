@@ -1,6 +1,6 @@
 .container {
     padding: 0 5% 3%;
-    min-height: 400px;
+    min-height: 70vh;
 }
 .profile {
 	display: flex;

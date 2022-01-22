@@ -3,6 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+
 <header class="header">
     <div class="logo">
         <a class="logo-link" href="index.php">
@@ -18,9 +19,10 @@ if (session_status() === PHP_SESSION_NONE) {
         </ul>
     </div>
     <div class="icon">      
-        <?php if(isset($_SESSION['id'])) {?>
-            <a style="color: #548CFF" class="icon-link" href="profile.php">Chào, <?php echo $_SESSION['name'] ?></a>
-            <a class="icon-link" href="cart.php">Quản lý giỏ hàng</a>
+        <?php if(isset($_SESSION['id_customer'])) {?>            
+            <a style="color: #548CFF" class="icon-link" href="profile.php">Chào, <?php echo $_SESSION['name_customer'] ?></a>
+            <a class="icon-link" href="cart.php">Giỏ hàng</a>
+            <a class="icon-link" href="purchase.php">Đơn mua</a>
             <a class="icon-link" href="logout.php">Đăng xuất</a>    
         <?php } else { ?>
             <a class="icon-link" href="login.php">Đăng nhập</a>

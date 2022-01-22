@@ -2,12 +2,12 @@
 session_start();
 require './admin/connect.php';
 
-if(empty($_SESSION['id'])) {
+if(empty($_SESSION['id_customer'])) {
   header('location:login.php');
   exit();
 }
 
-$id = $_SESSION['id'];
+$id = $_SESSION['id_customer'];
 $sql = "select * from customers where id = '$id'";
 $result = mysqli_query($connect, $sql);
 $each = mysqli_fetch_array($result);
@@ -36,13 +36,22 @@ $each = mysqli_fetch_array($result);
 				<input type="file" name="photo_new" style="visibility:hidden;" id="photo">
 			</div>
 			<div class="info">
+				<?php if(isset($_SESSION['notifi'])) {?>
+					<h1 class="color-red">
+						<?php 
+							echo $_SESSION['notifi'];
+							unset($_SESSION['notifi']);
+						?>							
+					</h1>
+				<?php } ?>
 				<h3 class="mt-10">Tên: <?php echo $each['name'] ?></h3>
 				<h3 class="mt-10">Email: 
 					<?php echo $each['email'] ?>
 				</h3>
 				<h3 class="mt-10">
 					Địa chỉ: 
-					<input name="address" type="text" value="<?php echo $each['address'] ?>">
+					<br>
+					<textarea style="width: 349px;height: 79px;" name="address"  cols="30" rows="10"><?php echo $each['address'] ?></textarea>					
 				</h3>
 				<h3 class="mt-10">Số điện thoại: <input name="phone" type="text" value="<?php echo $each['phone'] ?>"></h3>
 				<button class="mt-10 btn btn-primary btn-submit">Thay đổi</button>

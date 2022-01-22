@@ -1,11 +1,23 @@
 <?php
 session_start();
+
+if(empty($_SESSION['id_customer'])) {
+	header("location:index.php");
+	exit();
+}
+
+if(empty($_POST['name']) || empty($_POST['address_receiver']) || empty($_POST['phone'])) {
+	$_SESSION['notifi'] = "Yêu cầu nhập đủ thông tin để tiến hàng đặt hàng";
+	header("location:profile.php");
+	eixt();
+}
+
 $name_receiver = $_POST['name'];
 $address_receiver = $_POST['address_receiver'];
 $phone_receiver = $_POST['phone'];
 $total_price = $_POST['total_price'];
 $notes = $_POST['notes'];
-$customer_id = $_SESSION['id'];
+$customer_id = $_SESSION['id_customer'];
 
 $cart = $_SESSION['cart'];
 
@@ -14,6 +26,8 @@ $status = 0; // moi dat
 $sql = "INSERT INTO orders(customer_id, name_receiver, phone_receiver, address_receiver, notes, status, total_price)
 VALUES ('$customer_id', '$name_receiver', '$phone_receiver', '$address_receiver', '$notes', '$status', '$total_price')";
 mysqli_query($connect, $sql);
+
+
 
 $sql = "select max(id) from orders where customer_id = '$customer_id'";
 $result = mysqli_query($connect, $sql);

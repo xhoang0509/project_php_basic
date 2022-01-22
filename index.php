@@ -50,7 +50,7 @@ $result = mysqli_query($connect, $sql);
                                 echo $manufacturer['name'];
                                 ?>                                
                             </span>
-                            <?php if(!empty($_SESSION['id'])) {?>
+                            <?php if(!empty($_SESSION['id_customer'])) {?>
                             <button 
                                 class="btn-add-to-cart btn btn-primary" 
                                 data-id="<?php echo $each['id'] ?>"
@@ -78,12 +78,11 @@ $result = mysqli_query($connect, $sql);
                 $.ajax({
                     url: 'add_to_cart.php',
                     type: 'GET',
-                    // dataType: '',
                     data: {id},
                 })
                 .done(function(response) {
                     if(response == 1) {
-                        alert(response);
+                    alert(response);
                     } else {
                         alert(response);
                     }

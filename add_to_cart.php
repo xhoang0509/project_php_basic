@@ -5,7 +5,7 @@ try {
         throw new Exception("Không tồn tại id");      
     }
     $id = $_GET['id'];
-    $customer_id = $_SESSION['id'];
+    $customer_id = $_SESSION['id_customer'];
     require 'admin/connect.php';
 
     if(empty($_SESSION['cart'][$id])) {
