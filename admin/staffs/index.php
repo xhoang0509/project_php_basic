@@ -31,23 +31,29 @@ require '../header_admin.php';
                 </h2>
                 <a class="add-staff" href="./add_staff.php"
                     >Thêm nhân viên mới</a>
-                <div class="staffs">
-                    <?php foreach ($result as $each): ?>
-                        <div class="staff">
-                            <h3 class="staff-title"><?php echo $each['name'] ?></h3>
-                            <img src="../../image/<?php echo $each['photo'] ?>" alt="" class="staff-image" />
-                            <p class="mt-5">Địa chỉ: <?php echo $each['address'] ?></p>
-                            <p class="mt-5">email: <?php echo $each['email'] ?></p>
-                            <p>
-                                <a class="text-warning" href="delete_staff.php?id=<?php echo $each['id'] ?>">Xóa</a>
-                            </p>
-                    </br>
-                            <p>
-                                <a class="text-danger" href="update_staff.php?id=<?php echo $each['id'] ?>">Sửa</a>
-                            </p>
-                        </div>
-                    <?php endforeach ?>
-                    
+                    <div class="row">                    
+                    <table class="w3-table-all">
+                        <thead>
+                          <tr class="w3-light-grey">
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Ảnh</th>
+                            <th>Địa chỉ</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                          </tr>
+                        </thead>
+                        <?php foreach ($result as $index => $each): ?>
+                            <tr>
+                              <td><?php echo $index + 1 ?></td>
+                              <td><?php echo $each['name'] ?></td>
+                              <td><img height="100px" class="show-image" src="../../image/<?php echo $each['photo'] ?>" alt=""/></td>
+                              <td><?php echo $each['address'] ?></td>
+                              <td><a class="btn btn-warning" href="update_staff.php?id=<?php echo $each['id'] ?>">Sửa</a></td>
+                              <td> <a class="btn btn-danger" href="delete_staff.php?id=<?php echo $each['id'] ?>">Xóa</a></td>
+                          </tr>
+                        <?php endforeach ?>
+                    </table>                    
                 </div>
             </div>
         </div>

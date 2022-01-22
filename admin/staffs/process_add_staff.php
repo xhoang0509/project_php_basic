@@ -1,12 +1,13 @@
 <?php
 require '../check_admin_login.php';
+require '../connect.php';
 
-$name = $_POST['name'];
+$name = mysqli_real_escape_string($connect,$_POST['name']);
 $photo = $_FILES['photo'];
-$address = $_POST['address'];
+$address = mysqli_real_escape_string($connect,$_POST['address']);
 $gender = $_POST['gender'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = mysqli_real_escape_string($connect,$_POST['email']);
+$password = mysqli_real_escape_string($connect,$_POST['password']);
 $level=$_POST['level'];
 
 $folder = '../../image/';
@@ -15,7 +16,7 @@ $file_name = time() . '.' . $file_extension;
 $path_file = $folder . $file_name;
 move_uploaded_file($photo["tmp_name"], $path_file);
 
-require '../connect.php';
+
 $sql = "insert into admin(name, photo, address, gender, email, password, level) 
 VALUES ('$name', '$file_name', '$address', '$gender', '$email', '$password','$level')";
 mysqli_query($connect, $sql);

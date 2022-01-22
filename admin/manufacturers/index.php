@@ -53,9 +53,9 @@ $result = mysqli_query($connect, $sql);
                             <tr>
                               <td><?php echo $index + 1 ?></td>
                               <td><?php echo $each['name'] ?></td>
-                              <td><img class="show-image" src="../../image/<?php echo $each['photo'] ?>" alt=""/></td>
-                              <td><?php echo $each['name'] ?></td>
+                              <td><img height="100px" class="show-image" src="../../image/<?php echo $each['photo'] ?>" alt=""/></td>
                               <td><?php echo $each['address'] ?></td>
+                              <td><?php echo $each['phone'] ?></td>
                               <td><a class="btn btn-warning" href="update_manufacturer.php?id=<?php echo $each['id'] ?>">Sửa</a></td>
                               <td> <a class="btn btn-danger" href="delete_manufacturer.php?id=<?php echo $each['id'] ?>">Xóa</a></td>
                           </tr>
