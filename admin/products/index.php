@@ -7,15 +7,19 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-  .modal-open {
-     padding-right: 0 !important;
-  }
-</style>
-<?php 
-require '../header_admin.php';
-?>   
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      .modal-open {
+         padding-right: 0 !important;
+      }
+    </style>
+    <?php include '../header_admin.php';?>   
+    <body>
+        <header id="header">
+            <a href="../root" class="header-logo">
+                <h1>ABC Shop</h1>
+            </a>
+        </header>
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show-admin">

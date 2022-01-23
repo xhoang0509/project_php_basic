@@ -3,9 +3,13 @@ require '../check_super_admin_login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-require '../header_admin.php';
-?>   
+    <?php include '../header_admin.php';?>   
+    <body>
+        <header id="header">
+            <a href="../root" class="header-logo">
+                <h1>ABC Shop</h1>
+            </a>
+        </header>
         <div id="container" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show-admin">
