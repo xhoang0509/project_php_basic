@@ -24,7 +24,7 @@ $each = mysqli_fetch_array($result);
 <?php 
 require '../header_admin.php';
 ?>   
-        <div id="container" class="container-admin">
+        <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show">
                 <h1>Cập nhật nhân viên: </h1>

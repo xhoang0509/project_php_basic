@@ -8,7 +8,7 @@
                 <h1>ABC Shop</h1>
             </a>
         </header>
-        <div id="container" class="container-admin">
+        <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
         <?php
             require '../connect.php';

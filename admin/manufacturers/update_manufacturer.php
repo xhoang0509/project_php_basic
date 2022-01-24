@@ -28,7 +28,7 @@ $each = mysqli_fetch_array($result);
                 <h1>ABC Shop</h1>
             </a>
         </header>
-        <div id="container" class="container-admin">
+        <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show-admin">
                 <h1>Sửa nhà sản xuất: </h1>

@@ -10,7 +10,7 @@ require '../check_admin_login.php';
                 <h1>ABC Shop</h1>
             </a>
         </header>   
-        <div id="container" class="container-admin">
+        <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show">
                 <h1>Thêm nhân viên mới</h1>

@@ -239,7 +239,7 @@ body {
     transition: opacity 0.2s ease-in;
 }
 
-#container {
+#container-admin {
     width: 100%;
     min-height: 700px;
     background-color: #fff;
