@@ -98,14 +98,26 @@ if(!empty($_SESSION['cart'])) {
               </table>
               <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>              
               <form action="process_checkout.php" method="POST">
-                <h1 style="text-align: left; font-weight: bold; margin-top: 50px">Thông tin thanh toán</h1>
-                <a style="color: blue; text-decoration: underline;" href="profile.php">Chỉnh sửa thông tin thanh toán</a>
+                <h1 style="text-align: left; font-weight: bold; margin-top: 50px">Thông tin thanh toán</h1>                
                 <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
-                <h2>Địa chỉ: <?php echo $customer['address'] ?></h2>
+                <h2>Địa chỉ: 
+                    <?php 
+                        if(empty($customer['address'])) {
+                            echo '<span style="color:red;">Trống</span>';
+                        }
+                        else {
+                            echo $customer['address'];
+                        } 
+                    ?>                    
+                </h2>
                 <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
                 <h2>Ghi chú: </h2>
                 <textarea style="width: 564px;height: 91px;" name="notes" id="" cols="30" rows="10"></textarea><br><br>
-                <button class="btn btn-primary">Tiến hàng đặt hàng</button>
+                <?php if(empty($customer['address'])) { ?>
+                    <a class="btn btn-primary" href="profile.php">Yêu cầu chỉnh sửa thông tin để thanh toán</a>
+                <?php }else{ ?>
+                    <button class="btn btn-primary">Tiến hàng đặt hàng</button>
+                <?php } ?>
                 <input type="hidden" name="name" value="<?php echo $customer['name'] ?>">
                 <input type="hidden" name="address_receiver" value="<?php echo $customer['address'] ?>">
                 <input type="hidden" name="phone" value="<?php echo $customer['phone'] ?>">

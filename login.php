@@ -50,11 +50,21 @@ if(isset($_SESSION['id_customer'])) {
                 <form class="form" action="process_login.php" method="POST">
                     <label class="d-block mt-5" for="">Email</label>
                     <input class="d-block mt-5" type="text" name="email" 
-                        value="<?php if(isset($_SESSION['email'])) {$_SESSION['email'];} ?>"
+                        value="<?php
+                                if(isset($_SESSION['email_register'])) {
+                                    echo $_SESSION['email_register'];
+                                    unset($_SESSION['email_register']);
+                                } 
+                             ?>"
                         />
                     <label class="d-block mt-5" for="">Mật khẩu</label>
                     <input class="d-block mt-5" type="text" name="password" 
-                        value="<?php if(isset($_SESSION['password'])) {$_SESSION['password'];} ?>"
+                        value="<?php
+                                if(isset($_SESSION['password_register'])) {
+                                    echo $_SESSION['password_register'];
+                                    unset($_SESSION['password_register']);
+                                } 
+                             ?>"
                         />
                     <div class="d-flex align-content-center mt-5">
                         <input style="text-align: left; width: 20px" type="checkbox" name="remember_login" id="remember_login">

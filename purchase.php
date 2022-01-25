@@ -34,7 +34,7 @@ $result = mysqli_query($connect, $sql);
             <?php unset($_SESSION['checkouted']) ?>
         <?php } ?>
 	<?php include './header.php' ?>
-	<div class="container">
+	<div class="container" style="padding: 0 0 3%">
 		<h1 style="font-weight: bold">Đơn hàng đã đặt: </h1>
 		<table class="w3-table-all">
 		    <thead>

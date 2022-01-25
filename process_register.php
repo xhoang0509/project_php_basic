@@ -30,12 +30,10 @@ $sql = "insert into customers(name, email, password, phone)
 values('$name', '$email', '$password', '$phone')";
 mysqli_query($connect, $sql);
 
-
 require 'admin/close_connect.php';
-
 
 $_SESSION['success'] = "Đăng kí thành công";
 $_SESSION['name'] = $name;
-$_SESSION['email'] = $email;
-$_SESSION['password'] = $password;
+$_SESSION['email_register'] = $email;
+$_SESSION['password_register'] = $password;
 header("location:login.php");

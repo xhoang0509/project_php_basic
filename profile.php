@@ -51,9 +51,9 @@ $each = mysqli_fetch_array($result);
 				<h3 class="mt-10">
 					Địa chỉ: 
 					<br>
-					<textarea style="width: 349px;height: 79px;" name="address"  cols="30" rows="10"><?php echo $each['address'] ?></textarea>					
+					<textarea class="address" style="width: 349px;height: 79px;" name="address"  cols="30" rows="10"><?php echo $each['address'] ?></textarea>					
 				</h3>
-				<h3 class="mt-10">Số điện thoại: <input name="phone" type="text" value="<?php echo $each['phone'] ?>"></h3>
+				<h3 class="mt-10">Số điện thoại: <input class="phone" name="phone" type="text" value="<?php echo $each['phone'] ?>"></h3>
 				<button class="mt-10 btn btn-primary btn-submit">Thay đổi</button>
 				<br>
 				<br>

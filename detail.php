@@ -31,8 +31,8 @@ $each = mysqli_fetch_array($result);
         <link rel="stylesheet" href="./css/base.css" />
     </head>
     <body>
+       <?php include 'header.php' ?>
         <div class="wrapper">
-           <?php include 'header.php' ?>
            <div class="container" style="padding: 0 5% 3%">
               <div class="d-flex">
                    <div>
@@ -40,14 +40,14 @@ $each = mysqli_fetch_array($result);
                    </div>
                    <div class="detail-info">
                        <h3 class="detail-price">Giá bán: <?php echo format_number_to_currency($each['price']) ?> vnđ</h3>
-                       <h3 class="mt-5">Mô tả chi tiết: </h3>
-                       <ul class="detail-list-info mt-5">
+                       <h3 class="mt-10">Mô tả chi tiết: </h3>
+                       <ul class="mt-10 detail-list-info">
                            <li><?php echo $each['description'] ?></li>
                        </ul>
                         <?php if(!empty($_SESSION['id_customer'])) { ?>
-                            <button class="btn-add-to-cart btn btn-primary mt-5" data-id="<?php echo $id ?>">Thêm vào giỏ hàng</button>
+                            <button class="mt-10 btn-add-to-cart btn btn-primary " data-id="<?php echo $id ?>">Thêm vào giỏ hàng</button>
                         <?php } else { ?>
-                            <a class="btn btn-primary mt-5" href="index.php">Đăng nhập để mua hàng</a>
+                            <a class="mt-10 btn btn-primary" href="index.php">Đăng nhập để mua hàng</a>
                         <?php } ?>
                    </div>
               </div>
