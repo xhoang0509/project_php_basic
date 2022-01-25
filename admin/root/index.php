@@ -13,30 +13,15 @@ $total_manufacturers = mysqli_num_rows($result);
 $sql = "select * from admin where level = 0";
 $result = mysqli_query($connect,$sql);
 $total_staffs = mysqli_num_rows($result);
-
+ 
 $sql = "select * from orders";
 $result = mysqli_query($connect,$sql);
 $total_orders = mysqli_num_rows($result);
 
-$sql = "SELECT 
-date_format(created_at, '%d-%m') as 'ngay',
-sum(total_price) as 'doanh_thu'
-from  `orders`
-group by day(created_at);";
-$result = mysqli_query($connect, $sql);
-$arr = [];
-foreach ($result as $each) {
-    $arr[$each['ngay']] = $each['doanh_thu'];
-}
-// echo json_encode($arr);
-$max_date = 30;
-$today = date('d');
-$day_last_month = $max_date - $today;
-$last_month = date('m', strtotime("-1 month"));
-$max_day_last_month = (new DateTime($last_month))->format('t');
 
-echo $max_day_last_month;
-exit();
+
+// $arrX = array_keys($arr);
+// $arrY = array_values($arr);
 ?>
 
 <!DOCTYPE html>
@@ -111,6 +96,8 @@ exit();
                         <a href="../others/">Tổng đơn hàng: <?php echo $total_orders ?></a>
                     </h3>
                 </div>
+                <hr>
+                <h1 class="mt-10">Thống kê doanh thu</h1>
                 <figure class="highcharts-figure">
                     <div style="padding: 0" id="container"></div>
                         <!-- <p class="highcharts-description">
@@ -119,8 +106,8 @@ exit();
                         enhanced readability.
                         </p> -->
                 </figure>
-                <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>
                 <hr />
+                <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>
                 <div class="best-seller">
                     <a class="best-seller-title" href="">
                         <h3>Iphone 13 promax</h3>
@@ -133,8 +120,8 @@ exit();
 
                     <p>Số lượng 100 chiếc</p>
                 </div>
-                <h1 class="mt-10">Nhân viên suất sắc nhất tháng 11</h1>
                 <hr />
+                <h1 class="mt-10">Nhân viên suất sắc nhất tháng 11</h1>
                 <div class="best-seller">
                     <a class="best-seller-title" href="">
                         <h3>Nguyễn Văn A</h3>
@@ -150,73 +137,73 @@ exit();
             </div>
         </div>
         <?php require'../footer.php'?>
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
         <!-- Highchart  -->
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/series-label.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
-        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-        <script>
-            Highcharts.chart('container', {
-            title: {
-                text: 'Thông kê doanh thu 30 ngày gần nhất'
-            },
-            yAxis: {
-                title: {
-                  text: 'Doanh thu'
-                }
-            },
-            xAxis: {
-                title: {
-                    text: 'Tháng'
-                },
-               categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-            },
-            plotOptions: {
-                series: {
-                  label: {
-                    connectorAllowed: false
-                  }                  
-                }
-            },
-            series: [{
-                name: 'Doanh thu',
-                data: [43934, 52503, 57177, 69658, 97031, 119931,137133, 154175, 137133, 154175,137133,154175]
-            }, {
-                name: 'Manufacturing',
-                data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-            }, {
-                name: 'Sales & Distribution',
-                data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-            }, {
-                name: 'Project Development',
-                data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-            }, {
-                name: 'Other',
-                data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-            }],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>        
+        <script>                       
+            $(document).ready(function() {
+                $.ajax({
+                    url: 'get_doanh_thu.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {days: 30},
+                })
+                .done(function(response) {
+                    const arrX = Object.keys(response);
+                    const arrY = Object.values(response);                
+                    Highcharts.chart('container', {
+                        title: {
+                            text: 'Thông kê doanh thu 30 ngày gần nhất'
+                        },
+                        yAxis: {
+                            title: {
+                              text: 'Doanh thu'
+                            }
+                        },
+                        xAxis: {
+                            title: {
+                                text: 'Tháng'
+                            },
+                           categories: arrX
+                        },
                         legend: {
-                            layout: 'horizontal',
-                            align: 'center',
-                            verticalAlign: 'bottom'
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle'
+                        },
+                        plotOptions: {
+                            series: {
+                              label: {
+                                connectorAllowed: false
+                              }                  
+                            }
+                        },
+                        series: [{
+                            name: 'Doanh thu',
+                            data: arrY
+                        }],
+                        responsive: {
+                            rules: [{
+                                condition: {
+                                    maxWidth: 500
+                                },
+                                chartOptions: {
+                                    legend: {
+                                        layout: 'horizontal',
+                                        align: 'center',
+                                        verticalAlign: 'bottom'
+                                    }
+                                }
+                            }]
                         }
-                    }
-                }]
-            }
-
-            });
+                    });  
+                })              
+            });            
         </script>
     </body>
 </html>

@@ -44,15 +44,32 @@ $each = mysqli_fetch_array($result);
                        <ul class="detail-list-info mt-5">
                            <li><?php echo $each['description'] ?></li>
                        </ul>
-                      <?php if(!empty($_SESSION['id'])) { ?>
-                         <a class="btn btn-primary mt-5" href="add_to_cart.php?id=<?php echo $id ?>">Thêm vào giỏ hàng</a>
-                      <?php } else { ?>
-                        <a class="btn btn-primary mt-5" href="index.php">Đăng nhập để mua hàng</a>
-                      <?php } ?>
+                        <?php if(!empty($_SESSION['id_customer'])) { ?>
+                            <button class="btn-add-to-cart btn btn-primary mt-5" data-id="<?php echo $id ?>">Thêm vào giỏ hàng</button>
+                        <?php } else { ?>
+                            <a class="btn btn-primary mt-5" href="index.php">Đăng nhập để mua hàng</a>
+                        <?php } ?>
                    </div>
               </div>
            </div>
         </div>
         <?php include 'footer.php' ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".btn-add-to-cart").click(function() {
+                    const btn = $(this);
+                    let id = btn.data("id");
+                    $.ajax({
+                        url: 'add_to_cart.php',
+                        type: 'GET',
+                        data: {id},
+                    })
+                    .done(function(response) {
+                        alert(response);
+                    })                    
+                });
+            });
+        </script>
     </body>
 </html>

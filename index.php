@@ -27,7 +27,7 @@ $result = mysqli_query($connect, $sql);
     <body>        
         <?php include 'header.php' ?>            
         <div class="banner">
-            <a href=""><img src="./image/banner.png" alt="" /></a>
+            <a href="#"><img src="./image/banner.png" alt="" /></a>
         </div>
         <div class="wrapper">
             <h1 class="mt-10">Tất cả sản phẩm</h1>
