@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2022 at 04:04 AM
+-- Generation Time: Jan 27, 2022 at 05:29 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -72,7 +72,11 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `photo`, `address`, 
 (14, '', '', '', '', '', '', ''),
 (15, 'Hoang Nguyen Xuan', 'xhoang05092@gmail.com', '1', '', '', '', ''),
 (17, 'Tran Huy Tien', 'tien@gmail.com', '1', '1642127195.jpg', 'bac giang								\r\n											\r\n											\r\n						\r\n					', '0123 456 789', 'user_61e0d37d7ccc73.524096891642124157'),
-(18, 'test', 'x@gmail.com', '1', '', 'viet nam', '012', '');
+(18, 'test', 'x@gmail.com', '1', '', 'viet nam', '012', ''),
+(20, 'a', 'a', 'a', '', '', 'a', ''),
+(21, '1', '1', '1', '', '', '1', ''),
+(22, 'Nguyễn Văn Hùng', 'hung@gmail.com', '1', '1643102323.jpg', 'Ứng hòa - Hà Nội', '0123', 'user_61efbe0ad2ba11.083175191643101706'),
+(23, 'Tạ Văn Điệu', 'tavandieu@gmail.com', '1', '1643102566.jpg', 'Giao Thủy - Nam Định', '0123', '');
 
 -- --------------------------------------------------------
 
@@ -134,8 +138,8 @@ INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `a
 (15, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 2000000, '2022-01-21 17:00:00'),
 (16, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 1400000, '2022-01-21 17:00:00'),
 (17, 18, 'test', '012', 'xuan hoang', '', -1, 1400000, '2022-01-21 17:00:00'),
-(19, 18, 'test', '012', 'viet nam', '', 1, 1200000, '2022-01-21 17:00:00'),
-(20, 18, 'test', '012', 'viet nam', '', 1, 4400000, '2022-01-21 17:00:00'),
+(19, 18, 'test', '012', 'viet nam', '', -1, 1200000, '2022-01-21 17:00:00'),
+(20, 18, 'test', '012', 'viet nam', '', -1, 4400000, '2022-01-21 17:00:00'),
 (26, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 400000, '2022-01-21 17:00:00'),
 (27, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 1400000, '2022-01-21 17:00:00'),
 (28, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 400000, '2022-01-21 17:00:00'),
@@ -144,7 +148,9 @@ INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `a
 (31, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 400000, '2022-01-21 17:00:00'),
 (32, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 400000, '2022-01-21 17:00:00'),
 (33, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00'),
-(34, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00');
+(34, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00'),
+(35, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 0, 10600000, '2022-01-25 08:31:08'),
+(36, 23, 'Tạ Văn Điệu', '0123', 'Giao Thủy - Nam Định', '', 1, 6400000, '2022-01-25 09:23:04');
 
 -- --------------------------------------------------------
 
@@ -198,7 +204,14 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
 (31, 4, 1),
 (32, 4, 1),
 (33, 7, 1),
-(34, 6, 1);
+(34, 6, 1),
+(35, 3, 2),
+(35, 4, 4),
+(35, 7, 1),
+(36, 3, 1),
+(36, 4, 1),
+(36, 6, 1),
+(36, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +240,48 @@ INSERT INTO `products` (`id`, `name`, `photo`, `price`, `description`, `quantity
 (6, 'Xiao Mi mi11 5G', '1640830102.png', 1000000, 'Hang trung quoc', 40, 5, 'điện thoại'),
 (7, 'Táo thật', '1640830520.jpg', 1000000, '                            \r\n             hoa quả rất ngon       ', 10, 5, 'hoa quả'),
 (9, 'Tết 2022', '1642154609.jpg', 40, '                                                                                                                                                                            \r\n       tết sum vầy                                     \r\n                        ', 200, 5, 'Lễ hội'),
-(10, 'iphone sx max', '1642151972.jpg', 24.99, '                            \r\n        iphone my            ', 20, 5, 'điện thoại');
+(10, 'iphone sx max', '1642151972.jpg', 24.99, '                            \r\n        iphone my            ', 20, 5, 'điện thoại'),
+(11, 'Nokia C2 01', '1643251496.jpg', 2000000, 'Điện thoại có phím bấm                            \r\n                    ', 1000, 10, 'Điện thoại');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_rating`
+--
+
+CREATE TABLE `product_rating` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `rating` float NOT NULL,
+  `comment` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_rating`
+--
+
+INSERT INTO `product_rating` (`id`, `product_id`, `customer_id`, `rating`, `comment`) VALUES
+(1, 4, 1, 3.5, 'good'),
+(2, 4, 1, 4.5, 'bad'),
+(4, 4, 1, 4.5, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '),
+(5, 7, 1, 3, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n\r\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accomp'),
+(6, 7, 1, 3, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n\r\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accomp'),
+(7, 7, 1, 2.5, 'tét'),
+(8, 7, 1, 2.5, 'a'),
+(9, 7, 1, 3, 'a'),
+(10, 7, 1, 3, 'a'),
+(11, 7, 1, 3, 'a'),
+(12, 7, 1, 3, 'a'),
+(13, 7, 1, 3, 'a'),
+(14, 7, 1, 3, 'a'),
+(15, 7, 1, 3, 'a'),
+(16, 7, 1, 4.5, 'tet'),
+(17, 3, 1, 5, 'test tiep'),
+(18, 10, 23, 5, 'Sau khi sử dụng sản phẩm được 1 tháng tôi thấy rất hài lòng. Vote cho shop 5 sao vì sự nhiệt tình <3.'),
+(19, 7, 23, 5, 'len sao'),
+(20, 11, 23, 4.5, 'danh gia xem dc bao nhieu'),
+(21, 11, 23, 1, 'test tiep ');
 
 --
 -- Indexes for dumped tables
@@ -274,6 +328,14 @@ ALTER TABLE `products`
   ADD KEY `manufacturer_id` (`manufacturer_id`);
 
 --
+-- Indexes for table `product_rating`
+--
+ALTER TABLE `product_rating`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -287,7 +349,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
@@ -299,13 +361,19 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `product_rating`
+--
+ALTER TABLE `product_rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
@@ -322,6 +390,13 @@ ALTER TABLE `order_product`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`id`);
+
+--
+-- Constraints for table `product_rating`
+--
+ALTER TABLE `product_rating`
+  ADD CONSTRAINT `product_rating_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`),
+  ADD CONSTRAINT `product_rating_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

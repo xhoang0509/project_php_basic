@@ -28,13 +28,13 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
     <div class="icon">      
         <?php if(isset($_SESSION['id_customer'])) {?>            
-            <a style="color: #548CFF" class="icon-link" href="profile.php">Chào, <?php echo $_SESSION['name_customer'] ?></a>
-            <a class="icon-link" href="cart.php">Giỏ hàng</a>
-            <a class="icon-link" href="purchase.php">Đơn mua</a>
-            <a class="icon-link" href="logout.php">Đăng xuất</a>    
+            <a style="color: #548CFF" class="header-icon-link" href="profile.php">Chào, <?php echo $_SESSION['name_customer'] ?></a>
+            <a class="header-icon-link" href="cart.php">Giỏ hàng</a>
+            <a class="header-icon-link" href="purchase.php">Đơn mua</a>
+            <a class="header-icon-link" href="logout.php">Đăng xuất</a>    
         <?php } else { ?>
-            <a class="icon-link" href="login.php">Đăng nhập</a>
-            <a class="icon-link" href="register.php">Đăng kí</a>
+            <a class="header-icon-link" href="login.php">Đăng nhập</a>
+            <a class="header-icon-link" href="register.php">Đăng kí</a>
         <?php } ?>
     </div>
 </header>

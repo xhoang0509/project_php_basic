@@ -14,9 +14,15 @@
 }
 
 .detail-price {
-	color: red;
+	/*color: red;*/
 }
 
 .detail-list-info {
 	padding-left: 20px;
+}
+
+.rated-item {
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 8px;
 }
