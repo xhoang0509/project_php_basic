@@ -19,8 +19,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 <input type="hidden" id="project-id">
                 <p id="project-description"></p>
             </li>            
-            <?php }else { ?>           
-
+            <?php }else { ?>               
+            <li class="slide-item"><a class="slide-item-link" href="#">Laptop</a></li>
+            <li class="slide-item"><a class="slide-item-link" href="#">PC Gaming</a></li>
+            <li class="slide-item"><a class="slide-item-link" href="#">Phụ Kiện Laptop, PC</a></li>
             <?php } ?>
         </ul>
     </div>
