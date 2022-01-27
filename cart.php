@@ -39,7 +39,7 @@ if(!empty($_SESSION['cart'])) {
        <?php include 'header.php' ?>
         <div class="wrapper">
            <?php if(!empty($_SESSION['cart'])) { ?>
-           <div class="container" style="padding: 0 5% 3%">
+           <div class="container" style="padding: 0 5% 3%;min-height: 70vh;">
               <h1 style="text-align: left; font-weight: bold">Thông tin giỏ hàng</h1>
               <h2 class="text-success">
                     <?php if(!empty($_SESSION['name_product'])) {

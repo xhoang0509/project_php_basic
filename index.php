@@ -21,6 +21,8 @@ $result = mysqli_query($connect, $sql);
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
         <title>ABC Shop</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/base.css" />
     </head>
@@ -70,9 +72,36 @@ $result = mysqli_query($connect, $sql);
         </div>
         <?php include 'footer.php' ?>
     <script src="js/index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>  
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function() {
+            $( "#project" ).autocomplete({
+                minLength: 0,
+                source: 'search.php',
+                focus: function( event, ui ) {
+                $( "#project" ).val( ui.item.label );
+                    return false;
+                },
+                select: function( event, ui ) {
+                    $( "#project" ).val( ui.item.label);
+                    $( "#project-icon" ).attr( "src", "image/" + ui.item.photo );
+                        return false;
+                    }
+                })            
+                .autocomplete( "instance" )._renderItem = function( ul, item ) {                    
+                    return $(`<a href='detail.php?id=${item.value}'>`)
+                    .append(`
+                        <div>                            
+                            <img height="50" src="image/${item.photo}" alt="">
+                            ${item.label}
+                        </div>
+                    `)
+                    .appendTo( ul );
+                    
+                };
+            
+
             $(".btn-add-to-cart").click(function() {
                 let id = $(this).data('id');
                 $.ajax({
@@ -82,7 +111,7 @@ $result = mysqli_query($connect, $sql);
                 })
                 .done(function(response) {
                     if(response == 1) {
-                    alert(response);
+                        alert(response);
                     } else {
                         alert(response);
                     }
@@ -90,6 +119,5 @@ $result = mysqli_query($connect, $sql);
             });
         });
     </script>
-
     </body>
 </html>

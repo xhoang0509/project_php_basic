@@ -12,10 +12,16 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
     <div class="menu">
         <ul class="menu-slide">
-            <li class="slide-item"><a class="slide-item-link" href="index.php">Trang Chủ</a></li>            
-            <li class="slide-item"><a class="slide-item-link" href="#">Laptop</a></li>
-            <li class="slide-item"><a class="slide-item-link" href="#">PC Gaming</a></li>
-            <li class="slide-item"><a class="slide-item-link" href="#">Phụ Kiện Laptop, PC</a></li>
+            <li class="slide-item"><a class="slide-item-link" href="index.php">Trang Chủ</a></li>
+            <?php if($_SERVER['REQUEST_URI'] === "/abcshop/index.php") {?>
+            <li class="slide-item input-search">                
+                <input id="project" placeholder="Tìm kiếm sản phẩm">
+                <input type="hidden" id="project-id">
+                <p id="project-description"></p>
+            </li>            
+            <?php }else { ?>           
+
+            <?php } ?>
         </ul>
     </div>
     <div class="icon">      

@@ -1,11 +1,14 @@
 <?php
 try {
-    session_start();    
+    session_start();
+     if(empty($_SESSION['id_customer'])) {
+        throw new Exception("Yêu cầu đăng nhập để mua hàng");      
+    }    
+    $customer_id = $_SESSION['id_customer'];
     if(empty($_GET['id'])) {
         throw new Exception("Không tồn tại id");      
     }
     $id = $_GET['id'];
-    $customer_id = $_SESSION['id_customer'];
     require 'admin/connect.php';
 
     if(empty($_SESSION['cart'][$id])) {

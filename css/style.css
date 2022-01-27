@@ -43,7 +43,7 @@ body {
     height: 120px;
     padding: 0 40px;
     margin-bottom: 10px;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 .logo-link {
@@ -63,6 +63,7 @@ body {
 .menu-slide {
     list-style: none;
     display: flex;
+    padding-right: 100px;
 }
 .slide-item {
     float: left;
@@ -79,6 +80,13 @@ body {
     color: orange;
     transition: all 0.3s ease-in;    
 }
+#project {
+    height: 30px;
+    width: 300px;
+    border-radius: 4px;
+    padding: 4px;
+}
+
 .icon {
     display: flex;
     justify-content: space-between;    
