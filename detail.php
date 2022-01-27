@@ -4,6 +4,11 @@ session_start();
 require 'help.php';
 require 'admin/connect.php';
 
+if(empty($_GET['id'])) {
+    header("location:index.php");
+    exit();
+}
+
 $id = $_GET['id'];
 $sql = "select * from products where id = '$id'";
 $result = mysqli_query($connect, $sql);
@@ -25,7 +30,6 @@ if($num_result_rating != 0) {
     FROM product_rating 
     WHERE product_id = $id 
     GROUP BY product_id ";
-
     $result_avg_rating = mysqli_fetch_array(mysqli_query($connect, $sql));
     $avg_rating = $result_avg_rating['sum_rating'] / $result_avg_rating['count_product_id'];
     $avg_rating = number_format($avg_rating,1,",",".");
@@ -50,11 +54,11 @@ if($num_result_rating != 0) {
         <link rel="stylesheet" href="./css/rate_star_detail.css" />
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/detail.css" />
-        <link rel="stylesheet" href="./css/base.css" />
+        <link rel="stylesheet" href="./css/base.css" />        
         <style>
-        .checked {
-          color: orange;
-        }
+            .checked {
+              color: orange;
+            }
         </style>
     </head>
     <body>
@@ -73,14 +77,20 @@ if($num_result_rating != 0) {
                    <div class="detail-info">
                         <?php if(isset($_SESSION['error_rating'])) {?>
                             <h1 style="color: red;margin: 0 0 20px;"><?php echo $_SESSION['error_rating'] ?></h1>
+                            <script>
+                                $(document).ready(function() {
+                                    $(".btn-rating").click(function() {
+                                        $.notify("Yêu cầu nhập thông tin để gửi đánh giá !", "warn");                                        
+                                    });
+                                });
+                            </script>
                             <?php unset($_SESSION['error_rating']) ?>
                         <?php } ?>
                        <h3 class="detail-price">- Giá bán: <?php echo format_number_to_currency($each['price']) ?> vnđ</h3>
                        <h3 class="mt-10">- Mô tả chi tiết: </h3>
                        <ul class="mt-10 detail-list-info">
                            <li><?php echo $each['description'] ?></li>
-                       </ul>                                                                                         
-                        
+                       </ul>                       
                         <?php if($num_result_rating !== 0) { ?>
                             <div class="rated">
                                 <h1 style="margin: 0;margin-top: 100px">- Đánh giá sản phẩm</h1>
@@ -90,7 +100,7 @@ if($num_result_rating != 0) {
                                         <h4 class="mt-5">Khách hàng: <span style="color: blue"><?php echo $each['name'] ?></span></h4>
                                         <h4 class="mt-5">Bình luận: <span style="font-weight: normal"><?php echo $each['comment'] ?></span></h4>
                                         <h4 class="mt-5">
-                                            Số sao: <span><?php echo $each['rating']?> <span class="fa fa-star checked"></span></span>                                      
+                                            Số sao: <span><?php echo $each['rating']?> <span class="fa fa-star checked"></span></span>
                                         </h4>
                                     </div>
                                 <?php endforeach ?>
@@ -103,7 +113,7 @@ if($num_result_rating != 0) {
                             <input type="hidden" name="product_id" value="<?php echo $id ?>">
                             <h1 style="margin: 0;margin-top: 100px">- Gửi đánh giá sản phẩm</h1>                            
                             <h3 class="mt-10">Bình luận</h3>    
-                            <textarea style="width: 648px;height: 100px;" name="comment"></textarea>                                            
+                            <textarea style="width: 648px;height: 100px;font-size: inherit;" name="comment"></textarea>                                            
                             <h3 class="mt-10">Số sao</h3>
                             <fieldset class="rating">
                                 <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -119,7 +129,7 @@ if($num_result_rating != 0) {
                             </fieldset>
                             <br>
                             <br>
-                            <button class="btn btn-primary">Gửi đánh giá</button>
+                            <button class="btn btn-primary btn-rating">Gửi đánh giá</button>
                         </form>
                    </div>                   
               </div>
@@ -127,6 +137,9 @@ if($num_result_rating != 0) {
         </div>
         <?php include 'footer.php' ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>  
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
         <script>
             $(document).ready(function() {
                 $(".btn-add-to-cart").click(function() {
@@ -138,7 +151,7 @@ if($num_result_rating != 0) {
                         data: {id},
                     })
                     .done(function(response) {
-                        alert(response);
+                        $.notify(response + " vào giỏ hàng", "success");                                            
                     })                    
                 });
             });

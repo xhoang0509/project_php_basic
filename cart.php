@@ -9,6 +9,7 @@ if(empty($_SESSION['id_customer'])) {
   header('location:index.php');
   exit();
 }
+
 $id = $_SESSION['id_customer'];
 
 $sql = "select * from customers where id = '$id'";
@@ -40,7 +41,7 @@ if(!empty($_SESSION['cart'])) {
         <div class="wrapper">
            <?php if(!empty($_SESSION['cart'])) { ?>
            <div class="container" style="padding: 0 5% 3%;min-height: 70vh;">
-              <h1 style="text-align: left; font-weight: bold">Thông tin giỏ hàng</h1>
+              <h1 style="text-align: left; font-weight: bold">- Thông tin giỏ hàng</h1>
               <h2 class="text-success">
                     <?php if(!empty($_SESSION['name_product'])) {
                         echo $_SESSION['name_product'];
@@ -98,9 +99,9 @@ if(!empty($_SESSION['cart'])) {
               </table>
               <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>              
               <form action="process_checkout.php" method="POST">
-                <h1 style="text-align: left; font-weight: bold; margin-top: 50px">Thông tin thanh toán</h1>                
-                <h2>Tên người nhận: <?php echo $customer['name'] ?></h2>
-                <h2>Địa chỉ: 
+                <h1 style="text-align: left; font-weight: bold; margin-top: 50px">- Thông tin thanh toán</h1>                
+                <h4><span style="font-weight: bold;">Tên người nhận: </span><?php echo $customer['name'] ?></h4>
+                <h4><span style="font-weight: bold;">Địa chỉ: </span>
                     <?php 
                         if(empty($customer['address'])) {
                             echo '<span style="color:red;">Trống</span>';
@@ -109,9 +110,9 @@ if(!empty($_SESSION['cart'])) {
                             echo $customer['address'];
                         } 
                     ?>                    
-                </h2>
-                <h2>Số điện thoại: <?php echo $customer['phone'] ?></h2>
-                <h2>Ghi chú: </h2>
+                </h4>
+                <h4><span style="font-weight: bold;">Số điện thoại: </span><?php echo $customer['phone'] ?></h4>
+                <h4><span style="font-weight: bold;">Ghi chú: </span></h4>
                 <textarea style="width: 564px;height: 91px;" name="notes" id="" cols="30" rows="10"></textarea><br><br>
                 <?php if(empty($customer['address'])) { ?>
                     <a class="btn btn-primary" href="profile.php">Yêu cầu chỉnh sửa thông tin để thanh toán</a>

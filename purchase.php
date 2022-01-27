@@ -4,8 +4,8 @@ require './admin/connect.php';
 require './help.php';
 
 if(empty($_SESSION['id_customer'])) {
-  header('location:login.php');
-  exit();
+	header('location:login.php');
+	exit();
 }
 
 $id = $_SESSION['id_customer'];

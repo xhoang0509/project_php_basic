@@ -54,7 +54,7 @@ $result = mysqli_query($connect, $sql);
                             </span>
                             <?php if(!empty($_SESSION['id_customer'])) {?>
                             <button 
-                                class="btn-add-to-cart btn btn-primary" 
+                                class="btn-add-to-cart btn btn-primary prettyprint runnable prettyprinted" 
                                 data-id="<?php echo $each['id'] ?>"
                             >
                                 Thêm vào giỏ hàng
@@ -74,6 +74,7 @@ $result = mysqli_query($connect, $sql);
     <script src="js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>  
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
     <script>
         $(document).ready(function() {
             $( "#project" ).autocomplete({
@@ -110,11 +111,7 @@ $result = mysqli_query($connect, $sql);
                     data: {id},
                 })
                 .done(function(response) {
-                    if(response == 1) {
-                        alert(response);
-                    } else {
-                        alert(response);
-                    }
+                    $.notify(response + " vào giỏ hàng", "success");                    
                 })                
             });
         });
