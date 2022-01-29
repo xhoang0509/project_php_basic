@@ -72,6 +72,7 @@ if(isset($_SESSION['id_customer'])) {
                         <br>                  
                     </div>
                     <button class="btn btn-primary mt-10">Đăng nhập</button>
+                    <a href="forgot_password.php" class="btn btn-secondary mt-10">Quên mật khẩu</a>
                 </form>
                 <p class="mt-5">Nếu chưa có tài khoản. Hãy đăng kí <a href="register.php">tại đây</a></p>
             </div>
