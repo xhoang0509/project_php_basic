@@ -33,9 +33,11 @@ $result = mysqli_query($connect, $sql);
                     }
                     ?>    
                 </h2>
-                <a class="add-staff" href="./add_staff.php"
-                    >Thêm nhân viên mới</a>
-                    <div class="row">                    
+                <a class="add-staff" href="./add_staff.php">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm nhân viên mới
+                </a>
+                <div class="row">                    
                     <table class="w3-table-all">
                         <thead>
                           <tr class="w3-light-grey">

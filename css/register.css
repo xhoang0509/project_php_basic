@@ -1,23 +1,22 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-	font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1.2;
 }
+
 .app {
     width: 100vw;
     height: 100vh;
     background: rgb(97, 180, 242);
-    background: linear-gradient(
-        201deg,
+    background: linear-gradient(201deg,
         rgba(97, 180, 242, 1) 16%,
         rgba(90, 196, 216, 1) 27%,
-        rgba(0, 61, 255, 0.7458333675266982) 100%
-    );
+        rgba(0, 61, 255, 0.7458333675266982) 100%);
     display: flex;
     align-items: center;
 }
@@ -25,16 +24,18 @@ body {
 .mt-5 {
     margin-top: 5px;
 }
+
 .mt-10 {
     margin-top: 10px;
 }
+
 .d-block {
     display: block;
 }
 
 .container {
     padding-top: 150px;
-    width: 450px;
+    width: 500px;
     margin: 0 auto;
     text-align: center;
     background-color: #fff;
@@ -58,4 +59,13 @@ input {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.brand-name {
+    font-size: 40px;
+    font-style: italic;
+    background: -webkit-linear-gradient(#f01919, #179fe0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
 }

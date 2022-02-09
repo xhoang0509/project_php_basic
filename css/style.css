@@ -35,6 +35,7 @@ body {
 .wrapper {
     width: 1300px;
     margin: 0 auto;
+    padding-top: 40px;
 }
 .header {
     display: flex;
@@ -50,10 +51,10 @@ body {
     font-size: 3rem;
     font-weight: bold;
     color: blue;
-}
-.logo-link:hover {
-    color: orange;
-    transition: all 0.3s ease-in-out;
+    font-style: italic;
+    background: -webkit-linear-gradient(#f01919, #179fe0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
 }
 
 .menu {
@@ -197,6 +198,7 @@ body {
     color: green;
     font-weight: bold;
     display: none;
+    top: 4px;
 }
 
 .footer {
@@ -270,7 +272,7 @@ body {
 
 #container-admin {
     width: 100%;
-    min-height: 700px;
+    min-height: 85vh;
     background-color: #fff;
     padding: 60px 100px;
 }
@@ -378,15 +380,48 @@ body {
 
 .header-icon-link {
     text-decoration: none;
-    color: #000;
-    display: flex;
+    color: #000;    
     text-align: center;
     margin-top: 8px;
     font-weight: bold;
     padding: 0 16px;
+    display: flex;
+    align-items: center;
 }
 
 .header-icon-link:hover {
     color: orange;
     transition: all 0.3s ease-in;
+}
+
+.pagination {
+    margin: 20px auto;        
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-link {
+    padding: 10px;
+    color: blue;
+    text-decoration: none;
+}
+
+.pagination-link.active {
+    color: #ccc;
+    cursor: default;
+    text-decoration: underline;
+}
+
+.all-product {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    padding: 40px;
+}
+
+.all-product:hover {
+    color: blue;
+    transition: all 0.35s ease-in-out 0;
 }

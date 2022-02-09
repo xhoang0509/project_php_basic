@@ -5,8 +5,31 @@ require 'help.php';
 require 'admin/connect.php';
 require 'check_admin_client.php';
 
-$sql = "select * from products";
+if(isset($_GET['page'])) {
+    $current_page = $_GET['page'];    
+} else {
+    $current_page = 1;
+}
+
+// process pagination
+$so_san_pham_tren_1_trang = 8;
+
+$sql_san_pham = "select count(*) from products";
+$mang_san_pham = mysqli_query($connect, $sql_san_pham);
+$kq_san_pham =mysqli_fetch_array($mang_san_pham);
+$so_san_pham = $kq_san_pham['count(*)'];
+
+$so_trang = ceil($so_san_pham / $so_san_pham_tren_1_trang);
+$bo_qua = $so_san_pham_tren_1_trang * ($current_page - 1);
+
+// get product
+$sql = "select * from products limit $so_san_pham_tren_1_trang offset $bo_qua";
 $result = mysqli_query($connect, $sql);
+if(mysqli_num_rows($result) == 0) {
+    header("location:index.php");
+    exit();
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -21,6 +44,7 @@ $result = mysqli_query($connect, $sql);
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
         <title>ABC Shop</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <link rel="stylesheet" href="./css/style.css" />
@@ -32,7 +56,7 @@ $result = mysqli_query($connect, $sql);
             <a href="#"><img src="./image/banner.png" alt="" /></a>
         </div>
         <div class="wrapper">
-            <h1 class="mt-10">Tất cả sản phẩm</h1>
+            <a class="all-product" href="index.php" class="mt-10">Tất cả sản phẩm</a>
             <section>
                 <div class="list">
                     <?php foreach ($result as $each): ?>
@@ -68,7 +92,16 @@ $result = mysqli_query($connect, $sql);
                             <span class="view-detail">Xem chi tiết</span>                
                         </div>  
                     <?php endforeach ?>               
-            </section>           
+            </section>
+            <div class="pagination">
+                <?php for($i = 1; $i <= $so_trang; $i++){ ?>
+                    <a 
+                        class="pagination-link <?php if($current_page == $i) {echo 'active';} ?>"
+                        href="?page=<?php echo $i ?>">
+                        <?php echo $i ?>                        
+                    </a>
+                <?php } ?>
+            </div>         
         </div>
         <?php include 'footer.php' ?>
     <script src="js/index.js"></script>
@@ -77,7 +110,10 @@ $result = mysqli_query($connect, $sql);
     <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
     <script>
         $(document).ready(function() {
-            $( "#project" ).autocomplete({
+            const projectElement = $("#project");          
+            if(projectElement) {
+                console.log('1')
+                $( "#project" ).autocomplete({
                 minLength: 0,
                 source: 'search.php',
                 focus: function( event, ui ) {
@@ -101,6 +137,7 @@ $result = mysqli_query($connect, $sql);
                     .appendTo( ul );
                     
                 };
+            }
             
 
             $(".btn-add-to-cart").click(function() {

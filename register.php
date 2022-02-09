@@ -13,11 +13,12 @@ if(isset($_SESSION['id'])) {
         <title>Đăng kí tài khoản</title>
         <link rel="stylesheet" href="css/register.css" />
         <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="app">
             <div class="container">
-                <h4 style="text-align: left;"><a href="index.php">Quay lại trang chủ</a></h4>
+                <div class="brand-name">ABC SHOP <br> HI-END COMPUTER</div>                
                 <h1 class="mt-5">Đăng kí tài khoản mới</h1>
                 <h3 style="color: red">
                     <?php 
@@ -37,6 +38,10 @@ if(isset($_SESSION['id'])) {
                     <label class="d-block mt-5" for="password">Mật khẩu</label>
                     <input class="d-block mt-5" type="text" name="password" id="password" />
                     <button class="btn btn-primary mt-10">Đăng kí</button>
+                    <a style="text-decoration: none" href="index.php" class="btn btn-secondary mt-10">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Quay lại trang chủ
+                    </a>
                 </form>
                 <p class="mt-5">
                     Nếu đã có tài khoản. Hãy đăng nhập

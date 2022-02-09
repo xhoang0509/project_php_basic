@@ -25,12 +25,13 @@ if(isset($_SESSION['id_customer'])) {
         <title>Đăng nhập tài khoản</title>
         <link rel="stylesheet" href="css/register.css" />
         <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="app">
             <div class="container">
-                <h4 style="text-align: left"><a href="index.php">Quay lại trang chủ</a></h4>
-                <h1 class="mt-5">Đăng nhập tài khoản</h1>
+                <div class="brand-name">ABC SHOP <br> HI-END COMPUTER</div>                
+                <h1 class="mt-10">Đăng nhập tài khoản</h1>
                 <h3 style="color: green">
                     <?php 
                         if(!empty($_SESSION['success'])) {
@@ -72,7 +73,12 @@ if(isset($_SESSION['id_customer'])) {
                         <br>                  
                     </div>
                     <button class="btn btn-primary mt-10">Đăng nhập</button>
-                    <a href="forgot_password.php" class="btn btn-secondary mt-10">Quên mật khẩu</a>
+                    <a href="#" class="btn btn-secondary mt-10">Quên mật khẩu</a>
+                    <a style="text-decoration: none" href="index.php" class="btn btn-secondary mt-10">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Quay lại trang chủ
+                    </a>
+                    
                 </form>
                 <p class="mt-5">Nếu chưa có tài khoản. Hãy đăng kí <a href="register.php">tại đây</a></p>
             </div>

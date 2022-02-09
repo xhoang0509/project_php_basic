@@ -24,9 +24,7 @@
         ?>           
             <div class="show-admin">
                 <h1>Tất cả đơn hàng</h1>
-                <a class="add-manufacturer" href="./add_order.php"
-                    >Thêm nhà đơn hàng mới</a
-                >
+                <!-- <a class="add-manufacturer" href="./add_order.php">Thêm nhà đơn hàng mới</a> -->
                 <div>
                     <table border="1" width="100%" class="mt-10 table-others"   > 
                         <tr>

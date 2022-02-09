@@ -45,8 +45,10 @@ $result = mysqli_query($connect, $sql);
                     }
                     ?>    
                 </h2>
-                <a class="add-manufacturer" href="add_product.php"
-                    >Thêm nhà sản phẩm mới</a
+                <a class="add-manufacturer" href="add_product.php">
+                  <i class="fa-solid fa-plus"></i>
+                  Thêm nhà sản phẩm mới
+                </a
                 >
                 <div class="products">
                     <table class="w3-table-all">                     
