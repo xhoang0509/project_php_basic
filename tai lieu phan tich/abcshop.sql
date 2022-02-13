@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2022 at 05:29 AM
+-- Generation Time: Feb 13, 2022 at 09:28 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -43,7 +43,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `photo`, `address`, `gender`, `email`, `password`, `level`) VALUES
-(2, 'super admin', '', '', 0, 'superadmin@gmail.com', '1', 1);
+(11, 'Admin', '1644734689.jpg', 'Hà Nội', 1, 'superadmin@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', 1),
+(12, 'Trần Huy Tiến', '1644734731.png', 'Hiển Khánh - Nam Định', 1, 'tranhuytien022001@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', 0),
+(13, 'Mèo Cute', '1644738756.jpg', 'Bắc Giang', 2, 'meocute@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', 0);
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `photo`, `address`, `phone`, `token`) VALUES
-(1, 'Nguyễn Xuân Hoàng', 'xhoang0509@gmail.com', '1', '1642813322.jpg', 'khong co dia chi 123																																																																																												', '0857812113', 'user_61ebb9e9398564.017788371642838505'),
+(1, 'Nguyễn Xuân Hoàng', 'xhoang0509@gmail.com', '1', '1643292345.jpg', 'khong co dia chi 123																																																																																												', '0857812113', 'user_620877ab39c488.216675901644722091'),
 (11, 'Nguyễn Xuân Hoàng', 'xhoang05091@gmail.com', '1', '1640404667.png', '', '', ''),
 (14, '', '', '', '', '', '', ''),
 (15, 'Hoang Nguyen Xuan', 'xhoang05092@gmail.com', '1', '', '', '', ''),
@@ -76,7 +78,22 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `photo`, `address`, 
 (20, 'a', 'a', 'a', '', '', 'a', ''),
 (21, '1', '1', '1', '', '', '1', ''),
 (22, 'Nguyễn Văn Hùng', 'hung@gmail.com', '1', '1643102323.jpg', 'Ứng hòa - Hà Nội', '0123', 'user_61efbe0ad2ba11.083175191643101706'),
-(23, 'Tạ Văn Điệu', 'tavandieu@gmail.com', '1', '1643102566.jpg', 'Giao Thủy - Nam Định', '0123', '');
+(23, 'Tạ Văn Điệu', 'tavandieu@gmail.com', '1', '1643102566.jpg', 'Giao Thủy - Nam Định', '0123', ''),
+(24, 'Nguyễn Mạnh Quyết', 'manhquyet01@gmail.com', '123', '', '', '0857812656', ''),
+(25, 'Mạnh Quyết', 'manhquyet1@gmail.com', '202cb962ac59075b964b07152d234b7048%$*kdyr9823h*@&%RH#$%&#*$&#*h', '', '', '0857812154', 'user_62087e585f0322.318572571644723800'),
+(26, 'Nguyen Van B', 'nguyenvanb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', '1644724659.jpg', 'Ha Noi', '0123456', 'user_6208ae7b504351.619237501644736123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forgot_password`
+--
+
+CREATE TABLE `forgot_password` (
+  `customer_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -98,7 +115,8 @@ CREATE TABLE `manufacturers` (
 
 INSERT INTO `manufacturers` (`id`, `name`, `photo`, `address`, `phone`) VALUES
 (5, 'Apple', '1640517537.png', 'USA new', '0857812113'),
-(10, 'Sam Sung', '1640514208.png', 'Hàn quốc', '0857812113');
+(10, 'Sam Sung', '1640514208.png', 'Hàn quốc', '0857812113'),
+(18, 'Xiao Mi', '1644740826.svg (1)', 'Trung Quốc', '+86xxxx');
 
 -- --------------------------------------------------------
 
@@ -130,9 +148,6 @@ INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `a
 (7, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', -1, 400000, '2022-01-13 17:00:00'),
 (8, 17, 'Tran Huy Tien', '0123 456 789', 'bac giang									\r\n											\r\n											\r\n											\r\n						\r\n					', '', -1, 5400000, '2022-01-13 17:00:00'),
 (9, 1, 'Nguyễn Xuân Hoàng', '0857812113', '																																																						tam ***- yên ***- bắc ***\n											\n											\n											\n											\n											\n											\n											\n											\n					', 'xuan hoang', -1, 0, '2022-01-21 17:00:00'),
-(10, 0, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', 'aaa', 0, 0, '2022-01-21 17:00:00'),
-(11, 0, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 0, 0, '2022-01-21 17:00:00'),
-(12, 0, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 0, 0, '2022-01-21 17:00:00'),
 (13, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 0, '2022-01-21 17:00:00'),
 (14, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 2000000, '2022-01-21 17:00:00'),
 (15, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 2000000, '2022-01-21 17:00:00'),
@@ -149,8 +164,13 @@ INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `a
 (32, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 400000, '2022-01-21 17:00:00'),
 (33, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00'),
 (34, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00'),
-(35, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 0, 10600000, '2022-01-25 08:31:08'),
-(36, 23, 'Tạ Văn Điệu', '0123', 'Giao Thủy - Nam Định', '', 1, 6400000, '2022-01-25 09:23:04');
+(35, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 10600000, '2022-01-25 08:31:08'),
+(36, 23, 'Tạ Văn Điệu', '0123', 'Giao Thủy - Nam Định', '', 1, 6400000, '2022-01-25 09:23:04'),
+(37, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 20400100, '2022-01-27 15:03:45'),
+(38, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', 'notes', -1, 4400000, '2022-02-08 13:14:43'),
+(39, 26, 'Nguyen Van B', '0123', 'Ha Noi', 'Giao hàng vào buổi tối nhé !', 0, 400000, '2022-02-13 07:09:04'),
+(40, 26, 'Nguyen Van B', '0123', 'Ha Noi', 'Giao hàng vào buổi sáng nhé !', -1, 42390000, '2022-02-13 07:09:41'),
+(41, 26, 'Nguyen Van B', '0123', 'Ha Noi', '', 0, 24.99, '2022-02-13 07:54:07');
 
 -- --------------------------------------------------------
 
@@ -211,7 +231,17 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
 (36, 3, 1),
 (36, 4, 1),
 (36, 6, 1),
-(36, 7, 1);
+(36, 7, 1),
+(37, 4, 9),
+(37, 6, 6),
+(37, 10, 3),
+(37, 3, 2),
+(37, 7, 2),
+(38, 3, 1),
+(38, 4, 1),
+(40, 4, 7),
+(40, 13, 1),
+(41, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -241,7 +271,8 @@ INSERT INTO `products` (`id`, `name`, `photo`, `price`, `description`, `quantity
 (7, 'Táo thật', '1640830520.jpg', 1000000, '                            \r\n             hoa quả rất ngon       ', 10, 5, 'hoa quả'),
 (9, 'Tết 2022', '1642154609.jpg', 40, '                                                                                                                                                                            \r\n       tết sum vầy                                     \r\n                        ', 200, 5, 'Lễ hội'),
 (10, 'iphone sx max', '1642151972.jpg', 24.99, '                            \r\n        iphone my            ', 20, 5, 'điện thoại'),
-(11, 'Nokia C2 01', '1643251496.jpg', 2000000, 'Điện thoại có phím bấm                            \r\n                    ', 1000, 10, 'Điện thoại');
+(11, 'Nokia C2 01', '1643251496.jpg', 2000000, 'Điện thoại có phím bấm                            \r\n                    ', 1000, 10, 'Điện thoại'),
+(13, 'Samsung Galaxy Z Fold3 5G 256GB', '1644421789.jpg', 41990000, 'Galaxy Z Fold3 5G, chiếc điện thoại được nâng cấp toàn diện về nhiều mặt, đặc biệt đây là điện thoại màn hình gập đầu tiên trên thế giới có camera ẩn (08/2021). Sản phẩm sẽ là một “cú hit” của Samsung góp phần mang đến những trải nghiệm mới cho người dùng', 100, 10, 'Điện thoại');
 
 -- --------------------------------------------------------
 
@@ -281,7 +312,8 @@ INSERT INTO `product_rating` (`id`, `product_id`, `customer_id`, `rating`, `comm
 (18, 10, 23, 5, 'Sau khi sử dụng sản phẩm được 1 tháng tôi thấy rất hài lòng. Vote cho shop 5 sao vì sự nhiệt tình <3.'),
 (19, 7, 23, 5, 'len sao'),
 (20, 11, 23, 4.5, 'danh gia xem dc bao nhieu'),
-(21, 11, 23, 1, 'test tiep ');
+(21, 11, 23, 1, 'test tiep '),
+(22, 6, 23, 5, 'sản phẩm rất tốt');
 
 --
 -- Indexes for dumped tables
@@ -300,6 +332,12 @@ ALTER TABLE `admin`
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- Indexes for table `manufacturers`
@@ -343,41 +381,47 @@ ALTER TABLE `product_rating`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `product_rating`
 --
 ALTER TABLE `product_rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  ADD CONSTRAINT `forgot_password_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`);
 
 --
 -- Constraints for table `order_product`
