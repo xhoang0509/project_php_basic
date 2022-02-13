@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../check_admin_login.php';
 
 require '../connect.php';
@@ -7,13 +8,9 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php include '../header_admin.php';?>   
-        <body>
-            <header id="header">
-                <a href="../root" class="header-logo">
-                    <h1>ABC Shop</h1>
-                </a>
-            </header>
+    <?php include '../head_admin.php';?>   
+    <body>
+        <?php include '../header_admin.php';?>   
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
         <?php 

@@ -41,95 +41,95 @@ if(!empty($_SESSION['cart'])) {
        <?php include 'header.php' ?>
         <div class="wrapper">
            <?php if(!empty($_SESSION['cart'])) { ?>
-           <div class="container" style="padding: 0 5% 3%;min-height: 70vh;">
-              <h1 style="text-align: left; font-weight: bold">- Thông tin giỏ hàng</h1>
-              <h2 class="text-success">
-                    <?php if(!empty($_SESSION['name_product'])) {
-                        echo $_SESSION['name_product'];
-                        unset($_SESSION['name_product']);
-                    }
-                    ?>    </h2>
-              <h2 class="text-danger">
-                  <?php if(!empty($_SESSION['error_delete_cart'])) {
-                      echo $_SESSION['error_delete_cart'];
-                      unset($_SESSION['error_delete_cart']);
-                  }
-                  ?>    </h2>                
-              <table class="w3-table-all">
-                  <thead>
-                    <tr class="w3-light-grey">
-                      <th>STT</th>
-                      <th>Tên</th>
-                      <th>Ảnh</th>
-                      <th>Giá</th>
-                      <th>Số lượng</th>
-                      <th>Thành tiền</th>
-                      <th>Xóa</th>
-                    </tr>
-                  </thead>
-                  <?php 
-                    $index = 1;                    
-                  ?>
-                  <?php foreach ($cart as $id => $each): ?>                    
-                      <tr>
-                        <td><?php echo $index; $index++; ?></td>
-                        <td><?php echo $each['name'] ?></td>
-                        <td><img height="100" src="image/<?php echo $each['photo'] ?>" alt=""></td>
-                        <td>
-                          <span class="span-price"><?php echo format_number_to_currency($each['price'])?> </span>vnd
-                        </td>
-                        <td>                          
-                          <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="0">-</button>                          
-                          <span class="span-quantity"><?php echo $each['quantity']?></span>
-                          <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="1">+</button>
-                        </td>
-                        <td>
-                          <span class="span-sum">
-                            <?php 
-                              $sum =  $each['price'] * $each['quantity'];
-                              echo format_number_to_currency($sum);
-                              $total += $sum;
-                            ?> 
-                          </span> vnd
-                        </td>
-                        <td>
-                            <button class="btn btn-danger btn-delete" data-id="<?php echo $id ?>">Xóa</button>
-                        </td>
-                      </tr>
-                  <?php endforeach ?>                                 
-              </table>
-              <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>              
-              <form action="process_checkout.php" method="POST">
-                <h1 style="text-align: left; font-weight: bold; margin-top: 50px">- Thông tin thanh toán</h1>                
-                <h4><span style="font-weight: bold;">Tên người nhận: </span><?php echo $customer['name'] ?></h4>
-                <h4><span style="font-weight: bold;">Địa chỉ: </span>
-                    <?php 
-                        if(empty($customer['address'])) {
-                            echo '<span style="color:red;">Trống</span>';
+                <div class="container" style="padding: 0 5% 3%;min-height: 70vh;">
+                    <h1 style="text-align: left; font-weight: bold">- Thông tin giỏ hàng</h1>
+                    <h2 class="text-success">
+                        <?php if(!empty($_SESSION['name_product'])) {
+                            echo $_SESSION['name_product'];
+                            unset($_SESSION['name_product']);
                         }
-                        else {
-                            echo $customer['address'];
-                        } 
-                    ?>                    
-                </h4>
-                <h4><span style="font-weight: bold;">Số điện thoại: </span><?php echo $customer['phone'] ?></h4>
-                <h4><span style="font-weight: bold;">Ghi chú: </span></h4>
-                <textarea style="width: 564px;height: 91px;" name="notes" id="" cols="30" rows="10"></textarea><br><br>
-                <?php if(empty($customer['address'])) { ?>
-                    <a class="btn btn-primary" href="profile.php">Yêu cầu chỉnh sửa thông tin để thanh toán</a>
-                <?php }else{ ?>
-                    <button class="btn btn-primary">Tiến hàng đặt hàng</button>
-                <?php } ?>
-                <input type="hidden" name="name" value="<?php echo $customer['name'] ?>">
-                <input type="hidden" name="address_receiver" value="<?php echo $customer['address'] ?>">
-                <input type="hidden" name="phone" value="<?php echo $customer['phone'] ?>">
-                <input type="hidden" name="total_price" value="<?php echo $total?>">
-              </form>
-            </div>
+                        ?>    </h2>
+                    <h2 class="text-danger">
+                      <?php if(!empty($_SESSION['error_delete_cart'])) {
+                          echo $_SESSION['error_delete_cart'];
+                          unset($_SESSION['error_delete_cart']);
+                      }
+                      ?>    </h2>                
+                    <table class="w3-table-all">
+                      <thead>
+                        <tr class="w3-light-grey">
+                          <th>STT</th>
+                          <th>Tên</th>
+                          <th>Ảnh</th>
+                          <th>Giá</th>
+                          <th>Số lượng</th>
+                          <th>Thành tiền</th>
+                          <th>Xóa</th>
+                        </tr>
+                      </thead>
+                      <?php 
+                        $index = 1;                    
+                      ?>
+                      <?php foreach ($cart as $id => $each): ?>                    
+                          <tr>
+                            <td><?php echo $index; $index++; ?></td>
+                            <td><?php echo $each['name'] ?></td>
+                            <td><img height="100" src="image/<?php echo $each['photo'] ?>" alt=""></td>
+                            <td>
+                              <span class="span-price"><?php echo format_number_to_currency($each['price'])?> </span>vnd
+                            </td>
+                            <td>                          
+                              <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="0">-</button>                          
+                              <span class="span-quantity"><?php echo $each['quantity']?></span>
+                              <button class="btn btn-secondary btn-update-quantity" data-id="<?php echo $id ?>" data-type="1">+</button>
+                            </td>
+                            <td>
+                              <span class="span-sum">
+                                <?php 
+                                  $sum =  $each['price'] * $each['quantity'];
+                                  echo format_number_to_currency($sum);
+                                  $total += $sum;
+                                ?> 
+                              </span> vnd
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-delete" data-id="<?php echo $id ?>">Xóa</button>
+                            </td>
+                          </tr>
+                      <?php endforeach ?>                                 
+                    </table>
+                    <h3 style="font-weight: bold;">Tổng tiền hóa đơn <span class="span-total"><?php echo format_number_to_currency($total) ?></span> vnd</h3>              
+                    <form action="process_checkout.php" method="POST">
+                    <h1 style="text-align: left; font-weight: bold; margin-top: 50px">- Thông tin thanh toán</h1>                
+                    <h4><span style="font-weight: bold;">Tên người nhận: </span><?php echo $customer['name'] ?></h4>
+                    <h4><span style="font-weight: bold;">Địa chỉ: </span>
+                        <?php 
+                            if(empty($customer['address'])) {
+                                echo '<span style="color:red;">Trống</span>';
+                            }
+                            else {
+                                echo $customer['address'];
+                            } 
+                        ?>                    
+                    </h4>
+                    <h4><span style="font-weight: bold;">Số điện thoại: </span><?php echo $customer['phone'] ?></h4>
+                    <h4><span style="font-weight: bold;">Ghi chú: </span></h4>
+                    <textarea style="width: 564px;height: 91px;" name="notes" id="" cols="30" rows="10"></textarea><br><br>
+                    <?php if(empty($customer['address'])) { ?>
+                        <a class="btn btn-primary" href="profile.php">Yêu cầu chỉnh sửa thông tin để thanh toán</a>
+                    <?php }else{ ?>
+                        <button class="btn btn-primary">Tiến hàng đặt hàng</button>
+                    <?php } ?>
+                    <input type="hidden" name="name" value="<?php echo $customer['name'] ?>">
+                    <input type="hidden" name="address_receiver" value="<?php echo $customer['address'] ?>">
+                    <input type="hidden" name="phone" value="<?php echo $customer['phone'] ?>">
+                    <input type="hidden" name="total_price" value="<?php echo $total?>">
+                    </form>
+                </div>
            <?php }else { ?> 
-           <div class="container" style="padding: 0 5% 3%">
-             <h3>Giỏ hàng trống. Hãy quay lại thêm sản phẩm vào <a class="text-underline" href="index.php">tại đây !</a></h3>
-           </div>
+               <div class="container" style="padding: 0 5% 3%;min-height: 70vh;">
+                 <h3>Giỏ hàng trống. Hãy quay lại thêm sản phẩm vào <a class="text-underline" href="index.php">tại đây !</a></h3>
+               </div>
            <?php } ?>
         </div>
        <?php include 'footer.php' ?>

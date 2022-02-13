@@ -1,5 +1,11 @@
 <?php
-require '../check_super_admin_login.php';
+session_start();
+
+if($_SESSION['level'] == 0) {
+	$_SESSION['error'] = "Bạn không có quyền xóa nhà sản xuất!";
+	header('location:index.php');
+	exit();
+}
 
 if(empty($_GET['id'])) {
 	$_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để xóa !";

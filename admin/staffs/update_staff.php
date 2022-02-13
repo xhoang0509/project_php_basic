@@ -69,7 +69,7 @@ require '../header_admin.php';
                     <br />
                     <label for="">Mật khẩu</label>
                     <br />
-                    <input class="input" type="password" name="password" value="<?php echo $each['password'] ?>"/>
+                    <input class="input" type="password" name="password" />
                     <br />
                     <button class="btn">Thêm</button>
                 </form>

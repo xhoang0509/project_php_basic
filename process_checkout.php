@@ -21,7 +21,11 @@ $notes = $_POST['notes'];
 $customer_id = $_SESSION['id_customer'];
 
 $cart = $_SESSION['cart'];
-
+// echo json_encode($cart);
+if(empty($cart)) {	
+	header("location:cart.php");
+	eixt();
+}
 
 $status = 0; // moi dat
 $sql = "INSERT INTO orders(customer_id, name_receiver, phone_receiver, address_receiver, notes, status, total_price)

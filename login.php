@@ -59,7 +59,7 @@ if(isset($_SESSION['id_customer'])) {
                              ?>"
                         />
                     <label class="d-block mt-5" for="">Mật khẩu</label>
-                    <input class="d-block mt-5" type="text" name="password" 
+                    <input class="d-block mt-5" type="password" name="password" 
                         value="<?php
                                 if(isset($_SESSION['password_register'])) {
                                     echo $_SESSION['password_register'];

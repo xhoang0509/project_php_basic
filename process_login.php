@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require 'admin/contants/PASSWORD_HASH.php';
 require("admin/connect.php");
 
 if(empty($_POST['email']) || empty($_POST['password'])) {
@@ -15,6 +15,9 @@ if(isset($_SESSION['id_customer'])) {
 
 $email = $_POST['email'];
 $password = $_POST['password'];
+
+$password_hash = md5($password).$PASSWORD_HASH;
+
 $remember_login;
 if(isset($_POST['remember_login'])) {
 	$remember_login = true;
@@ -22,7 +25,7 @@ if(isset($_POST['remember_login'])) {
 	$remember_login = false;
 }
 
-$sql = "select * from customers where email = '$email' and password = '$password'";
+$sql = "select * from customers where email = '$email' and password = '$password_hash'";
 $result = mysqli_query($connect, $sql);
 $number_rows = mysqli_num_rows($result);
 if($number_rows == 0) {

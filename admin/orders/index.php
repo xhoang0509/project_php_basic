@@ -1,32 +1,51 @@
-<?php require '../check_admin_login.php'; ?>
+<?php 
+session_start();
+require '../check_admin_login.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php include '../header_admin.php';?>   
+    <?php include '../head_admin.php';?>   
     <body>
-        <header id="header">
-            <a href="../root" class="header-logo">
-                <h1>ABC Shop</h1>
-            </a>
-        </header>
+        <?php include '../header_admin.php';?>
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
         <?php
             require '../connect.php';
-            $sql=" select 
+            $sql = " select 
             orders.*,
             customers.name,
             customers.phone,
             customers.address
             from orders
             join customers 
-            on customers.id = orders.customer_id";
-            $result = mysqli_query($connect,$sql);
+            on customers.id = orders.customer_id where status = 0";
+            $result_not_approved = mysqli_query($connect,$sql);
+
+            $sql = " select 
+            orders.*,
+            customers.name,
+            customers.phone,
+            customers.address
+            from orders
+            join customers 
+            on customers.id = orders.customer_id where status = 1";
+            $result_approved = mysqli_query($connect,$sql);
+
+            $sql = " select 
+            orders.*,
+            customers.name,
+            customers.phone,
+            customers.address
+            from orders
+            join customers 
+            on customers.id = orders.customer_id where status = -1";
+            $result_cancelled = mysqli_query($connect,$sql);
         ?>           
             <div class="show-admin">
-                <h1>Tất cả đơn hàng</h1>
-                <!-- <a class="add-manufacturer" href="./add_order.php">Thêm nhà đơn hàng mới</a> -->
+                <h1>Đơn hàng chưa duyệt</h1>
                 <div>
-                    <table border="1" width="100%" class="mt-10 table-others"   > 
+                <table border="1" width="100%" class="mt-10 table-others"   >
                         <tr>
                             <th>Mã</th>
                             <th>Thời gian đặt</th>
@@ -37,7 +56,143 @@
                             <th>Duyệt đơn</th>
                             <th>Hủy đơn</th>
                         </tr>
-                        <?php foreach ($result as $each): ?>
+                        <?php foreach ($result_not_approved as $each): ?>
+                                <tr>
+                                    <td><?php echo $each['id'] ?></td>
+                                    <td><?php echo $each['created_at'] ?></td>
+                                    <td>
+                                        <?php echo $each['name_receiver'] ?><br>
+                                        <?php echo $each['phone_receiver'] ?><br>
+                                        <?php echo $each['address_receiver'] ?><br>
+                                    </td>
+                                    <td>
+                                        <?php echo $each['name'] ?><br>
+                                        <?php echo $each['phone'] ?><br>
+                                        <?php echo $each['address'] ?><br>
+                                    </td>
+                                    <td class="status-<?php echo $each['id'] ?>">
+                                        <?php 
+                                            switch ($each['status']) {
+                                                case '-1':
+                                                echo '<div class="td-status bg-danger text-white">Đã hủy</div>';
+                                                    break;
+                                                case '0':
+                                                    echo '<div class="td-status bg-warning text-white">Đợi duyệt</div>';
+                                                    break;
+                                                case '1':
+                                                    echo '<div class="td-status bg-success text-white">Đã duyệt</div>';
+                                                    break;                      
+                                            }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $each['total_price'] ?>
+                                    </td>
+                                    <td>
+                                        <?php if($each['status'] == 1) {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã duyệt</button>
+                                        <?php } else if($each['status'] == 0) { ?>
+                                            <button class="btn btn-primary btn-accept-order" data-id="<?php echo $each['id'] ?>" data-type="accept">Duyệt</button>
+                                        <?php } else {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                         <?php if($each['status'] == 1) {?>
+                                            <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
+                                        <?php } else if($each['status'] == 0) { ?>
+                                            <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
+                                        <?php } else {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
+                                        <?php } ?>                                        
+                                    </td>
+                                </tr>                           
+                        <?php endforeach ?>
+                    </table>
+                </div>
+                <br>
+                <h1>Đơn hàng đã duyệt</h1>
+                <div>
+                    <table border="1" width="100%" class="mt-10 table-others"   >
+                        <tr>
+                            <th>Mã</th>
+                            <th>Thời gian đặt</th>
+                            <th>Thông tin người nhận</th>
+                            <th>Thông tin người đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Tổng tiền</th>
+                            <th>Duyệt đơn</th>
+                            <th>Hủy đơn</th>
+                        </tr>
+                        <?php foreach ($result_approved as $each): ?>
+                                <tr>
+                                    <td><?php echo $each['id'] ?></td>
+                                    <td><?php echo $each['created_at'] ?></td>
+                                    <td>
+                                        <?php echo $each['name_receiver'] ?><br>
+                                        <?php echo $each['phone_receiver'] ?><br>
+                                        <?php echo $each['address_receiver'] ?><br>
+                                    </td>
+                                    <td>
+                                        <?php echo $each['name'] ?><br>
+                                        <?php echo $each['phone'] ?><br>
+                                        <?php echo $each['address'] ?><br>
+                                    </td>
+                                    <td class="status-<?php echo $each['id'] ?>">
+                                        <?php 
+                                            switch ($each['status']) {
+                                                case '-1':
+                                                echo '<div class="td-status bg-danger text-white">Đã hủy</div>';
+                                                    break;
+                                                case '0':
+                                                    echo '<div class="td-status bg-warning text-white">Đợi duyệt</div>';
+                                                    break;
+                                                case '1':
+                                                    echo '<div class="td-status bg-success text-white">Đã duyệt</div>';
+                                                    break;                      
+                                            }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $each['total_price'] ?>
+                                    </td>
+                                    <td>
+                                        <?php if($each['status'] == 1) {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã duyệt</button>
+                                        <?php } else if($each['status'] == 0) { ?>
+                                            <button class="btn btn-primary btn-accept-order" data-id="<?php echo $each['id'] ?>" data-type="accept">Duyệt</button>
+                                        <?php } else {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                         <?php if($each['status'] == 1) {?>
+                                            <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
+                                        <?php } else if($each['status'] == 0) { ?>
+                                            <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
+                                        <?php } else {?>
+                                            <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
+                                        <?php } ?>                                        
+                                    </td>
+                                </tr>                           
+                        <?php endforeach ?>
+                    </table>
+                </div>
+                <br>
+                <h1>Đơn hàng đã hủy</h1>
+                <div>
+                    <table border="1" width="100%" class="mt-10 table-others"   >
+                        <tr>
+                            <th>Mã</th>
+                            <th>Thời gian đặt</th>
+                            <th>Thông tin người nhận</th>
+                            <th>Thông tin người đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Tổng tiền</th>
+                            <th>Duyệt đơn</th>
+                            <th>Hủy đơn</th>
+                        </tr>
+                        <?php foreach ($result_cancelled as $each): ?>
                                 <tr>
                                     <td><?php echo $each['id'] ?></td>
                                     <td><?php echo $each['created_at'] ?></td>

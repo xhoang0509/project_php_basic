@@ -1,59 +1,59 @@
 <?php
+session_start();
 require '../check_admin_login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php include '../header_admin.php';?>   
+    <?php include '../head_admin.php';?>   
     <body>
-        <header id="header">
-            <a href="../root" class="header-logo">
-                <h1>ABC Shop</h1>
-            </a>
-        </header>   
+        <?php include '../header_admin.php';?> 
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show">
                 <h1>Thêm nhân viên mới</h1>
+                <?php if(isset($_SESSION['add_staff_error'])) { ?>
+                    <h3 class="color-red">
+                        <?php 
+                            echo $_SESSION['add_staff_error']; 
+                            unset($_SESSION['add_staff_error']);
+                        ?>
+                    </h3>
+                <?php } ?>
                 <a class="add-manufacturer" href="index.php">Quay lại</a>
-                <form method="post"
-                    action="process_add_staff.php"
-                    enctype="multipart/form-data"
-                    class="form-input"
-                >
-                    <label for="">Tên nhân viên</label>
+                <form method="POST" action="process_add_staff.php" enctype="multipart/form-data" class="form-input">
+                    <label for="name">Tên nhân viên</label>
                     <br />
-
-                    <input class="input" type="text" name="name"/>
+                    <input class="input" type="text" id="name" name="name"/>
                     <br />
-                    <label for="">Ảnh</label>
-                    <input class="input" type="file" name="photo"/>
+                    <label for="photo">Ảnh</label>
+                    <input class="input" type="file" id="photo" name="photo"/>
                     <br />
-                    <label for="">Địa chỉ</label>
+                    <label for="address">Địa chỉ</label>
                     <br />
-                    <input class="input" type="text" name="address"/>
+                    <input class="input" type="text" id="address" name="address"/>
                     <br />
-                    <label for="">Giới tính: </label>
+                    <label >Giới tính: </label>
                     <input type="radio" name="gender" id="male" value="1"/>
-                    <label for="male">nam</label>
+                    <label for="male">Nam</label>
                     <input type="radio" name="gender" id="female" value="2"/>
-                    <label for="female">nữ</label>
-                    <input type="radio" name="gender" id="orther" value="3"/>
-                    <label for="orther">khác</label>
+                    <label for="female">Nữ</label>
+                    <input type="radio" name="gender" id="other" value="3"/>
+                    <label for="other">Khác</label>
                     <br />
                     <br />
-                    <label for="">Email</label>
+                    <label for="email">Email</label>
                     <br />
-                    <input class="input" type="text" name="email"/>
+                    <input id="email" class="input" type="text" name="email"/>
                     <br />
                     <label for="">Mật khẩu</label>
                     <br />
                     <input class="input" type="password" name="password"/>
                     <br />
-                    <label for="">Chức vụ: </label>
+                    <label >Chức vụ: </label>
                     <input type="radio" name="level" id="admin" value="0"/>
-                    <label for="male">Nhân Viên</label>
-                    <input type="radio" name="level" id="sadmin" value="1"/>
-                    <label for="female">Quản lý</label>
+                    <label for="admin">Nhân Viên</label>
+                    <input type="radio" name="level" id="super_admin" value="1"/>
+                    <label for="super_admin">Quản Lý</label>
                     <br/>
                     <button class="btn">Thêm</button>
                 </form>

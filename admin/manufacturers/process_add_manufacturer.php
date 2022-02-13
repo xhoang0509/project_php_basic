@@ -1,5 +1,5 @@
 <?php
-require '../check_super_admin_login.php';
+require '../check_admin_login.php';
 require '../connect.php';
 
 $name = mysqli_real_escape_string($connect,$_POST['name']);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../check_admin_login.php';
 require '../connect.php';
 
@@ -19,14 +20,15 @@ $result = mysqli_query($connect,$sql);
 $total_orders = mysqli_num_rows($result);
 
 
+$sql = "select count(*) from orders where status = 0";
+$result = mysqli_query($connect,$sql);
+$order_wait_accpect = mysqli_fetch_array($result)['count(*)'];
 
-// $arrX = array_keys($arr);
-// $arrY = array_values($arr);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">    
-    <?php include '../header_admin.php';?>   
+    <?php include '../head_admin.php';?>   
     <style>
         .highcharts-figure,
         .highcharts-data-table table {
@@ -73,16 +75,19 @@ $total_orders = mysqli_num_rows($result);
     </style>
     
     <body>
-        <header id="header">
-            <a href="../root" class="header-logo">
-                <h1>ABC Shop</h1>
-            </a>
-        </header>
+        <?php include '../header_admin.php' ?>
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show-admin">
                 <h1>Tổng quan</h1>
                 <div class="dashboard-list">
+                    <h3 class="dashboard-item">
+                        <a href="../orders/" style="color:red;">Số đơn hàng cần duyệt: <?php echo $order_wait_accpect ?></a>                        
+                    </h3>
+
+                    <h3 class="dashboard-item">
+                        <a href="../orders/">Tổng đơn hàng: <?php echo $total_orders ?></a>
+                    </h3>
                     <h3 class="dashboard-item">
                         <a href="../manufacturers/">Tổng nhà sản xuất: <?php echo $total_manufacturers ?></a>
                     </h3>
@@ -92,19 +97,11 @@ $total_orders = mysqli_num_rows($result);
                     <h3 class="dashboard-item">
                         <a href="../staffs/">Tổng nhân viên: <?php echo $total_staffs ?></a>
                     </h3>
-                    <h3 class="dashboard-item">
-                        <a href="../others/">Tổng đơn hàng: <?php echo $total_orders ?></a>
-                    </h3>
                 </div>
                 <hr>
                 <h1 class="mt-10">Thống kê doanh thu</h1>
                 <figure class="highcharts-figure">
-                    <div style="padding: 0" id="container"></div>
-                        <!-- <p class="highcharts-description">
-                        Basic line chart showing trends in a dataset. This chart includes the
-                        <code>series-label</code> module, which adds a label to each line for
-                        enhanced readability.
-                        </p> -->
+                    <div style="padding: 0" id="container"></div>                        
                 </figure>
                 <hr />
                 <h1 class="mt-10">Sản phẩm bán chạy nhất tháng 11</h1>

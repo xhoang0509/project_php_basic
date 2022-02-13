@@ -1,19 +1,17 @@
 <?php
-require '../check_super_admin_login.php';
-
+session_start();
+require '../check_admin_login.php';
 require "../connect.php";
+
 $sql = "select * from manufacturers";
 $result = mysqli_query($connect, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../header_admin.php';?>   
+<?php include '../head_admin.php';?>   
     <body>
-        <header id="header">
-            <a href="../root" class="header-logo">
-                <h1>ABC Shop</h1>
-            </a>
-        </header>
+        <?php include '../header_admin.php';?>
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show-admin">
@@ -61,7 +59,7 @@ $result = mysqli_query($connect, $sql);
                             <tr>
                               <td><?php echo $index + 1 ?></td>
                               <td><?php echo $each['name'] ?></td>
-                              <td><img height="100px" class="show-image" src="../../image/<?php echo $each['photo'] ?>" alt=""/></td>
+                              <td><img height="100%" class="show-image" src="../../image/<?php echo $each['photo'] ?>" alt=""/></td>
                               <td><?php echo $each['address'] ?></td>
                               <td><?php echo $each['phone'] ?></td>
                               <td><a class="btn btn-warning" href="update_manufacturer.php?id=<?php echo $each['id'] ?>">Sửa</a></td>

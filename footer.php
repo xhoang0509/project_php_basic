@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer mt-50">
     <table>
         <tbody>
             <tr>

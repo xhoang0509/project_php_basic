@@ -1,4 +1,5 @@
 <?php
+require '../check_admin_login.php';
 require '../connect.php';
 
 if(empty($_POST['id_order']) || empty($_POST['type'])) {

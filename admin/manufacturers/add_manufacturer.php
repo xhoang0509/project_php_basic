@@ -1,9 +1,10 @@
 <?php
-require '../check_super_admin_login.php';
+require '../check_admin_login.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php include '../header_admin.php';?>   
+    <?php include '../head_admin.php';?>   
     <body>
         <header id="header">
             <a href="../root" class="header-logo">

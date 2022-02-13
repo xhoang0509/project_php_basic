@@ -1,5 +1,13 @@
 <?php
+session_start();
 require '../check_admin_login.php';
+
+if($_SESSION['level'] == 0) {
+	$_SESSION['error'] = "Bạn không có quyền xóa nhà sản xuất!";
+	echo $_SESSION['error'];
+	header('location:index.php');
+	exit();
+}
 
 if(empty($_GET['id'])) {
 	$_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để xóa !";

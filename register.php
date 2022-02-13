@@ -28,7 +28,7 @@ if(isset($_SESSION['id'])) {
                         } 
                     ?>
                 </h3>
-                <form class="form" action="process_register.php" method="POST">
+                <form id="form-register" class="form" action="process_register.php" method="POST">
                     <label class="d-block mt-5" for="name">Tên</label>
                     <input class="d-block mt-5" type="text" name="name" id="name" />
                     <label class="d-block mt-5" for="phone">Số điện thoại</label>
@@ -36,7 +36,10 @@ if(isset($_SESSION['id'])) {
                     <label class="d-block mt-5" for="email">Email</label>
                     <input class="d-block mt-5" type="text" name="email" id="email" />
                     <label class="d-block mt-5" for="password">Mật khẩu</label>
-                    <input class="d-block mt-5" type="text" name="password" id="password" />
+                    <input class="d-block mt-5" type="password" name="password" id="password" />
+                    <label class="d-block mt-5" for="password">Nhập lại mật khẩu</label>
+                    <input class="d-block mt-5" type="password" name="password" id="password-again" />
+                    <h4 class="color-red" id="log-error"></h3>
                     <button class="btn btn-primary mt-10">Đăng kí</button>
                     <a style="text-decoration: none" href="index.php" class="btn btn-secondary mt-10">
                         <i class="fa-solid fa-arrow-left"></i>
@@ -50,4 +53,23 @@ if(isset($_SESSION['id'])) {
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#form-register").submit(function(e) {
+                const password = $.trim($("#password").val());
+                const password_again = $.trim($("#password-again").val());
+                if(!password || !password_again) {
+                    alert("Yêu cầu nhập mật khẩu !");
+                    e.preventDefault();
+                    return;
+                }
+                if(password != password_again) {                    
+                    $("#log-error").text("Mật khẩu không khớp !")
+                    e.preventDefault();
+                    return;
+                }
+            });
+        });
+    </script>
 </html>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../check_admin_login.php';
 
 require '../connect.php';
@@ -9,17 +10,13 @@ $result = mysqli_query($connect, $sql);
 <html lang="en">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-      .modal-open {
-         padding-right: 0 !important;
-      }
+        .modal-open {
+            padding-right: 0 !important;
+        }
     </style>
-    <?php include '../header_admin.php';?>   
+    <?php include '../head_admin.php';?>   
     <body>
-        <header id="header">
-            <a href="../root" class="header-logo">
-                <h1>ABC Shop</h1>
-            </a>
-        </header>
+        <?php include '../header_admin.php';?>
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
             <div class="show-admin">
@@ -46,8 +43,8 @@ $result = mysqli_query($connect, $sql);
                     ?>    
                 </h2>
                 <a class="add-manufacturer" href="add_product.php">
-                  <i class="fa-solid fa-plus"></i>
-                  Thêm nhà sản phẩm mới
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm nhà sản phẩm mới
                 </a
                 >
                 <div class="products">
@@ -64,40 +61,36 @@ $result = mysqli_query($connect, $sql);
                         </thead>
                         <?php foreach ($result as $each): ?>
                             <tr>
-                              <td><?php echo $each['name'] ?></td>
-                              <td><img height="100px" src="../../image/<?php echo $each['photo'] ?>" alt=""></td>
-                              <td><?php echo $each['price'] ?></td>
-                              <td><?php echo $each['quantity'] ?></td>
-                              <td>
-                                <a class="btn btn-warning"  href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a>
-                            </td>
-                              <td>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-<?php echo $each['id'] ?>">
-                                  Xóa
-                                </button>
+                                <td><?php echo $each['name'] ?></td>
+                                <td><img height="100px" src="../../image/<?php echo $each['photo'] ?>" alt=""></td>
+                                <td><?php echo $each['price'] ?></td>
+                                <td><?php echo $each['quantity'] ?></td>
+                                <td><a class="btn btn-warning"  href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a></td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-<?php echo $each['id'] ?>">Xóa</button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="modal-<?php echo $each['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        Hành động này không thể không phục, bạn có chắc chắn xóa ?
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                        <a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
-                                      </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal-<?php echo $each['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Hành động này không thể không phục, bạn có chắc chắn xóa ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                            <a class="btn btn-danger" href="delete_product.php?id=<?php echo $each['id'] ?>">Xóa</a>
+                                        </div>
+                                        </div>
                                     </div>
-                                  </div>
-                                </div>
-                            </td>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                     </table>

@@ -1,6 +1,7 @@
 <?php
 require '../check_admin_login.php';
 require '../connect.php';
+require '../contants/PASSWORD_HASH.php';
 
 $name = mysqli_real_escape_string($connect,$_POST['name']);
 $photo = $_FILES['photo'];
@@ -8,6 +9,8 @@ $address = mysqli_real_escape_string($connect,$_POST['address']);
 $gender = $_POST['gender'];
 $email = mysqli_real_escape_string($connect,$_POST['email']);
 $password = mysqli_real_escape_string($connect,$_POST['password']);
+
+$password_hash = md5($password).$PASSWORD_HASH;
 
 if(empty($name) || empty($photo) || empty($address) || empty($gender) || empty($email) || empty($password)) {
     $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
@@ -29,7 +32,7 @@ photo = '$file_name' ,
 address = '$address' ,
 phone = '$phone',
 email = '$email',
-password='$password'
+password='$password_hash'
 where id = '$id'";
 
 mysqli_query($connect, $sql); 

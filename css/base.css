@@ -11,15 +11,15 @@
 }
 
 .text-warning {
-    color: #ffc107!important;
+    color: #ffc107 !important;
 }
 
 .text-danger {
-    color: #dc3545!important;
+    color: #dc3545 !important;
 }
 
 .text-success {
-    color: #28a745!important;
+    color: #28a745 !important;
 }
 
 /*margin*/
@@ -29,6 +29,10 @@
 
 .mt-10 {
     margin-top: 10px;
+}
+
+.mt-50 {
+    margin-top: 50px;
 }
 
 .mb-5 {
@@ -43,14 +47,12 @@
 }
 
 .d-flex {
-	display: flex;
+    display: flex;
 }
 
 .align-content-center {
     align-items: center;
 }
-
-
 
 .btn-primary {
     color: #fff;

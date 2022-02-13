@@ -9,6 +9,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Đăng nhập tài khoản quản trị</title>
         <link rel="stylesheet" href="../css/register.css" />
+        <link rel="stylesheet" href="../css/register-admin.css" />
         <link rel="stylesheet" href="../css/base.css" />
     </head>
     <body>
@@ -35,13 +36,7 @@ session_start();
                     <label class="d-block mt-5" for="">Email</label>
                     <input class="d-block mt-5" type="text" name="email" />
                     <label class="d-block mt-5" for="">Mật khẩu</label>
-                    <input class="d-block mt-5" type="text" name="password" />
-                    <!-- remember login -->
-                    <!-- <div class="d-flex align-content-center mt-5">
-                        <input style="text-align: left; width: 20px" type="checkbox" name="remember_login" id="remember_login">
-                        <label for="remember_login">Ghi nhớ đăng nhập</label>
-                        <br>                  
-                    </div> -->
+                    <input class="d-block mt-5" type="text" name="password" />                    
                     <button class="btn btn-primary mt-10">Đăng nhập</button>
                 </form>
             </div>

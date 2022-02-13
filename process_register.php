@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'admin/contants/PASSWORD_HASH.php';
 if(isset($_SESSION['id'])) {
     header("location:index.php");
     exit();
@@ -14,6 +15,9 @@ if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) 
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+
+$password_hash = md5($password).$PASSWORD_HASH;
+
 $phone = $_POST['phone'];
 
 
@@ -27,7 +31,7 @@ if($number_rows == 1) {
 	exit();
 }
 $sql = "insert into customers(name, email, password, phone)
-values('$name', '$email', '$password', '$phone')";
+values('$name', '$email', '$password_hash', '$phone')";
 mysqli_query($connect, $sql);
 
 require 'admin/close_connect.php';
