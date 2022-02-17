@@ -1,18 +1,17 @@
 <?php
 require '../check_admin_login.php';
 require '../connect.php';
-if(empty($_GET['id'])) {
 
-}
+
+$id = $_POST['id'];
 
 if(empty($_POST['name']) || empty($_POST['price']) || empty($_POST['description']) 
 	|| empty($_POST['quantity']) || empty($_POST['manufacturer_id']) || empty($_POST['type'])) {
     $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
-    header('location:update_product.php?');
+    header("location:update_product.php?id=$id");
     exit();
 }
 
-$id = $_GET['id'];
 $name = mysqli_real_escape_string($connect,$_POST['name']);
 $photo = $_FILES['photo_new'];
 $price = mysqli_real_escape_string($connect,$_POST['price']);

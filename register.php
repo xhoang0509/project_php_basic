@@ -56,11 +56,12 @@ if(isset($_SESSION['id'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#form-register").submit(function(e) {
+            $("#form-register").submit(function(e) {            
                 const password = $.trim($("#password").val());
                 const password_again = $.trim($("#password-again").val());
+
                 if(!password || !password_again) {
-                    alert("Yêu cầu nhập mật khẩu !");
+                    alert("Yêu cầu nhập mật khẩu đăng kí!");                    
                     e.preventDefault();
                     return;
                 }

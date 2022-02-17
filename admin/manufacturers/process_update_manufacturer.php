@@ -3,23 +3,28 @@ require '../check_admin_login.php';
 require '../connect.php';
 
 $id = $_POST['id'];
-$name = mysqli_real_escape_string($connect,$_POST['name']);
-$address = mysqli_real_escape_string($connect,$_POST['address']);
-$phone = mysqli_real_escape_string($connect,$_POST['phone']);
-$photo = $_FILES['photo'];
 
-if(empty($name) || empty($address) || empty($phone) || empty($photo) ) {
-    $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin !';
-    header('location:update_manufacturer.php');
+if(empty($_POST['name']) || empty($_POST['address']) || empty($_POST['phone'])) {
+    $_SESSION['error'] = 'Yêu cầu nhập đủ thông tin!';
+    header("location:update_manufacturer.php?id=$id");
     exit();
 }
 
-$folder = '../../image/';
-$file_extension = explode('.', $photo['name'])[1]; // get extenstion of image
-$file_name = time() . '.' . $file_extension;
-$path_file = $folder . $file_name;
-move_uploaded_file($photo["tmp_name"], $path_file);
 
+$name = mysqli_real_escape_string($connect,$_POST['name']);
+$address = mysqli_real_escape_string($connect,$_POST['address']);
+$phone = mysqli_real_escape_string($connect,$_POST['phone']);
+
+if(!empty($_FILES['photo']['size'])) {    
+    $photo = $_FILES['photo'];
+    $folder = '../../image/';
+    $file_extension = explode('.', $photo['name'])[1]; // get extenstion of image
+    $file_name = time() . '.' . $file_extension;
+    $path_file = $folder . $file_name;
+    move_uploaded_file($photo["tmp_name"], $path_file);
+} else {
+    $file_name = $_POST['old_photo'];
+}
 
 $sql = "update manufacturers
 set

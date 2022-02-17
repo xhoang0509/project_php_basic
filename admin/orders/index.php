@@ -43,6 +43,11 @@ require '../check_admin_login.php';
             $result_cancelled = mysqli_query($connect,$sql);
         ?>           
             <div class="show-admin">
+                <h1>Tìm kiếm đơn hàng</h1>
+                <form action="">
+                    <input type="text" class="form-control" placeholder='Nhập mã hóa đơn vd: 34374'>
+                    <button class="btn btn-primary mt-3">Tìm kiếm</button>
+                </form>
                 <h1>Đơn hàng chưa duyệt</h1>
                 <div>
                 <table border="1" width="100%" class="mt-10 table-others"   >

@@ -133,7 +133,7 @@ $order_wait_accpect = mysqli_fetch_array($result)['count(*)'];
                 </div>
             </div>
         </div>
-        <?php require'../footer.php'?>
+        <?php include '../footer.php'?>
         <!-- Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
         <!-- Highchart  -->

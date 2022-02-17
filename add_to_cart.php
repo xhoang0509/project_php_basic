@@ -2,6 +2,8 @@
 try {
     session_start();
      if(empty($_SESSION['id_customer'])) {
+        header('location:login.php');
+        exit();
         throw new Exception("Yêu cầu đăng nhập để mua hàng");      
     }    
     $customer_id = $_SESSION['id_customer'];

@@ -2,7 +2,7 @@
 require '../check_admin_login.php';
 
 if(empty($_GET['id'])) {
-    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa !";
+    $_SESSION['error'] = "Yêu cầu chọn nhà nhân viên để sửa !";
     header('location:index.php');
     exit();
 }
@@ -13,7 +13,7 @@ $sql = "select * from admin where id = '$id'";
 $result = mysqli_query($connect, $sql);
 $number_rows = mysqli_num_rows($result);
 if($number_rows === 0) {
-    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa !";
+    $_SESSION['error'] = "Yêu cầu chọn nhà nhân viên để sửa !";
     header('location:index.php');
     exit();
 }
@@ -21,11 +21,11 @@ $each = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-require '../header_admin.php';
-?>   
+    <?php require '../head_admin.php';?>   
+    <body>
+        <?php require '../header_admin.php';?>   
         <div id="container-admin" class="container-admin">
-        <?php include '../menu.php'?>
+            <?php include '../menu.php'?>
             <div class="show">
                 <h1>Cập nhật nhân viên: </h1>
                 <h3 style="color: red;">
@@ -71,7 +71,7 @@ require '../header_admin.php';
                     <br />
                     <input class="input" type="password" name="password" />
                     <br />
-                    <button class="btn">Thêm</button>
+                    <button class="btn">Sửa</button>
                 </form>
             </div>
         </div>

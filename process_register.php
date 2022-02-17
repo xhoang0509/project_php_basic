@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'admin/contants/PASSWORD_HASH.php';
+
 if(isset($_SESSION['id'])) {
     header("location:index.php");
     exit();
@@ -15,11 +16,8 @@ if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) 
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-
 $password_hash = md5($password).$PASSWORD_HASH;
-
 $phone = $_POST['phone'];
-
 
 require 'admin/connect.php';
 $sql = "select * from customers where email = '$email'";

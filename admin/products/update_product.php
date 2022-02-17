@@ -1,23 +1,25 @@
 <?php
 session_start();
 require '../check_admin_login.php';
+require '../connect.php';
 
 if(empty($_GET['id'])) {
-    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa!";
+    $_SESSION['error'] = "Yêu cầu chọn sản phẩm để sửa!";
     header('location:index.php');
     exit();
 }
 $id = $_GET['id'];
 
-require '../connect.php';
 $sql = "select * from products where id = '$id'";
 $result = mysqli_query($connect, $sql);
 $number_rows = mysqli_num_rows($result);
+
 if($number_rows === 0) {
-    $_SESSION['error'] = "Yêu cầu chọn nhà sản xuất để sửa !";
+    $_SESSION['error'] = "Yêu cầu chọn sản phẩm để sửa !";
     header('location:index.php');
     exit();
 }
+
 $each = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ $each = mysqli_fetch_array($result);
         <?php include '../header_admin.php';?>   
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
-            <div class="show">
+            <div class="show-admin">
                 <h1>Sửa sản phẩm: </h1>
                 <h3 style="color: red;">
                     <?php 
@@ -45,7 +47,7 @@ $each = mysqli_fetch_array($result);
             ?>    
 
                 <form 
-                    action="process_update_product.php?id=<?php echo $id ?>" 
+                    action="process_update_product.php" 
                     method="POST" enctype="multipart/form-data" class="form-input" >
                     <input type="hidden" name="id" value="<?php echo $id ?>">
                     <label for="name">Tên sản phẩm</label><br>
@@ -64,9 +66,7 @@ $each = mysqli_fetch_array($result);
                     <textarea 
                         style="width: 396px;height: 168px;" 
                         name="description" 
-                        id="description" cols="30" rows="10">
-                        <?php echo $each['description'] ?>                        
-                    </textarea>
+                        id="description" cols="30" rows="10"><?php echo $each['description'] ?></textarea>
                     <br />
                     <label for="quantity">Số lượng</label>
                     <br />

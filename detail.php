@@ -13,9 +13,13 @@ $id = $_GET['id'];
 $sql = "select * from products where id = '$id'";
 $result = mysqli_query($connect, $sql);
 $number_rows = mysqli_num_rows($result);
-// if(empty($number_rows)) {
-//   header("location:index.php");
-// }
+
+
+if($number_rows == 0) {
+    header("location:index.php");
+    exit();
+}
+
 $each = mysqli_fetch_array($result);
 
 $sql = "select *, name

@@ -63,7 +63,7 @@ $result = mysqli_query($connect, $sql);
                             <tr>
                                 <td><?php echo $each['name'] ?></td>
                                 <td><img height="100px" src="../../image/<?php echo $each['photo'] ?>" alt=""></td>
-                                <td><?php echo $each['price'] ?></td>
+                                <td><?php echo $each['price'] ?> vnd</td>
                                 <td><?php echo $each['quantity'] ?></td>
                                 <td><a class="btn btn-warning"  href="update_product.php?id=<?php echo $each['id'] ?>">Sửa</a></td>
                                 <td>

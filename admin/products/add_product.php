@@ -49,8 +49,7 @@ $result = mysqli_query($connect, $sql);
                     <br>
                     <textarea 
                         name="description"
-                        id="description" cols="30" rows="10" style="margin: 0px; width: 400px; height: 150px;">                            
-                    </textarea>
+                        id="description" cols="30" rows="10" style="margin: 0px; width: 400px; height: 150px;"></textarea>
                     <br>
                     <br>
                     <label for="product_id">Nhà sản xuất</label>

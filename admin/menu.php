@@ -40,9 +40,9 @@
     </li>
     <li class="link-item">
         <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/staffs/") {?>
-            <a style="color: blue;" href="staffs" class="link">
+            <a style="color: blue;" href="#" class="link">
                 <i class="fa-solid fa-person"></i>
-                Quản lý nhân viên
+                Quản lý nhân viên                
             </a>
         <?php } else {?>
             <a href="../staffs" class="link">
@@ -70,4 +70,23 @@
             Đăng xuất
         </a>
     </li>
+    <li class="link-item">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+    </li>  
 </ul>
+
+<script>
+    $('.dropdown').click(() => {
+        console.log(1)
+        #(".dropdown-menu").css("display", 'block');
+    })
+</script>
