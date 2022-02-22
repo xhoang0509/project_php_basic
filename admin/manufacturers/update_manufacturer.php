@@ -26,6 +26,8 @@ $each = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <title>Sửa nhà sản xuất</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <?php include '../head_admin.php';?>   
     <body>
         <?php include '../header_admin.php';?>   

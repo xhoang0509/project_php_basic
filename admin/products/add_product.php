@@ -8,6 +8,8 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <title>Thêm sản phẩm mới</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <?php include '../head_admin.php';?>   
     <body>
         <?php include '../header_admin.php';?>   
@@ -18,7 +20,7 @@ $result = mysqli_query($connect, $sql);
             $sql="select * from manufacturers";
             $manufacturer = mysqli_query($connect,$sql);
         ?> 
-            <div class="show">
+            <div class="show-admin">
                 <h1>Thêm nhà sản phẩm mới</h1>
                 <h3 style="color: red;">
                     <?php 

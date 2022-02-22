@@ -4,6 +4,8 @@ require '../check_admin_login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <title>Thêm nhà sản xuất mới</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <?php include '../head_admin.php';?>   
     <body>
         <header id="header">

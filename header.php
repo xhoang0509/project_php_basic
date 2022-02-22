@@ -17,8 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <input id="project" placeholder="Tìm kiếm sản phẩm">
                     <input type="hidden" id="project-id">
                     <p id="project-description"></p>
-                </li> 
-            
+                </li>            
         </ul>
     </div>
     <div class="icon">      

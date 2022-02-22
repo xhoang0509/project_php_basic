@@ -184,3 +184,24 @@ input[type="file"] {
     width: 60px;
     padding: 10px;
 }
+
+
+.link-item > p >  .btn.btn-primary {
+    width: 100% !important;
+    text-align: left;
+}
+
+.link-item > p >  .btn.btn-secondary {
+    width: 100% !important;
+    text-align: left;   
+}
+
+.card.card-body {
+    border: none;
+}
+
+a.dropdown-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}

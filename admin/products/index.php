@@ -8,6 +8,8 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <title>Tổng quan sản phẩm</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .modal-open {

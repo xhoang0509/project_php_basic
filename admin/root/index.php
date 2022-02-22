@@ -27,7 +27,9 @@ $order_wait_accpect = mysqli_fetch_array($result)['count(*)'];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="en">
+    <title>Tổng quan</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <?php include '../head_admin.php';?>   
     <style>
         .highcharts-figure,
@@ -82,11 +84,7 @@ $order_wait_accpect = mysqli_fetch_array($result)['count(*)'];
                 <h1>Tổng quan</h1>
                 <div class="dashboard-list">
                     <h3 class="dashboard-item">
-                        <a href="../orders/" style="color:red;">Số đơn hàng cần duyệt: <?php echo $order_wait_accpect ?></a>                        
-                    </h3>
-
-                    <h3 class="dashboard-item">
-                        <a href="../orders/">Tổng đơn hàng: <?php echo $total_orders ?></a>
+                        <a href="../orders/not_approved.php" style="color:red;">Số đơn hàng chưa duyệt: <?php echo $order_wait_accpect ?></a>                        
                     </h3>
                     <h3 class="dashboard-item">
                         <a href="../manufacturers/">Tổng nhà sản xuất: <?php echo $total_manufacturers ?></a>

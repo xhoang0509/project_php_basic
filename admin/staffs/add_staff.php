@@ -4,12 +4,14 @@ require '../check_admin_login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <title>Thêm nhân viên mới</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <?php include '../head_admin.php';?>   
     <body>
         <?php include '../header_admin.php';?> 
         <div id="container-admin" class="container-admin">
         <?php include '../menu.php'?>
-            <div class="show">
+            <div class="show-admin">
                 <h1>Thêm nhân viên mới</h1>
                 <?php if(isset($_SESSION['add_staff_error'])) { ?>
                     <h3 class="color-red">

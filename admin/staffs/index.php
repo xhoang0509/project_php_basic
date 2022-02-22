@@ -9,7 +9,9 @@ $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../head_admin.php';?>   
+  <title>Tổng quan nhân viên</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
+  <?php include '../head_admin.php';?>   
     <body>
         <?php include '../header_admin.php';?> 
         <div id="container-admin" class="container-admin">

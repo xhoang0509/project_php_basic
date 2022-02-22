@@ -1,92 +1,76 @@
 <ul class="container-links">
-    <li class="link-item">
-    <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/root/" || $_SERVER['REQUEST_URI'] === "/abcshop/admin/root/index.php") {?>
-            <a style="color: blue;" href="root" class="link">
+    <li class="link-item">    
+        <p>
+            <a class="btn btn-primary" href="../root">
                 <i class="fa-solid fa-gauge"></i>
                 Tổng quan
             </a>
-        <?php } else {?>
-            <a href="../root" class="link">
-                  <i class="fa-solid fa-gauge"></i>
-                Tổng quan
-            </a>
-        <?php } ?>
+        </p>
     </li>
-    <li class="link-item">
-        <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/manufacturers/") {?>
-            <a style="color: blue" href="manufacturers" class="link">
+    <li class="link-item">       
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#manufacturers" aria-expanded="false" aria-controls="collapseExample">
                 <i class="fa-solid fa-industry"></i>
                 Quản lý nhà sản xuất
-            </a>
-        <?php } else {?>
-            <a href="../manufacturers" class="link">
-                <i class="fa-solid fa-industry"></i>
-                Quản lý nhà sản xuất
-            </a>
-        <?php } ?>
-    </li>
-    <li class="link-item">
-        <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/products/") {?>
-            <a style="color: blue;" href="products" class="link">
-                <i class="fa-solid fa-box-archive"></i>
-                Quản lý sản phẩm
-            </a>
-        <?php } else {?>
-            <a href="../products" class="link">
-                <i class="fa-solid fa-box-archive"></i>
-                Quản lý sản phẩm
-            </a>
-        <?php } ?>
-    </li>
-    <li class="link-item">
-        <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/staffs/") {?>
-            <a style="color: blue;" href="#" class="link">
-                <i class="fa-solid fa-person"></i>
-                Quản lý nhân viên                
-            </a>
-        <?php } else {?>
-            <a href="../staffs" class="link">
-                <i class="fa-solid fa-person"></i>
-                Quản lý nhân viên
-            </a>
-        <?php } ?>
-    </li>
-    <li class="link-item">
-        <?php if($_SERVER['REQUEST_URI'] === "/abcshop/admin/orders/") {?>
-            <a style="color: blue;" href="orders" class="link">
-                <i class="fa-solid fa-file-invoice-dollar"></i>
-                Quản lý đơn hàng
-            </a>
-        <?php } else {?>
-            <a href="../orders" class="link">
-                <i class="fa-solid fa-file-invoice-dollar"></i>
-                Quản lý đơn hàng
-            </a>
-        <?php } ?>
-    </li>
-    <li class="link-item">
-        <a href="../logout_admin.php" class="link">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Đăng xuất
-        </a>
-    </li>
-    <li class="link-item">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+        </p>
+        <div class="collapse" id="manufacturers">
+            <div class="card card-body">
+                <a class="dropdown-item" href="../manufacturers">Tổng quan nhà sản xuất</a>
+                <a class="dropdown-item" href="../manufacturers/add_manufacturer.php">Thêm nhà sản xuất mới</a>            
             </div>
         </div>
-    </li>  
+    </li>
+    <li class="link-item">
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#products" aria-expanded="false" aria-controls="collapseExample">                
+                <i class="fa-solid fa-box-archive"></i>
+                Quản lý sản phẩm
+            </button>
+        </p>
+        <div class="collapse" id="products">
+            <div class="card card-body">
+                <a class="dropdown-item" href="../products">Tổng quan sản phẩm</a>
+                <a class="dropdown-item" href="../products/add_product.php">Thêm sản phẩm mới</a>            
+            </div>
+        </div>
+    </li>
+    <li class="link-item">
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#staffs" aria-expanded="false" aria-controls="collapseExample">                
+                <i class="fa-solid fa-person"></i>
+                Quản lý nhân viên
+            </button>
+        </p>
+        <div class="collapse" id="staffs">
+            <div class="card card-body">
+                <a class="dropdown-item" href="../staffs">Tổng quan nhân viên</a>
+                <a class="dropdown-item" href="../staffs/add_staff.php">Thêm nhân viên mới</a>            
+            </div>
+        </div>
+    </li>
+    <li class="link-item">
+       <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#orders" aria-expanded="false" aria-controls="collapseExample">                
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                Quản lý đơn hàng
+            </button>
+        </p>
+        <div class="collapse" id="orders">
+            <div class="card card-body">
+                <a class="dropdown-item" href="../orders">Tổng quan đơn hàng</a>
+                <a class="dropdown-item" href="../orders/not_approved.php">Đơn hàng chưa duyệt</a>
+                <a class="dropdown-item" href="../orders/approved.php">Đơn hàng đã duyệt</a>
+                <a class="dropdown-item" href="../orders/cancelled.php">Đơn hàng đã hủy</a>                
+            </div>
+        </div>
+    </li>
+    <li class="link-item">
+        <p>
+            <a class="btn btn-secondary" href="../logout_admin.php">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Đăng xuất
+            </a>
+        </p>
+    </li>    
 </ul>
-
-<script>
-    $('.dropdown').click(() => {
-        console.log(1)
-        #(".dropdown-menu").css("display", 'block');
-    })
-</script>

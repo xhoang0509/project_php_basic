@@ -1,58 +1,44 @@
 <?php 
 session_start();
 require '../check_admin_login.php';
-require '../connect.php';
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = " select 
-    orders.*,
-    customers.name,
-    customers.phone,
-    customers.address
-    from orders
-    join customers 
-    on customers.id = orders.customer_id where orders.id = '$id'";    
-    $result = mysqli_query($connect, $sql);    
-    if(mysqli_num_rows($result) == 1 ) {
-        $each = mysqli_fetch_array($result);        
-        $error_search = 0;
-    } else {
-        $error_search = 1;
-    }
-}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <title>Tổng quan đơn hàng</title>
+    <title>Đơn hàng chưa duyệt</title>
     <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
     <?php include '../head_admin.php';?>   
     <body>
         <?php include '../header_admin.php';?>
         <div id="container-admin" class="container-admin">
-        <?php include '../menu.php'?>                
-            <div class="show-admin">
-                <h1>Tìm kiếm đơn hàng</h1>
-                <form method='GET' action="index.php">
-                    <input type="number" class="form-control" placeholder='Nhập mã hóa đơn vd: 34374' name="id">
-                    <button class="btn btn-primary mt-3 btn-search">Tìm kiếm</button>
-                </form>
-                <?php if(isset($id)) {?> 
-                    <?php if($error_search == 0) { ?>                   
-                        <h1>Mã đơn <?php echo $id?>: </h1>
-                        <div>
-                            <table border="1" width="100%" class="mt-10 table-others"   >
-                                <tr>
-                                    <th>Mã</th>
-                                    <th>Thời gian đặt</th>
-                                    <th>Thông tin người nhận</th>
-                                    <th>Thông tin người đặt</th>
-                                    <th>Trạng thái</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Duyệt đơn</th>
-                                    <th>Hủy đơn</th>
-                                </tr>
-                                
+        <?php include '../menu.php'?>
+        <?php
+            require '../connect.php';
+            $sql = " select 
+            orders.*,
+            customers.name,
+            customers.phone,
+            customers.address
+            from orders
+            join customers 
+            on customers.id = orders.customer_id where status = 0";
+            $result_not_approved = mysqli_query($connect,$sql);           
+        ?>           
+            <div class="show-admin">               
+                <h1>Đơn hàng chưa duyệt</h1>
+                <div>
+                <table border="1" width="100%" class="mt-10 table-others"   >
+                        <tr>
+                            <th>Mã</th>
+                            <th>Thời gian đặt</th>
+                            <th>Thông tin người nhận</th>
+                            <th>Thông tin người đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Tổng tiền</th>
+                            <th>Duyệt đơn</th>
+                            <th>Hủy đơn</th>
+                        </tr>
+                        <?php foreach ($result_not_approved as $each): ?>
                                 <tr>
                                     <td><?php echo $each['id'] ?></td>
                                     <td><?php echo $each['created_at'] ?></td>
@@ -94,7 +80,7 @@ if(isset($_GET['id'])) {
                                         <?php } ?>
                                     </td>
                                     <td>
-                                            <?php if($each['status'] == 1) {?>
+                                         <?php if($each['status'] == 1) {?>
                                             <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
                                         <?php } else if($each['status'] == 0) { ?>
                                             <button class="btn btn-danger btn-cancel-order" data-id="<?php echo $each['id'] ?>" data-type="cancel">Hủy</button>
@@ -102,13 +88,10 @@ if(isset($_GET['id'])) {
                                             <button class="btn btn-secondary" disabled data-id="<?php echo $each['id'] ?>">Đã hủy</button>
                                         <?php } ?>                                        
                                     </td>
-                                </tr>
-                            </table>
-                        </div>
-                    <?php }else if($error_search == 1){ ?>
-                        <h1 style="color:red;">Không tìm thấy đơn hàng có mã <?php echo $id ?></php></h1>
-                    <?php } ?>
-                <?php }?>                
+                                </tr>                           
+                        <?php endforeach ?>
+                    </table>
+                </div>
             </div>
         </div>
         <?php require'../footer.php'?>

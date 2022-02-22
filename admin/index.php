@@ -8,6 +8,7 @@ session_start();
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Đăng nhập tài khoản quản trị</title>
+        <link rel="icon" type="image/x-icon" href="../favicon/favicon.ico">
         <link rel="stylesheet" href="../css/register.css" />
         <link rel="stylesheet" href="../css/register-admin.css" />
         <link rel="stylesheet" href="../css/base.css" />
