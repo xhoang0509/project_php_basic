@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'admin/connect.php';
+require 'admin/utils/validation_js.php';
 
 if(empty($_POST['product_id'])) {
 	header("location:index.php");
@@ -22,6 +23,7 @@ if(empty($_SESSION['id_customer'])) {
 		$customer_id = $_SESSION['id_customer'];
 		$rating = $_POST['rating'];
 		$comment = $_POST['comment'];
+		$comment = validation_js($comment);
 
 		$sql = "INSERT INTO product_rating(product_id, customer_id, rating, comment)
 		VALUES ('$product_id', '$customer_id', '$rating', '$comment')";
