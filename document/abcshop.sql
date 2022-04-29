@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2022 at 09:28 AM
+-- Generation Time: Mar 05, 2022 at 04:14 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -81,7 +81,10 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `photo`, `address`, 
 (23, 'Tạ Văn Điệu', 'tavandieu@gmail.com', '1', '1643102566.jpg', 'Giao Thủy - Nam Định', '0123', ''),
 (24, 'Nguyễn Mạnh Quyết', 'manhquyet01@gmail.com', '123', '', '', '0857812656', ''),
 (25, 'Mạnh Quyết', 'manhquyet1@gmail.com', '202cb962ac59075b964b07152d234b7048%$*kdyr9823h*@&%RH#$%&#*$&#*h', '', '', '0857812154', 'user_62087e585f0322.318572571644723800'),
-(26, 'Nguyen Van B', 'nguyenvanb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', '1644724659.jpg', 'Ha Noi', '0123456', 'user_6208ae7b504351.619237501644736123');
+(26, 'Nguyen Van B', 'nguyenvanb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', '1645093754.png', 'Bac Giang - Viet Nam ', '123', 'user_6214ed8cd38542.543033611645538700'),
+(27, '</>', 'ể', 'c4ca4238a0b923820dcc509a6f75849b48%$*kdyr9823h*@&%RH#$%&#*$&#*h', '', '', 'rẻ', ''),
+(28, '1', '2', 'c81e728d9d4c2f636f067f89cc14862c48%$*kdyr9823h*@&%RH#$%&#*$&#*h', '', '', '1', ''),
+(29, 'Hoang Nguyen Xuan', '3', 'eccbc87e4b5ce2fe28308fd9f2a7baf348%$*kdyr9823h*@&%RH#$%&#*$&#*h', '', 'bac tu liem - ha noi', '0857812113', 'user_620a15da45e5e8.299444101644828122');
 
 -- --------------------------------------------------------
 
@@ -141,36 +144,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `name_receiver`, `phone_receiver`, `address_receiver`, `notes`, `status`, `total_price`, `created_at`) VALUES
-(3, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 1, 400000, '2022-01-13 17:00:00'),
-(4, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 1, 400000, '2022-01-13 17:00:00'),
-(5, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 1, 400000, '2022-01-13 17:00:00'),
-(6, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', 1, 400000, '2022-01-13 17:00:00'),
-(7, 17, 'Tran Huy Tien', '0678', '																																																																																																																																																																																																\r\n		bac giang									\r\n											\r\n											\r\n											\r\n', '', -1, 400000, '2022-01-13 17:00:00'),
-(8, 17, 'Tran Huy Tien', '0123 456 789', 'bac giang									\r\n											\r\n											\r\n											\r\n						\r\n					', '', -1, 5400000, '2022-01-13 17:00:00'),
-(9, 1, 'Nguyễn Xuân Hoàng', '0857812113', '																																																						tam ***- yên ***- bắc ***\n											\n											\n											\n											\n											\n											\n											\n											\n					', 'xuan hoang', -1, 0, '2022-01-21 17:00:00'),
-(13, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 0, '2022-01-21 17:00:00'),
-(14, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 2000000, '2022-01-21 17:00:00'),
-(15, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 2000000, '2022-01-21 17:00:00'),
-(16, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 1400000, '2022-01-21 17:00:00'),
-(17, 18, 'test', '012', 'xuan hoang', '', -1, 1400000, '2022-01-21 17:00:00'),
-(19, 18, 'test', '012', 'viet nam', '', -1, 1200000, '2022-01-21 17:00:00'),
-(20, 18, 'test', '012', 'viet nam', '', -1, 4400000, '2022-01-21 17:00:00'),
-(26, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 400000, '2022-01-21 17:00:00'),
-(27, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 1400000, '2022-01-21 17:00:00'),
-(28, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 400000, '2022-01-21 17:00:00'),
-(29, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 4000000, '2022-01-21 17:00:00'),
-(30, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 1000000, '2022-01-21 17:00:00'),
-(31, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 400000, '2022-01-21 17:00:00'),
-(32, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 400000, '2022-01-21 17:00:00'),
-(33, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00'),
-(34, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', 1, 1000000, '2022-01-21 17:00:00'),
-(35, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 10600000, '2022-01-25 08:31:08'),
-(36, 23, 'Tạ Văn Điệu', '0123', 'Giao Thủy - Nam Định', '', 1, 6400000, '2022-01-25 09:23:04'),
-(37, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', '', -1, 20400100, '2022-01-27 15:03:45'),
-(38, 1, 'Nguyễn Xuân Hoàng', '0857812113', 'khong co dia chi 123																																																																																												', 'notes', -1, 4400000, '2022-02-08 13:14:43'),
-(39, 26, 'Nguyen Van B', '0123', 'Ha Noi', 'Giao hàng vào buổi tối nhé !', 0, 400000, '2022-02-13 07:09:04'),
-(40, 26, 'Nguyen Van B', '0123', 'Ha Noi', 'Giao hàng vào buổi sáng nhé !', -1, 42390000, '2022-02-13 07:09:41'),
-(41, 26, 'Nguyen Van B', '0123', 'Ha Noi', '', 0, 24.99, '2022-02-13 07:54:07');
+(1, 1, 'customer', '3443243', 'ha noi', '', -1, 1111, '2022-02-22 13:51:32'),
+(45, 26, 'Nguyen Van B', '0123456', 'Bac Giang - Viet Nam', '', 1, 6800000, '2022-02-22 13:52:38'),
+(46, 26, 'Nguyen Van B', '0123456', 'Bac Giang - Viet Nam', '', -1, 2400000, '2022-02-22 13:53:31'),
+(47, 26, 'Nguyen Van B', '0123456', 'Bac Giang - Viet Nam', '', 1, 1400000, '2022-02-22 13:53:48'),
+(48, 26, 'Nguyen Van B', '0123456', 'Bac Giang - Viet Nam', '', 1, 4800000, '2022-02-22 14:05:40');
 
 -- --------------------------------------------------------
 
@@ -189,59 +167,11 @@ CREATE TABLE `order_product` (
 --
 
 INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
-(5, 4, 1),
-(6, 4, 1),
-(7, 4, 1),
-(8, 3, 1),
-(8, 4, 1),
-(8, 6, 1),
-(9, 3, 4),
-(10, 4, 6),
-(10, 6, 12),
-(11, 6, 1),
-(11, 7, 1),
-(15, 7, 1),
-(15, 6, 1),
-(16, 6, 1),
-(16, 4, 1),
-(17, 6, 1),
-(17, 4, 1),
-(18, 9, 1),
-(19, 4, 4),
-(20, 4, 1),
-(20, 3, 1),
-(21, 7, 1),
-(22, 3, 1),
-(23, 4, 1),
-(24, 4, 1),
-(25, 4, 1),
-(26, 4, 1),
-(27, 4, 1),
-(27, 6, 1),
-(28, 4, 1),
-(29, 3, 1),
-(30, 6, 1),
-(31, 4, 1),
-(32, 4, 1),
-(33, 7, 1),
-(34, 6, 1),
-(35, 3, 2),
-(35, 4, 4),
-(35, 7, 1),
-(36, 3, 1),
-(36, 4, 1),
-(36, 6, 1),
-(36, 7, 1),
-(37, 4, 9),
-(37, 6, 6),
-(37, 10, 3),
-(37, 3, 2),
-(37, 7, 2),
-(38, 3, 1),
-(38, 4, 1),
-(40, 4, 7),
-(40, 13, 1),
-(41, 10, 1);
+(1, 4, 15),
+(45, 4, 2),
+(46, 4, 6),
+(47, 4, 1),
+(48, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -269,10 +199,10 @@ INSERT INTO `products` (`id`, `name`, `photo`, `price`, `description`, `quantity
 (4, 'sam sung s21 ultra new', '1640512731.jpg', 400000, 'dien thoai', 40, 10, 'dien thoai'),
 (6, 'Xiao Mi mi11 5G', '1640830102.png', 1000000, 'Hang trung quoc', 40, 5, 'điện thoại'),
 (7, 'Táo thật', '1640830520.jpg', 1000000, '                            \r\n             hoa quả rất ngon       ', 10, 5, 'hoa quả'),
-(9, 'Tết 2022', '1642154609.jpg', 40, '                                                                                                                                                                            \r\n       tết sum vầy                                     \r\n                        ', 200, 5, 'Lễ hội'),
+(9, 'Tết 2022', '1642154609.jpg', 40, '                \r\n                                                \r\n                    ', 200, 5, 'Lễ hội'),
 (10, 'iphone sx max', '1642151972.jpg', 24.99, '                            \r\n        iphone my            ', 20, 5, 'điện thoại'),
-(11, 'Nokia C2 01', '1643251496.jpg', 2000000, 'Điện thoại có phím bấm                            \r\n                    ', 1000, 10, 'Điện thoại'),
-(13, 'Samsung Galaxy Z Fold3 5G 256GB', '1644421789.jpg', 41990000, 'Galaxy Z Fold3 5G, chiếc điện thoại được nâng cấp toàn diện về nhiều mặt, đặc biệt đây là điện thoại màn hình gập đầu tiên trên thế giới có camera ẩn (08/2021). Sản phẩm sẽ là một “cú hit” của Samsung góp phần mang đến những trải nghiệm mới cho người dùng', 100, 10, 'Điện thoại');
+(11, 'Nokia C2 01', '1643251496.jpg', 2000000, 'Điện thoại có phím bấm', 1000, 5, 'Điện thoại'),
+(13, 'Samsung Galaxy Z Fold3 5G 256GB 2', '1644421789.jpg', 41990000, '', 100, 5, 'Điện thoại');
 
 -- --------------------------------------------------------
 
@@ -313,7 +243,10 @@ INSERT INTO `product_rating` (`id`, `product_id`, `customer_id`, `rating`, `comm
 (19, 7, 23, 5, 'len sao'),
 (20, 11, 23, 4.5, 'danh gia xem dc bao nhieu'),
 (21, 11, 23, 1, 'test tiep '),
-(22, 6, 23, 5, 'sản phẩm rất tốt');
+(22, 6, 23, 5, 'sản phẩm rất tốt'),
+(27, 4, 26, 4.5, 'Chất lượng tốt'),
+(28, 13, 26, 4, 'i'),
+(30, 3, 26, 3, '&lt;script&gt;alert(1)&lt;/script&gt;');
 
 --
 -- Indexes for dumped tables
@@ -355,6 +288,7 @@ ALTER TABLE `orders`
 -- Indexes for table `order_product`
 --
 ALTER TABLE `order_product`
+  ADD PRIMARY KEY (`order_id`),
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`);
 
@@ -387,31 +321,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_rating`
 --
 ALTER TABLE `product_rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -427,7 +361,8 @@ ALTER TABLE `forgot_password`
 -- Constraints for table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `order_product_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 
 --
 -- Constraints for table `products`
