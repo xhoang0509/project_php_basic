@@ -1,24 +1,24 @@
 <?php
 try {
     session_start();
-     if(empty($_SESSION['id_customer'])) {
+    if (empty($_SESSION['id_customer'])) {
         header('location:login.php');
         exit();
-        throw new Exception("Yêu cầu đăng nhập để mua hàng");      
-    }    
+        throw new Exception("Yêu cầu đăng nhập để mua hàng");
+    }
     $customer_id = $_SESSION['id_customer'];
-    if(empty($_GET['id'])) {
-        throw new Exception("Không tồn tại id");      
+    if (empty($_GET['id'])) {
+        throw new Exception("Không tồn tại id");
     }
     $id = $_GET['id'];
     require 'admin/connect.php';
 
-    if(empty($_SESSION['cart'][$id])) {
+    if (empty($_SESSION['cart'][$id])) {
         $sql = "select * from products where id = '$id'";
         $result = mysqli_query($connect, $sql);
         $each = mysqli_fetch_array($result);
         $number_rows = mysqli_num_rows($result);
-        if($number_rows == 0) {
+        if ($number_rows == 0) {
             $_SESSION['error'] = "Không có sản phẩm này !";
             header('location:index.php');
             exit();
